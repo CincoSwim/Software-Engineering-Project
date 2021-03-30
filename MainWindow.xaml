@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Margin="256,301,255,95" TextWrapping="Wrap" Text="Password"/>
-        <TextBox Margin="256,259,255,137" TextWrapping="Wrap" Text="E-Mail" TextChanged="TextBox_TextChanged"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="379*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="PwdBox" Margin="222.238,301,255,95" TextWrapping="Wrap" Text="Password" Grid.Column="1"/>
+        <TextBox x:Name="usrBox" Margin="222.238,259,255,137" TextWrapping="Wrap" Text="E-Mail" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
+        <Button x:Name="LoginBtn" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="222,368,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="CreateAcctBtn" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="428,368,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
