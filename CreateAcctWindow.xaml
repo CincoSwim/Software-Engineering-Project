@@ -1,0 +1,38 @@
+﻿<Window x:Class="Software_Engineering_Project.CreateAcctWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Software_Engineering_Project"
+        mc:Ignorable="d"
+        Title="Create Account" Height="560.315" Width="531.275">
+    <Grid>
+        <Button x:Name="CreateAcctBtn" Content="Create Account" HorizontalAlignment="Left" Margin="40,455,0,0" VerticalAlignment="Top" Width="334" Height="46" Click="CreateAcctBtn_Click"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="391,455,0,0" VerticalAlignment="Top" Width="94" Height="46" Click="CancelBtn_Click"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="114,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="114,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <TextBlock x:Name="FirstNameLabel" HorizontalAlignment="Left" Margin="46,35,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="LastNameLabel" HorizontalAlignment="Left" Margin="46,72,0,0" TextWrapping="Wrap" Text="Last Name:" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="emailAddress" HorizontalAlignment="Left" Height="23" Margin="114,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBox x:Name="passwordInput" HorizontalAlignment="Left" Height="23" Margin="114,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="address" HorizontalAlignment="Left" Height="23" Margin="114,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="114,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <ComboBox x:Name="USState" HorizontalAlignment="Left" Margin="379,271,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="phone_number" HorizontalAlignment="Left" Height="23" Margin="114,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" MaxLength="10"/>
+        <TextBox x:Name="AgeInput" HorizontalAlignment="Left" Height="23" Margin="380,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="3"/>
+        <TextBox x:Name="ccNumber" HorizontalAlignment="Left" Height="23" Margin="114,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="385" MaxLength="16"/>
+        <TextBlock x:Name="AgeLabel" HorizontalAlignment="Left" Margin="351,34,0,0" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top"/>
+        <TextBox x:Name="passwordConfirm" HorizontalAlignment="Left" Height="23" Margin="371,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="CCSecurityCode" HorizontalAlignment="Left" Height="23" Margin="114,411,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" MaxLength="3"/>
+        <TextBlock x:Name="emailLabel" HorizontalAlignment="Left" Margin="26,115,0,0" TextWrapping="Wrap" Text="Email Address: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="passwordLabel" HorizontalAlignment="Left" Margin="50,157,0,0" TextWrapping="Wrap" Text="Password: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="passConfirmLabel" HorizontalAlignment="Left" Margin="261,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Re-type Password:" Width="104"/>
+        <TextBlock x:Name="addressLabel" HorizontalAlignment="Left" Margin="60,230,0,0" TextWrapping="Wrap" Text="Address: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="cityLabel" HorizontalAlignment="Left" Margin="80,276,0,0" TextWrapping="Wrap" Text="City: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="stateLabel" HorizontalAlignment="Left" Margin="345,272,0,0" TextWrapping="Wrap" Text="State:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="phoneNumLabel" HorizontalAlignment="Left" Margin="19,310,0,0" TextWrapping="Wrap" Text="Phone Number: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="ccNumLabel" HorizontalAlignment="Left" Margin="40,376,0,0" TextWrapping="Wrap" Text="Credit Card: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="ccSecurityCodeLabel" HorizontalAlignment="Left" Margin="44,411,0,0" TextWrapping="Wrap" Text="3-Digit PIN: " VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
