@@ -55,7 +55,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FlightManagerWindow.xaml.cs">
+      <DependentUpon>FlightManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadEngineerWindow.xaml.cs">
+      <DependentUpon>LoadEngineerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingManagerWindow.xaml.cs">
+      <DependentUpon>MarketingManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccountSettingsWindow.xaml.cs">
+      <DependentUpon>UserAccountSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserFlightSearchWindow.xaml.cs">
+      <DependentUpon>UserFlightSearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserLandingWindow.xaml.cs">
+      <DependentUpon>UserLandingWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AccountantWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateAcctWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlightManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadEngineerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -63,6 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AccountantWindow.xaml.cs">
+      <DependentUpon>AccountantWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -74,6 +107,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MarketingManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserAccountSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserFlightSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserLandingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

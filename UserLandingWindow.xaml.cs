@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Software_Engineering_Project
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserLandingWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserLandingWindow : Window
     {
-        public MainWindow()
+        public UserLandingWindow()
         {
             InitializeComponent();
         }
@@ -30,16 +29,9 @@ namespace Software_Engineering_Project
 
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private void BookFlightBtn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
-        {
-            CreateAcctWindow acctWindow = new CreateAcctWindow();
-            acctWindow.Show();
-            this.Close();
         }
     }
 }

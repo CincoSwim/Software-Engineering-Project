@@ -10,35 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Software_Engineering_Project
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AccountantWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccountantWindow : Window
     {
-        public MainWindow()
+        public AccountantWindow()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
-        {
-            CreateAcctWindow acctWindow = new CreateAcctWindow();
-            acctWindow.Show();
+            MainWindow mainWin = new MainWindow();
+            mainWin.Show();
             this.Close();
         }
     }

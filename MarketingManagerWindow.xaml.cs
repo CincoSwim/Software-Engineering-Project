@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace Software_Engineering_Project
 {
     /// <summary>
-    /// Interaction logic for CreateAcctWindow.xaml
+    /// Interaction logic for MarketingManagerWindow.xaml
     /// </summary>
-    public partial class CreateAcctWindow : Window
+    public partial class MarketingManagerWindow : Window
     {
-        public CreateAcctWindow()
+        public MarketingManagerWindow()
         {
             InitializeComponent();
-        }
-
-        private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CancelBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWin = new MainWindow();
-            mainWin.Show();
-            this.Close();
         }
     }
 }
