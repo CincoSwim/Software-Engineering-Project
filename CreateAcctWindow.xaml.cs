@@ -36,6 +36,8 @@ namespace Software_Engineering_Project
             this.Close();
         }
 
+        //first name of the account being created
+        //code will run everytime the value is changed.
         private void FirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
