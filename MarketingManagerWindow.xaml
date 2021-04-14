@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="MarketingManagerWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MarketingManagerWindow" Height="450" Width="729">
+    <Grid HorizontalAlignment="Left" Width="704" Margin="0,10,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle  HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="DarkCyan" Height="4" Width="Auto" Margin="355,5,-42,400" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <DataGrid x:Name="ApprovalQueueGrid" HorizontalAlignment="Left" Height="250" Margin="40,60,0,0" VerticalAlignment="Top" Width="260"/>
+        <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
+        <DataGrid x:Name="PostedFlightsGrid" Height="250" Margin="400,60,30,0" VerticalAlignment="Top"/>
+        <Label x:Name="ApprovalQueueLabel_Copy" Content="Posted Flights" HorizontalAlignment="Left" Margin="400,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
+        <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="95,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
+        <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
+        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="629,0,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

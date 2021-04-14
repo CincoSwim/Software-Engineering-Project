@@ -33,5 +33,10 @@ namespace Software_Engineering_Project
         {
 
         }
+
+        private void UpcomingFlightsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

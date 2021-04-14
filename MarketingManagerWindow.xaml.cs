@@ -23,5 +23,10 @@ namespace Software_Engineering_Project
         {
             InitializeComponent();
         }
+
+        private void FinalizeWindowBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

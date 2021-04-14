@@ -35,5 +35,10 @@ namespace Software_Engineering_Project
             mainWin.Show();
             this.Close();
         }
+
+        private void FirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
