@@ -32,6 +32,7 @@ namespace Software_Engineering_Project
             //put some logic here, getters, setters, etc
             //newacct = new UAO --needs to be declared outside of btn click event
             //insert into global UserAcct Dictionary
+            
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

@@ -70,18 +70,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateAccount.cs" />
     <Compile Include="DEBUGWINDOW.xaml.cs">
       <DependentUpon>DEBUGWINDOW.xaml</DependentUpon>
     </Compile>
     <Compile Include="FlightManagerWindow.xaml.cs">
       <DependentUpon>FlightManagerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlightManifestObj.cs" />
     <Compile Include="LoadEngineerWindow.xaml.cs">
       <DependentUpon>LoadEngineerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MarketingManagerWindow.xaml.cs">
       <DependentUpon>MarketingManagerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Planes.cs" />
+    <Compile Include="UserAccountObj.cs" />
     <Compile Include="UserAccountSettingsWindow.xaml.cs">
       <DependentUpon>UserAccountSettingsWindow.xaml</DependentUpon>
     </Compile>

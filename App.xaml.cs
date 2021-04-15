@@ -8,10 +8,18 @@ using System.Windows;
 
 namespace Software_Engineering_Project
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+   
     public partial class App : Application
     {
+       
+        internal static Dictionary<int, UserAccountObj> UserAccountDict { get; set; }
+
+        
+        internal static Dictionary<int, FlightManifestObj> FlightPlanDict { get; set; }
+
+
+        internal static UserAccountObj LoggedInUser;
+
+
     }
 }
