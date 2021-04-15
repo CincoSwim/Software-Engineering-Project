@@ -17,11 +17,14 @@ namespace Software_Engineering_Project
     /// <summary>
     /// Interaction logic for CreateAcctWindow.xaml
     /// </summary>
+    
     public partial class CreateAcctWindow : Window
     {
-        public CreateAcctWindow()
+        private MainWindow m_parent;
+        public CreateAcctWindow(MainWindow main)
         {
             InitializeComponent();
+            m_parent = main;
         }
 
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
@@ -33,9 +36,9 @@ namespace Software_Engineering_Project
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWin = new MainWindow();
-            mainWin.Show();
+            m_parent.Show();
             this.Close();
+
         }
 
         //first name of the account being created

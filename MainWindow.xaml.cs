@@ -37,7 +37,7 @@ namespace Software_Engineering_Project
 
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreateAcctWindow acctWindow = new CreateAcctWindow();
+            CreateAcctWindow acctWindow = new CreateAcctWindow(this);
             acctWindow.Show();
             this.Hide();
         }
