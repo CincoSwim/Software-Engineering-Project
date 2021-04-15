@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="FlightManagerWindow" Height="450" Width="800">
+        Title="Flight Manager - Workbench" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="FlightManagerObjDataGrid" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="552"/>
+        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="707,389,0,0" VerticalAlignment="Top" Width="75" Click="LogoutBtn_Click"/>
+        <Button x:Name="PrintSelectedBtn" Content="Print Selected Records" HorizontalAlignment="Left" Margin="567,10,0,0" VerticalAlignment="Top" Width="215" Height="45"/>
+        <Button x:Name="PrintAllRecords" Content="Print All Records" HorizontalAlignment="Left" Margin="567,60,0,0" VerticalAlignment="Top" Width="215" Height="45"/>
+
     </Grid>
 </Window>

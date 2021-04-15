@@ -1,0 +1,28 @@
+﻿<Window x:Class="Software_Engineering_Project.DEBUGWINDOW"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Software_Engineering_Project"
+        mc:Ignorable="d"
+        Title="DEBUGWINDOW" Height="655.5" Width="1737.5">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="922*"/>
+            <ColumnDefinition Width="489*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="UserAcctObjDictionaryGrid" HorizontalAlignment="Left" Height="569" Margin="10,46,0,0" VerticalAlignment="Top" Width="274"/>
+        <DataGrid x:Name="ApprovalQueueDictionaryGrid" HorizontalAlignment="Left" Height="569" Margin="289,46,0,0" VerticalAlignment="Top" Width="274"/>
+        <DataGrid x:Name="ReservableFlightsDictionaryGrid" HorizontalAlignment="Left" Height="569" Margin="568,46,0,0" VerticalAlignment="Top" Width="274"/>
+        <DataGrid x:Name="PaymentHistoryGrid" HorizontalAlignment="Left" Height="569" Margin="847,46,0,0" VerticalAlignment="Top" Width="274" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="LoadedUserDetailList" HorizontalAlignment="Left" Height="569" Margin="0,46,0,0" VerticalAlignment="Top" Width="274" Grid.Column="1"/>
+        <Label Content="UserAccoutObj Dictionary Contents" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="227"/>
+        <Label Content="ApprovalQueueDictionary Contents" HorizontalAlignment="Left" Margin="289,20,0,0" VerticalAlignment="Top" Width="227"/>
+        <Label Content="FlightPlanDictionary Contents" HorizontalAlignment="Left" Margin="568,20,0,0" VerticalAlignment="Top" Width="227"/>
+        <Label Content="PaymentHistoryDictionary Contents" HorizontalAlignment="Left" Margin="847,20,0,0" VerticalAlignment="Top" Width="227" Grid.ColumnSpan="2"/>
+        <Label Content="Loaded User - Canceled Flight Contents" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Width="227" Grid.Column="1"/>
+        <DataGrid x:Name="LoadedUserDetailList_Copy" HorizontalAlignment="Left" Height="569" Margin="279,46,0,0" VerticalAlignment="Top" Width="274" Grid.Column="1"/>
+        <Button x:Name="RefreshDataBtn" Content="Refresh" HorizontalAlignment="Left" Margin="515,10,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+
+    </Grid>
+</Window>

@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="UserFlightSearchWindow" Height="450" Width="800">
+        Title="Flight Search" Height="354" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="113*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="FoundFlightsGrid" HorizontalAlignment="Left" Height="218" Margin="10,95,0,0" VerticalAlignment="Top" Width="772" Grid.ColumnSpan="2"/>
+        <Button x:Name="SearchRefreshBtn" Content="Search" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top" Width="128" Height="57" Grid.Column="1"/>
+        <ComboBox x:Name="DepartureSelectionBox" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ArrivalSelectionBox" HorizontalAlignment="Left" Margin="187,26,0,0" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

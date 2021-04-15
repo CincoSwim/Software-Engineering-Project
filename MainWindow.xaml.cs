@@ -39,7 +39,7 @@ namespace Software_Engineering_Project
         {
             CreateAcctWindow acctWindow = new CreateAcctWindow();
             acctWindow.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

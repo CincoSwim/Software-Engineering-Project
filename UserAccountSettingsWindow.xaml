@@ -1,12 +1,61 @@
-﻿<Window x:Class="Software_Engineering_Project.UserAccountDetailsWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Software_Engineering_Project.UserAccountDetailsWindow"
         mc:Ignorable="d"
-        Title="UserAccountSettingsWindow" Height="450" Width="800">
+        Title="Flight Assist - Account Settings" Height="640.431" Width="1063.208">
     <Grid>
-        
+        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622"/>
+        <DataGrid x:Name="CanceledFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622"/>
+        <Label x:Name="PreviousFlightsLabel" Content="Previous Flights" HorizontalAlignment="Left" Margin="423,22,0,0" VerticalAlignment="Top" Width="622"/>
+        <Label x:Name="CanceledFlightsLabel" Content="Canceled Flights" HorizontalAlignment="Left" Margin="423,296,0,0" VerticalAlignment="Top" Width="622"/>
+        <GridSplitter HorizontalAlignment="Left" Height="589" Margin="397,10,0,0" VerticalAlignment="Top" Width="3" Background="#FFA2A2A2"/>
+        <Label x:Name="NameTagLabel" Content="_Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="29,41,0,0" VerticalAlignment="Top" Width="50" Background="White" FontWeight="Bold"/>
+        <Label x:Name="EmailTagLabel" Content="E-Mail:" HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold"/>
+        <Label x:Name="AddressTagLabel" Content="Address:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,179,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="CityTagLabel" Content="City:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,210,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="StateTagLabel" Content="State:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="207,210,0,0" VerticalAlignment="Top" Width="43" FontWeight="Bold"/>
+        <Label x:Name="PhoneNumberTagLabel" Content="Phone:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,102,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="AgeTagLabel" Content="Age:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="281,41,0,0" VerticalAlignment="Top" Width="42" FontWeight="Bold"/>
+        <Label x:Name="CreditCardNumTagLabel" Content="Credit Card:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,271,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
+        <Label x:Name="UserIDTagLabel" Content="User ID:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,132,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="PointsBalanceTagLabel" Content="Points Balance:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,312,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="328,41,0,0" VerticalAlignment="Top" Width="44">
+            <Label x:Name="AgeLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,72,0,0" VerticalAlignment="Top" Width="192">
+            <Label x:Name="EmailLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,102,0,0" VerticalAlignment="Top" Width="192">
+            <Label x:Name="PhoneNumLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,132,0,0" VerticalAlignment="Top" Width="91">
+            <Label x:Name="UIDLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,179,0,0" VerticalAlignment="Top" Width="288">
+            <Label x:Name="AddressLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,210,0,0" VerticalAlignment="Top" Width="118">
+            <Label x:Name="CityLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="250,210,0,0" VerticalAlignment="Top" Width="122">
+            <Label x:Name="StateLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,271,0,0" VerticalAlignment="Top" Width="263">
+            <Label x:Name="CreditCardLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,312,0,0" VerticalAlignment="Top" Width="141">
+            <Label x:Name="PointsBalanceLabel" Content="Label"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,41,0,0" VerticalAlignment="Top" Width="192">
+            <Label x:Name="NameLabel" Content="Label"/>
+        </Border>
+        <Button x:Name="EditFieldsBtn" Content="Edit Details" HorizontalAlignment="Left" Margin="109,362,0,0" VerticalAlignment="Top" Width="182" Height="32"/>
+        <Button x:Name="BackBtn" Content="&lt;- Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99"/>
+        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="970,10,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
