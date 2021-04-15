@@ -18,43 +18,128 @@ namespace Software_Engineering_Project
         long phoneNumber;
         int age;
         long creditCardNumber;
-        int uniqueID;
+        string uniqueID;
         int balance;
-        List<int> upcomingFlights;
-        List<int> takenFlights;
-        List<int> canceledFlights;
+        List<string> upcomingFlights;
+        List<string> takenFlights;
+        List<string> canceledFlights;
 
-        bool confirmPassword() {
-            return false;
+        //Getters and setters in order-------------------------------------------------------------------------------------------
+        string getFirstName()
+        {
+            return firstName;
         }
-
-        int getUniqueID()
+        void setFirstName(string fname)
+        {
+            firstName = fname;
+        }
+        string getLastName()
+        {
+            return lastName;
+        }
+        void setLastName(string lname)
+        {
+            lastName = lname;
+        }
+        string getEmailAddress()
+        {
+            return emailAddress;
+        }
+        void setEmailAddress(string email)
+        {
+            emailAddress = email;
+        }
+        string getPwdHash()
+        {
+            return passwordHash;
+        }
+        void setPwdHash(string pwdHash)
+        {
+            passwordHash = pwdHash;
+        }
+        string getAddress()
+        {
+            return address;
+        }
+        void setAddress(string adr)
+        {
+            address = adr;
+        }
+        string getCity()
+        {
+            return city;
+        }
+        void setCity(string cit)
+        {
+            city = cit;
+        }
+        string getState()
+        {
+            return state;
+        }
+        void setState(string st)
+        {
+            state = st;
+        }
+        long getPhoneNum()
+        {
+            return phoneNumber;
+        }
+        void setPhoneNum(long phNum)
+        {
+            phoneNumber = phNum;
+        }
+        int getAge()
+        {
+            return age;
+        }
+        void setAge(int anos)
+        {
+            age = anos;
+        }
+        long getCCNumber()
+        {
+            return creditCardNumber;
+        }
+        void setCCNumber(long ccNum)
+        {
+            creditCardNumber = ccNum;
+        }
+        string getUniqueID()
         {
             return uniqueID;
         }
-
-        int checkBalance()
+        void setUniqueID(string UID)
+        {
+            uniqueID = UID;
+        }
+        int getBalance()
         {
             return balance;
         }
+        void setBalance(int newBal)
+        {
+            balance = newBal;
+        }
+        //End Getters and Setters -----------------------------------------------------------------------------------------------------------------
 
-        void changeBalance()
+        //Manipulate Bookings
+        void addBooking(string FlightNum)
         {
 
         }
         
-        void addBooking()
+        void markFlightTaken(string FlightNum)
         {
 
         }
-        
-        void markFlightTaken()
+        void markFlightCanceled(string FlightNum)
         {
 
         }
-        void makeFlightCanceled()
+        bool confirmPassword(string recievedPass)
         {
-
+            return false;
         }
     }
 }
