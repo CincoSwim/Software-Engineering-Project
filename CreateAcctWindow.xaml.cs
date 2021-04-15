@@ -27,7 +27,7 @@ namespace Software_Engineering_Project
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {
             //put some logic here, getters, setters, etc
-            //UserAcctObj newacct = new UAO
+            //newacct = new UAO --needs to be declared outside of btn click event
             //insert into global UserAcct Dictionary
         }
 
