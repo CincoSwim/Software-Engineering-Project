@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="Create Account" Height="560.315" Width="531.275">
+        Title="Create Account" Height="560.315" Width="531.275" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="265*"/>
             <RowDefinition Height="264*"/>
         </Grid.RowDefinitions>
         <Button x:Name="CreateAcctBtn" Content="Create Account" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top" Width="334" Height="46" Click="CreateAcctBtn_Click" Grid.Row="1"/>
         <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="391,190,0,0" VerticalAlignment="Top" Width="94" Height="46" Click="CancelBtn_Click" Grid.Row="1"/>
-        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="111,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TextChanged="FirstName_TextChanged"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="111,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" />
         <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="114,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
         <TextBlock x:Name="FirstNameLabel" HorizontalAlignment="Left" Margin="46,35,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top"/>
         <TextBlock x:Name="LastNameLabel" HorizontalAlignment="Left" Margin="46,72,0,0" TextWrapping="Wrap" Text="Last Name:" VerticalAlignment="Top" Width="60"/>
@@ -21,7 +24,57 @@
         <TextBox x:Name="passwordInput" HorizontalAlignment="Left" Height="23" Margin="114,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
         <TextBox x:Name="address" HorizontalAlignment="Left" Height="23" Margin="114,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
         <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="114,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Row="1"/>
-        <ComboBox x:Name="USState" HorizontalAlignment="Left" Margin="379,6,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <ComboBox x:Name="USState" HorizontalAlignment="Left" Margin="379,6,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1">
+            <ComboBoxItem Content="AL"></ComboBoxItem>
+            <ComboBoxItem Content="CO"></ComboBoxItem>
+            <ComboBoxItem Content="AS"></ComboBoxItem>
+            <ComboBoxItem Content="AZ"></ComboBoxItem>
+            <ComboBoxItem Content="AR"></ComboBoxItem>
+            <ComboBoxItem Content="CA"></ComboBoxItem>
+            <ComboBoxItem Content="CT"></ComboBoxItem>
+            <ComboBoxItem Content="DE"></ComboBoxItem>
+            <ComboBoxItem Content="FL"></ComboBoxItem>
+            <ComboBoxItem Content="GA"></ComboBoxItem>
+            <ComboBoxItem Content="ID"></ComboBoxItem>
+            <ComboBoxItem Content="IL"></ComboBoxItem>
+            <ComboBoxItem Content="IN"></ComboBoxItem>
+            <ComboBoxItem Content="IA"></ComboBoxItem>
+            <ComboBoxItem Content="KS"></ComboBoxItem>
+            <ComboBoxItem Content="KY"></ComboBoxItem>
+            <ComboBoxItem Content="LA"></ComboBoxItem>
+            <ComboBoxItem Content="ME"></ComboBoxItem>
+            <ComboBoxItem Content="MD"></ComboBoxItem>
+            <ComboBoxItem Content="MA"></ComboBoxItem>
+            <ComboBoxItem Content="MI"></ComboBoxItem>
+            <ComboBoxItem Content="MN"></ComboBoxItem>
+            <ComboBoxItem Content="MS"></ComboBoxItem>
+            <ComboBoxItem Content="MO"></ComboBoxItem>
+            <ComboBoxItem Content="MT"></ComboBoxItem>
+            <ComboBoxItem Content="NE"></ComboBoxItem>
+            <ComboBoxItem Content="NV"></ComboBoxItem>
+            <ComboBoxItem Content="NH"></ComboBoxItem>
+            <ComboBoxItem Content="NJ"></ComboBoxItem>
+            <ComboBoxItem Content="NM"></ComboBoxItem>
+            <ComboBoxItem Content="NY"></ComboBoxItem>
+            <ComboBoxItem Content="NC"></ComboBoxItem>
+            <ComboBoxItem Content="ND"></ComboBoxItem>
+            <ComboBoxItem Content="OH"></ComboBoxItem>
+            <ComboBoxItem Content="OK"></ComboBoxItem>
+            <ComboBoxItem Content="OR"></ComboBoxItem>
+            <ComboBoxItem Content="PA"></ComboBoxItem>
+            <ComboBoxItem Content="RI"></ComboBoxItem>
+            <ComboBoxItem Content="SC"></ComboBoxItem>
+            <ComboBoxItem Content="SD"></ComboBoxItem>
+            <ComboBoxItem Content="TN"></ComboBoxItem>
+            <ComboBoxItem Content="TX"></ComboBoxItem>
+            <ComboBoxItem Content="UT"></ComboBoxItem>
+            <ComboBoxItem Content="VT"></ComboBoxItem>
+            <ComboBoxItem Content="VA"></ComboBoxItem>
+            <ComboBoxItem Content="WA"></ComboBoxItem>
+            <ComboBoxItem Content="WV"></ComboBoxItem>
+            <ComboBoxItem Content="WI"></ComboBoxItem>
+            <ComboBoxItem Content="WY"></ComboBoxItem>
+        </ComboBox>
         <TextBox x:Name="phone_number" HorizontalAlignment="Left" Height="23" Margin="114,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" MaxLength="10" Grid.Row="1"/>
         <TextBox x:Name="AgeInput" HorizontalAlignment="Left" Height="23" Margin="380,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="3"/>
         <TextBox x:Name="ccNumber" HorizontalAlignment="Left" Height="23" Margin="114,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="385" MaxLength="16" Grid.Row="1"/>

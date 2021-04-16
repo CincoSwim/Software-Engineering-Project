@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace Software_Engineering_Project
 {
@@ -20,18 +21,37 @@ namespace Software_Engineering_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string hashedPwd;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (App.UserAccountDict.TryGetValue(usrBox.Text, out App.LoggedInUser))
+            {
+                //check if password match
+                using (SHA512 sha512hash = SHA512.Create())
+                {
+                    byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(PwdBox.Text); //hash can only be done on string of bytes
+                    byte[] hashBytes = sha512hash.ComputeHash(sourcePwdBytes);
+                    hashedPwd = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+
+                }
+                if (hashedPwd == App.LoggedInUser.getPwdHash())
+                {
+                    Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " Logged In Successfully");
+                }
+                else
+                {
+                    Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " did not log in - PWD hash did not match.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("User not found with UID " + usrBox.Text);
+            }
 
         }
 

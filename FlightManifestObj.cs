@@ -33,9 +33,9 @@ namespace Software_Engineering_Project
         //Uses bookedUsers and ticketPrice to accomplish this
         //Need userID. 
         void addBookingAndPay() {
-            if()
-            bookedUsers.Add();
-            user.
+            //if()
+            //bookedUsers.Add();
+            //user.
         }
 
 

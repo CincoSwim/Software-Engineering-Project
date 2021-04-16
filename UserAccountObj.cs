@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Software_Engineering_Project
 {
-    class UserAccountObj
+    public class UserAccountObj
     {
         string firstName;
         string lastName;
@@ -25,99 +25,99 @@ namespace Software_Engineering_Project
         List<string> canceledFlights;
 
         //Getters and setters in order-------------------------------------------------------------------------------------------
-        string getFirstName()
+        public string getFirstName()
         {
             return firstName;
         }
-        void setFirstName(string fname)
+        public void setFirstName(string fname)
         {
             firstName = fname;
         }
-        string getLastName()
+        public string getLastName()
         {
             return lastName;
         }
-        void setLastName(string lname)
+        public void setLastName(string lname)
         {
             lastName = lname;
         }
-        string getEmailAddress()
+        public string getEmailAddress()
         {
             return emailAddress;
         }
-        void setEmailAddress(string email)
+        public void setEmailAddress(string email)
         {
             emailAddress = email;
         }
-        string getPwdHash()
+        public string getPwdHash()
         {
             return passwordHash;
         }
-        void setPwdHash(string pwdHash)
+        public void setPwdHash(string pwdHash)
         {
             passwordHash = pwdHash;
         }
-        string getAddress()
+        public string getAddress()
         {
             return address;
         }
-        void setAddress(string adr)
+        public void setAddress(string adr)
         {
             address = adr;
         }
-        string getCity()
+        public string getCity()
         {
             return city;
         }
-        void setCity(string cit)
+        public void setCity(string cit)
         {
             city = cit;
         }
-        string getState()
+        public string getState()
         {
             return state;
         }
-        void setState(string st)
+        public void setState(string st)
         {
             state = st;
         }
-        long getPhoneNum()
+        public long getPhoneNum()
         {
             return phoneNumber;
         }
-        void setPhoneNum(long phNum)
+        public void setPhoneNum(long phNum)
         {
             phoneNumber = phNum;
         }
-        int getAge()
+        public int getAge()
         {
             return age;
         }
-        void setAge(int anos)
+        public void setAge(int anos)
         {
             age = anos;
         }
-        long getCCNumber()
+        public long getCCNumber()
         {
             return creditCardNumber;
         }
-        void setCCNumber(long ccNum)
+        public void setCCNumber(long ccNum)
         {
             creditCardNumber = ccNum;
         }
-        string getUniqueID()
+        public string getUniqueID()
         {
             return uniqueID;
         }
-        void setUniqueID(string UID)
+        public void setUniqueID(string UID)
         {
             uniqueID = UID;
         }
-        int getBalance()
+        public int getBalance()
         {
             return balance;
         }
-        void setBalance(int newBal)
+        public void setBalance(int newBal)
         {
             balance = newBal;
         }
@@ -138,7 +138,8 @@ namespace Software_Engineering_Project
 
         }
         bool confirmPassword(string recievedPass)
-        {
+        {   
+            
             return false;
         }
     }
