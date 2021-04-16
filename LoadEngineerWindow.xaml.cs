@@ -19,9 +19,11 @@ namespace Software_Engineering_Project
     /// </summary>
     public partial class LoadEngineerWindow : Window
     {
-        public LoadEngineerWindow()
+        private MainWindow m_parent;
+        public LoadEngineerWindow(MainWindow main)
         {
             InitializeComponent();
+            m_parent = main;
         }
     }
 }

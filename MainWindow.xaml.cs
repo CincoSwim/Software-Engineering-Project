@@ -27,9 +27,15 @@ namespace Software_Engineering_Project
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
 
+        private void LoadEngineer_Click(object sender, RoutedEventArgs e)
+        {
+            LoadEngineerWindow loadEngineerWindow = new LoadEngineerWindow(this);
+            loadEngineerWindow.Show();
+            this.Hide();
+        }
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
 
