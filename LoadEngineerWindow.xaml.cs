@@ -25,5 +25,26 @@ namespace Software_Engineering_Project
             InitializeComponent();
             m_parent = main;
         }
+
+        private void FlightProposeBtn_isClicked(object sender, RoutedEventArgs e)
+        {
+            if ()
+            {
+
+            }
+        }
+        private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+        //User wants to leave, and sign in as somebody else
+        private void Logout_isClicked(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWin = new MainWindow();
+            mainWin.Show();
+            this.Close();
+        }
     }
 }
