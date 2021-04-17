@@ -11,10 +11,10 @@ namespace Software_Engineering_Project
     public class FlightManifestObj
     {
         int flightID;
-        string originCode;
+        public string originCode;
         string layoverCodeA;
         string layoverCodeB;
-        string destinationCode;
+        public string destinationCode;
         public DateTime departTime;
         public DateTime arrivalTime;
         Planes planeAssigned;

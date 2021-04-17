@@ -9,8 +9,9 @@
         Title="Load Engineer Workbench" Height="450" Width="752.695">
     <Grid>
         <DataGrid x:Name="ApprovalQueueGrid" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"/>
-      <!--Depart Cities-->
-      <ComboBox x:Name="DepartureCitiesComboBox" HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DepartureComboBox_Changed">
+      <!--Depart Cities, Needs Border To Make Red When Not Selected!-->
+      <Border x:Name="DepartureCitiesBorderCB" BorderThickness ="1" HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top">
+      <ComboBox x:Name="DepartureCitiesComboBox"  Width="120" SelectionChanged="DepartureComboBox_Changed">
         <ComboBoxItem Content="Arlington, VA"></ComboBoxItem>
         <ComboBoxItem Content="Atlanta, GA"></ComboBoxItem>
         <ComboBoxItem Content="Austin, TX"></ComboBoxItem>
@@ -26,10 +27,12 @@
         <ComboBoxItem Content="Seattle, WA"></ComboBoxItem>
         <ComboBoxItem Content="Toledo, OH"></ComboBoxItem>
         </ComboBox>
-      <!--Arrival Cities-->
-        <ComboBox x:Name="ArrivalCitiesComboBox" HorizontalAlignment="Left" Margin="555,89,0,0" VerticalAlignment="Top" Width="120">
-          
+      </Border>
+      <!--Arrival Cities, Needs Border To Make Red When Not Selected!-->
+      <Border x:Name="ArrivalCitiesBorderCB" BorderThickness ="1" HorizontalAlignment="Left" Margin="555,89,0,0" VerticalAlignment="Top">
+        <ComboBox x:Name="ArrivalCitiesComboBox"  Width="120">
         </ComboBox>
+      </Border>
         <xctk:DateTimePicker x:Name="DepartureDateTimePicker" HorizontalAlignment="Left" Margin="437,154,0,0" VerticalAlignment="Top" Width="280"/>
         <xctk:DateTimePicker x:Name="ArrivalDateTimePicker" HorizontalAlignment="Left" Margin="437,204,0,0" VerticalAlignment="Top" Width="280"/>
         <Button x:Name="FlightProposeBtn" Content="Propose Flight Plan" Click ="FlightProposeBtn_isClicked" HorizontalAlignment="Left" Margin="437,239,0,0" VerticalAlignment="Top" Width="280" Height="48"/>

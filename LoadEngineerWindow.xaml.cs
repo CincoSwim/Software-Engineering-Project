@@ -161,19 +161,66 @@ namespace Software_Engineering_Project
         //If anything is not correct, highlight the wrong thing and display the correct error text. 
         private void FlightProposeBtn_isClicked(object sender, RoutedEventArgs e)
         { 
-            string departureDateTime = DepartureDateTimePicker.Text;
-            string arrivalDateTime = ArrivalDateTimePicker.Text;
-            DateTime parsedDepartDate = DateTime.Parse(departureDateTime);
-            DateTime parsedArrivalDate = DateTime.Parse(arrivalDateTime);
+            FlightManifestObj proposedFlightManifestObj = new FlightManifestObj();
+            DateTime parsedDepartDate, parsedArrivalDate;
+            string departureDateTime, arrivalDateTime;
+
+            //Getting Date Time Data
+            departureDateTime = DepartureDateTimePicker.Text;
+            arrivalDateTime = ArrivalDateTimePicker.Text;
+
+            if (departureDateTime == null)
+            {
+                DepartureDateTimePicker.BorderBrush = Brushes.Red;
+                parsedDepartDate = DateTime.Today;
+            }
+            else 
+            { 
+                parsedDepartDate = DateTime.Parse(departureDateTime);
+            }
+
+            if (arrivalDateTime == null)
+            {
+                ArrivalDateTimePicker.BorderBrush = Brushes.Red;
+                parsedArrivalDate = DateTime.Today;
+            }else 
+            { 
+            parsedArrivalDate = DateTime.Parse(arrivalDateTime);
+            }
+
+            //Getting Location Data
+            string departureLocation, arrivalLocation;
+            ComboBoxItem comboBoxItem = (ComboBoxItem)DepartureCitiesComboBox.SelectedItem;
+            if(comboBoxItem == null)
+            {
+                DepartureCitiesBorderCB.BorderBrush = Brushes.Red;
+                departureLocation = null;
+            }
+            else 
+            { 
+                departureLocation = comboBoxItem.Content.ToString();
+            }
+            if(ArrivalCitiesComboBox.SelectedItem == null)
+            { 
+                
+                ArrivalCitiesBorderCB.BorderBrush = Brushes.Red;
+                arrivalLocation = null;
+            }
+            else
+            {
+                arrivalLocation = ArrivalCitiesComboBox.SelectedItem.ToString();
+            }
+            
             
 
             if (parsedDepartDate.CompareTo( parsedArrivalDate) < 0)
             {
                 MessageBox.Show("Departure Date is before Arrival Date.");
 
-                FlightManifestObj proposedFlightManifestObj = new FlightManifestObj();
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
+                proposedFlightManifestObj.originCode = departureLocation;
+                proposedFlightManifestObj.destinationCode = arrivalLocation;
                 
                 
                 App.MarketMangerQueue.Add(proposedFlightManifestObj);
