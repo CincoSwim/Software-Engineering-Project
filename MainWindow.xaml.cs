@@ -48,7 +48,7 @@ namespace Software_Engineering_Project
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " did not log in - PWD hash did not match.");
                 }
             }
-            else //usr not found
+            else
             {
                 Console.WriteLine("User not found with UID " + usrBox.Text);
             }
