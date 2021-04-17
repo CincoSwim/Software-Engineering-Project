@@ -14,6 +14,12 @@ namespace Software_Engineering_Project
 
         internal static Dictionary<string, UserAccountObj> UserAccountDict { get; set; } = new Dictionary<string, UserAccountObj>();
 
+        internal static List <FlightManifestObj> MarketMangerQueue;
+
+        internal static void ListOpen()
+        {
+            MarketMangerQueue = new List<FlightManifestObj>();
+        }
 
         internal static Dictionary<string, FlightManifestObj> FlightPlanDict { get; set; } = new Dictionary<string, FlightManifestObj>();
 

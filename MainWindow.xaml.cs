@@ -24,7 +24,17 @@ namespace Software_Engineering_Project
         public string hashedPwd;
         public MainWindow()
         {
+            App.ListOpen();
             InitializeComponent();
+        }
+
+
+
+        private void LoadEngineer_Click(object sender, RoutedEventArgs e)
+        {
+            LoadEngineerWindow loadEngineerWindow = new LoadEngineerWindow(this);
+            loadEngineerWindow.Show();
+            this.Hide();
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
