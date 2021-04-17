@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
+
+/*
+ * 
+ * 
+ * This section has been made obsolete by CreateAccountWindow.xaml and CreateAccountWindow.xaml.cs
+
 namespace Software_Engineering_Project
 {
     class CreateAccount
@@ -21,7 +27,6 @@ namespace Software_Engineering_Project
         int age;
         long creditCardNumber;
         int unqiueID;
-        MainWindow mainWindow; //MainWindow.xaml is started when project is started. May not need new instance.
         void create_account_onClick()
         {
 

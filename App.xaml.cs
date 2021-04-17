@@ -11,11 +11,8 @@ namespace Software_Engineering_Project
    
     public partial class App : Application
     {
-       
-        internal static Dictionary<int, UserAccountObj> UserAccountDict { get; set; }
 
-        
-        internal static Dictionary<int, FlightManifestObj> FlightPlanDict { get; set; }
+        internal static Dictionary<string, UserAccountObj> UserAccountDict { get; set; } = new Dictionary<string, UserAccountObj>();
 
         internal static List <FlightManifestObj> MarketMangerQueue;
 
@@ -24,7 +21,10 @@ namespace Software_Engineering_Project
             MarketMangerQueue = new List<FlightManifestObj>();
         }
 
-        internal static UserAccountObj LoggedInUser;
+        internal static Dictionary<string, FlightManifestObj> FlightPlanDict { get; set; } = new Dictionary<string, FlightManifestObj>();
+
+
+        internal static UserAccountObj LoggedInUser = new UserAccountObj();
 
 
     }
