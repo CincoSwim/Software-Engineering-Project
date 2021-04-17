@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Software_Engineering_Project
 {
-    class FlightManifestObj
+    public class FlightManifestObj
     {
         int flightID;
-        string originCode;
+        public string originCode;
         string layoverCodeA;
         string layoverCodeB;
-        string destinationCode;
-        DateTime departTime;
-        DateTime arrivalTime;
+        public string destinationCode;
+        public DateTime departTime;
+        public DateTime arrivalTime;
         Planes planeAssigned;
         int ticketPrice;
         int pointReward;
@@ -33,9 +33,7 @@ namespace Software_Engineering_Project
         //Uses bookedUsers and ticketPrice to accomplish this
         //Need userID. 
         void addBookingAndPay() {
-            //if()
-            //bookedUsers.Add();
-            //user.
+
         }
 
 
