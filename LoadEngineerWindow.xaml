@@ -9,9 +9,27 @@
         Title="Load Engineer Workbench" Height="450" Width="752.695">
     <Grid>
         <DataGrid x:Name="ApprovalQueueGrid" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"/>
-        <ComboBox HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="555,89,0,0" VerticalAlignment="Top" Width="120"/>
-
+      <!--Depart Cities-->
+      <ComboBox x:Name="DepartureCitiesComboBox" HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DepartureComboBox_Changed">
+        <ComboBoxItem Content="Arlington, VA"></ComboBoxItem>
+        <ComboBoxItem Content="Atlanta, GA"></ComboBoxItem>
+        <ComboBoxItem Content="Austin, TX"></ComboBoxItem>
+        <ComboBoxItem Content="Chicago, IL"></ComboBoxItem>  
+        <ComboBoxItem Content="Cleveland, OH"></ComboBoxItem>
+        <ComboBoxItem Content="Denver, CO"></ComboBoxItem>
+        <ComboBoxItem Content="Los Angeles, CA"></ComboBoxItem>
+        <ComboBoxItem Content="Minneapolis, MN"></ComboBoxItem>
+        <ComboBoxItem Content="New York City, NY"></ComboBoxItem>
+        <ComboBoxItem Content="Orlando, FL"></ComboBoxItem>
+        <ComboBoxItem Content="Rapid City, SD"></ComboBoxItem>
+        <ComboBoxItem Content="Sacramento, CA"></ComboBoxItem>        
+        <ComboBoxItem Content="Seattle, WA"></ComboBoxItem>
+        <ComboBoxItem Content="Toledo, OH"></ComboBoxItem>
+        </ComboBox>
+      <!--Arrival Cities-->
+        <ComboBox x:Name="ArrivalCitiesComboBox" HorizontalAlignment="Left" Margin="555,89,0,0" VerticalAlignment="Top" Width="120">
+          
+        </ComboBox>
         <xctk:DateTimePicker x:Name="DepartureDateTimePicker" HorizontalAlignment="Left" Margin="437,154,0,0" VerticalAlignment="Top" Width="280"/>
         <xctk:DateTimePicker x:Name="ArrivalDateTimePicker" HorizontalAlignment="Left" Margin="437,204,0,0" VerticalAlignment="Top" Width="280"/>
         <Button x:Name="FlightProposeBtn" Content="Propose Flight Plan" Click ="FlightProposeBtn_isClicked" HorizontalAlignment="Left" Margin="437,239,0,0" VerticalAlignment="Top" Width="280" Height="48"/>
