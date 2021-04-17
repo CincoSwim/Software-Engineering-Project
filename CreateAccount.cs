@@ -25,18 +25,18 @@ namespace Software_Engineering_Project
         void create_account_onClick()
         {
 
-            Textbox fname = Application.OpenForms["Form1"].Controls["FirstName"] as TextBox; //might not work, this might be WinForms syntax (not WPF)
+            //Textbox fname = Application.OpenForms["Form1"].Controls["FirstName"] as TextBox; //might not work, this might be WinForms syntax (not WPF)
                                                                                              //maybe use this in the button click action in the CreateAcctWindow.cs?
             //firstName = CreateAccountWindow.usrBox.Text; //user inputs from textfield
 
-            lastName = input2;
-            email = input3;
-            address = input4;
-            city = input5;
-            state = input6;
-            phoneNumber = input7;
-            age = input8;
-            creditCardNumber = input9;
+            //lastName = input2;
+            //email = input3;
+            //address = input4;
+            //city = input5;
+            //state = input6;
+            //phoneNumber = input7;
+            //age = input8;
+            /*creditCardNumber = input9;
             passwordPreHash = input10;
             confirmPasswordPreHash = input11;
 
@@ -73,7 +73,8 @@ namespace Software_Engineering_Project
                     //Are we using 6 digit ID? -P
                 //remind user to commit their 6 digit ID to memory
                 //Return user to login screen;
-            }
+            */
+            
         }
     }
 }

@@ -15,6 +15,7 @@
         <TextBox x:Name="PwdBox" Margin="222,273,255,123" TextWrapping="Wrap" Text="Password" Grid.Column="1"/>
         <TextBox x:Name="usrBox" Margin="222,230,255,166" TextWrapping="Wrap" Text="E-Mail" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
         <Button x:Name="LoginBtn" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="335,314,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
+        <Button x:Name="LoadEngineerLoginButton" Content="LoadEngineer" Grid.Column="1" HorizontalAlignment="Left" Margin="335,400,0,0" VerticalAlignment="Top" Width="97" Click="LoadEngineer_Click" Height="20"/>
         <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="1" HorizontalAlignment="Left" Margin="335,352,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
         <Image x:Name="TEMPLOGO" Margin="163,21,218,210" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="1"/>
     </Grid>

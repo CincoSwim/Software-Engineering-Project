@@ -17,6 +17,12 @@ namespace Software_Engineering_Project
         
         internal static Dictionary<int, FlightManifestObj> FlightPlanDict { get; set; }
 
+        internal static List <FlightManifestObj> MarketMangerQueue;
+
+        internal static void ListOpen()
+        {
+            MarketMangerQueue = new List<FlightManifestObj>();
+        }
 
         internal static UserAccountObj LoggedInUser;
 
