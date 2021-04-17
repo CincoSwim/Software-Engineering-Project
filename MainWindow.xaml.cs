@@ -22,6 +22,7 @@ namespace Software_Engineering_Project
     {
         public MainWindow()
         {
+            App.ListOpen();
             InitializeComponent();
         }
 

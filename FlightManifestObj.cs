@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Software_Engineering_Project
 {
-    class FlightManifestObj
+    public class FlightManifestObj
     {
         int flightID;
         string originCode;
         string layoverCodeA;
         string layoverCodeB;
         string destinationCode;
-        DateTime departTime;
-        DateTime arrivalTime;
+        public DateTime departTime;
+        public DateTime arrivalTime;
         Planes planeAssigned;
         int ticketPrice;
         int pointReward;

@@ -12,8 +12,8 @@
         <ComboBox HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox HorizontalAlignment="Left" Margin="555,89,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <xctk:DateTimePicker x:Name="ArrivalDateTimePicker" HorizontalAlignment="Left" Margin="437,154,0,0" VerticalAlignment="Top" Width="280"/>
-        <xctk:DateTimePicker HorizontalAlignment="Left" Margin="437,204,0,0" VerticalAlignment="Top" Width="280"/>
+        <xctk:DateTimePicker x:Name="DepartureDateTimePicker" HorizontalAlignment="Left" Margin="437,154,0,0" VerticalAlignment="Top" Width="280"/>
+        <xctk:DateTimePicker x:Name="ArrivalDateTimePicker" HorizontalAlignment="Left" Margin="437,204,0,0" VerticalAlignment="Top" Width="280"/>
         <Button x:Name="FlightProposeBtn" Content="Propose Flight Plan" Click ="FlightProposeBtn_isClicked" HorizontalAlignment="Left" Margin="437,239,0,0" VerticalAlignment="Top" Width="280" Height="48"/>
         <Button x:Name="CancelProposalBtn" Content="Cancel Selected Proposal" Click ="CancelProposalBtn_isClicked" HorizontalAlignment="Left" Margin="437,379,0,0" VerticalAlignment="Top" Width="280" Height="30"/>
         <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="225"/>
