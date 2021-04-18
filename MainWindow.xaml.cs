@@ -24,11 +24,21 @@ namespace Software_Engineering_Project
         public string hashedPwd;
         public MainWindow()
         {
-            App.ListOpen();
             InitializeComponent();
+            FileIOLoading.ReadAlltoMem();
         }
 
-
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("MainWindow Loaded");
+            FileIOLoading.ReadAlltoMem();
+            /*if (!App.hasFirstLoaded)
+            {
+                App.hasFirstLoaded = true;
+                FileIOLoading.ReadAlltoMem();
+            }
+            */
+        }
 
         private void LoadEngineer_Click(object sender, RoutedEventArgs e)
         {
