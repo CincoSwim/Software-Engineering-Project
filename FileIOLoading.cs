@@ -22,78 +22,48 @@ namespace Software_Engineering_Project
 
         internal static void ReadAlltoMem() 
         {
-           /* using (MemoryStream ms = new MemoryStream(File.ReadAllBytes(UserDictPath).ToArray()))
-            {
-                BinaryFormatter binFormatter = new BinaryFormatter();
-                App.UserAccountDict = (Dictionary<string, UserAccountObj>)binFormatter.Deserialize(ms);
-            }
-            */
+           
 
             
             if (File.Exists(UserDictPath))
             {
                 Dictionary<string, UserAccountObj> ReadUserDict = JsonConvert.DeserializeObject<Dictionary<string, UserAccountObj>>(File.ReadAllText(UserDictPath));
-                foreach(KeyValuePair<string, UserAccountObj> entry in ReadUserDict)
-                {
-                    Console.WriteLine("loaded entry - " + entry.Key + " - " + entry.Value.emailAddress);
-                }
                 App.UserAccountDict = ReadUserDict;
             }
             
-            /*
-            if (File.Exists(UserDictPath))
-            {
-                var ReadUserDict = new JavaScriptSerializer().Deserialize<Dictionary<string, UserAccountObj>>(File.ReadAllText(UserDictPath));
-                App.UserAccountDict = ReadUserDict;
-            }
             if (File.Exists(MMQueuePath))
             {
-                var ReadMMQueue = new JavaScriptSerializer().Deserialize<List<FlightManifestObj>>(File.ReadAllText(MMQueuePath));
+                var ReadMMQueue = JsonConvert.DeserializeObject<List<FlightManifestObj>>(File.ReadAllText(MMQueuePath));
                 App.MarketMangerQueue = ReadMMQueue;
             }
             if (File.Exists(TransactionHistPath))
-            {   //SHOJEFABG:FJGH:ASDKJFGHA:SKLJGHDF
-                var ReadTransactions = new JavaScriptSerializer().Deserialize<List<int>>(File.ReadAllText(TransactionHistPath)); //NEED TO MAKE TRANSACTION OBJ
+            {   //===========================================================
+                var ReadTransactions = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(TransactionHistPath)); //NEED TO MAKE TRANSACTION OBJ
                 App.TransactionHist = ReadTransactions;
-            }
+            }   //===========================================================
             if (File.Exists(FlightHistDictPath))
             {
-                var ReadFlightHist = new JavaScriptSerializer().Deserialize<Dictionary<string, FlightManifestObj>>(File.ReadAllText(FlightHistDictPath));
+                var ReadFlightHist = JsonConvert.DeserializeObject<Dictionary<string, FlightManifestObj>>(File.ReadAllText(FlightHistDictPath));
                 App.FlightHistoryDictionary = ReadFlightHist;
             }
             if (File.Exists(FlightPlanDictPath))
             {
-                var ReadFlightPlans = new JavaScriptSerializer().Deserialize<Dictionary<string, FlightManifestObj>>(File.ReadAllText(FlightPlanDictPath));
+                var ReadFlightPlans = JsonConvert.DeserializeObject<Dictionary<string, FlightManifestObj>>(File.ReadAllText(FlightPlanDictPath));
                 App.FlightPlanDict = ReadFlightPlans;
             }
-            */
+            
 
         }
 
         internal static void WriteAlltoFile()
         {
-           /* using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryFormatter binFormatter = new BinaryFormatter();
-                binFormatter.Serialize(ms, App.UserAccountDict);
-                byte[] dicBytes = ms.ToArray();
-                File.WriteAllBytes(UserDictPath, dicBytes);
-            }
-            */
-
-
-
-
-
+                      
+            File.WriteAllText(UserDictPath, JsonConvert.SerializeObject(App.UserAccountDict, Formatting.Indented));            
+            File.WriteAllText(MMQueuePath, JsonConvert.SerializeObject(App.MarketMangerQueue));
+            File.WriteAllText(TransactionHistPath, JsonConvert.SerializeObject(App.TransactionHist));
+            File.WriteAllText(FlightHistDictPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary));
+            File.WriteAllText(FlightPlanDictPath, JsonConvert.SerializeObject(App.FlightPlanDict));
             
-            File.WriteAllText(UserDictPath, JsonConvert.SerializeObject(App.UserAccountDict, Formatting.Indented));
-
-            /*
-            File.WriteAllText(MMQueuePath, new JavaScriptSerializer().Serialize(App.MarketMangerQueue));
-            File.WriteAllText(TransactionHistPath, new JavaScriptSerializer().Serialize(App.TransactionHist));
-            File.WriteAllText(FlightHistDictPath, new JavaScriptSerializer().Serialize(App.FlightHistoryDictionary));
-            File.WriteAllText(FlightPlanDictPath, new JavaScriptSerializer().Serialize(App.FlightPlanDict));
-            */
         }
     }
 }

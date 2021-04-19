@@ -28,18 +28,6 @@ namespace Software_Engineering_Project
             FileIOLoading.ReadAlltoMem();
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("MainWindow Loaded");
-            FileIOLoading.ReadAlltoMem();
-            /*if (!App.hasFirstLoaded)
-            {
-                App.hasFirstLoaded = true;
-                FileIOLoading.ReadAlltoMem();
-            }
-            */
-        }
-
         private void LoadEngineer_Click(object sender, RoutedEventArgs e)
         {
             LoadEngineerWindow loadEngineerWindow = new LoadEngineerWindow(this);
@@ -62,6 +50,9 @@ namespace Software_Engineering_Project
                 if (hashedPwd == App.LoggedInUser.getPwdHash())
                 {
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " Logged In Successfully");
+                    UserLandingWindow landingWindow = new UserLandingWindow(this);
+                    landingWindow.Show();
+                    this.Hide();
                 }
                 else
                 {

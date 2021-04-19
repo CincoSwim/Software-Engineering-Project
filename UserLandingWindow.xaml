@@ -8,9 +8,17 @@
         Title="FlightAssist - Main Page" Height="407" Width="800">
     <Grid>
         <Button x:Name="AccountSettingsBtn" Content="Account Settings" HorizontalAlignment="Left" Margin="531,285,0,0" VerticalAlignment="Top" Width="240" Height="73"/>
-        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="658,13,0,0" VerticalAlignment="Top" Width="113" Height="26"/>
-        <Label x:Name="WelcomeMessageLabel" Content="*bind this to the welcome message!*" HorizontalAlignment="Left" Margin="20,13,0,0" VerticalAlignment="Top" Width="221"/>
-        <DataGrid x:Name="UpcomingFlightsGrid" HorizontalAlignment="Left" Height="280" Margin="30,78,0,0" VerticalAlignment="Top" Width="490" SelectionChanged="UpcomingFlightsGrid_SelectionChanged"/>
+        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="658,13,0,0" VerticalAlignment="Top" Width="113" Height="26" Click="LogoutBtn_Click"/>
+        <Label x:Name="WelcomeMessageLabel" Content="{Binding userWelcomeStr}" HorizontalAlignment="Left" Margin="20,13,0,0" VerticalAlignment="Top" Width="221"/>
+        <DataGrid x:Name="UpcomingFlightsGrid" HorizontalAlignment="Left" Height="280" Margin="30,78,0,0" VerticalAlignment="Top" Width="490" 
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First" Binding="{Binding firstName}"/>
+                <DataGridTextColumn Header="Last" Binding="{Binding lastName}"/>
+                <DataGridTextColumn Header="UID" Binding="{Binding uniqueID}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
         <Label Content="Upcoming Flights" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" Width="150" FontSize="18"/>
         <Button x:Name="BookFlightBtn" Content="Book A Flight!" HorizontalAlignment="Left" Margin="531,78,0,0" VerticalAlignment="Top" Width="240" Height="202" Click="BookFlightBtn_Click"/>
 
