@@ -5,24 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Software_Engineering_Project
-{
-    public class UserAccountObj
+{  [Serializable]
+   public class UserAccountObj
     {
-        string firstName;
-        string lastName;
-        string emailAddress;
-        string passwordHash;
-        string address;
-        string city;
-        string state;
-        long phoneNumber;
-        int age;
-        long creditCardNumber;
-        string uniqueID;
-        int balance;
-        List<string> upcomingFlights;
-        List<string> takenFlights;
-        List<string> canceledFlights;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string emailAddress { get; set; }
+        public string passwordHash { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public long phoneNumber { get; set; }
+        public long creditCardNumber { get; set; }
+        public string uniqueID { get; set; }
+        public int age { get; set; }
+        public int balance { get; set; }
+        public List<string> upcomingFlights { get; set; }
+        public List<string> takenFlights { get; set; }
+        public List<string> canceledFlights { get; set; }
 
         //Getters and setters in order-------------------------------------------------------------------------------------------
         public string getFirstName()
@@ -136,11 +136,6 @@ namespace Software_Engineering_Project
         void markFlightCanceled(string FlightNum)
         {
 
-        }
-        bool confirmPassword(string recievedPass)
-        {   
-            
-            return false;
         }
     }
 }

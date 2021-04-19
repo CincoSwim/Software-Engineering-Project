@@ -19,9 +19,25 @@ namespace Software_Engineering_Project
     /// </summary>
     public partial class UserFlightSearchWindow : Window
     {
-        public UserFlightSearchWindow()
+        private UserLandingWindow m_parent;
+        public UserFlightSearchWindow(UserLandingWindow landingWindow)
         {
             InitializeComponent();
+            m_parent = landingWindow;
+            this.Closed += new EventHandler(FlightSearch_Closed);
+            FoundFlightsGrid.ItemsSource=LoadAllFlights();
+
+        }
+
+        private List<FlightManifestObj> LoadAllFlights()
+        {
+            List<FlightManifestObj> gridList = new List<FlightManifestObj>();
+            gridList.AddRange(App.FlightPlanDict.Values);
+            return gridList;
+        }
+        void FlightSearch_Closed(object sender, EventArgs e)
+        {
+            m_parent.Show();
         }
     }
 }

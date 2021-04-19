@@ -33,6 +33,11 @@ namespace Software_Engineering_Project
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {   
             //Do input checks HERE*****
+            if(passwordInput.Text == "")
+            {
+                MessageBox.Show("Please ensure all fields are complete!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             //*************************
             //-Check Passwords match
             //-Check inputs filled
@@ -44,6 +49,7 @@ namespace Software_Engineering_Project
             newAcct.setAge(Int32.Parse(AgeInput.Text));
             newAcct.setAddress(address.Text);
             newAcct.setCity(city.Text);
+            newAcct.setPhoneNum(Int64.Parse(phone_number.Text));
             newAcct.setState(USState.SelectedItem.ToString());
 
             using (SHA512 sha512hash = SHA512.Create())

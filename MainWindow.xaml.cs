@@ -24,11 +24,9 @@ namespace Software_Engineering_Project
         public string hashedPwd;
         public MainWindow()
         {
-            App.ListOpen();
             InitializeComponent();
+            FileIOLoading.ReadAlltoMem();
         }
-
-
 
         private void LoadEngineer_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +50,9 @@ namespace Software_Engineering_Project
                 if (hashedPwd == App.LoggedInUser.getPwdHash())
                 {
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " Logged In Successfully");
+                    UserLandingWindow landingWindow = new UserLandingWindow(this);
+                    landingWindow.Show();
+                    this.Hide();
                 }
                 else
                 {
