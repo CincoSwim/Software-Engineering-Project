@@ -51,7 +51,7 @@ namespace Software_Engineering_Project
         int sacramento = 13;
         int rapidCity = 14;
 
-        internal static double[15, 15] flightGraph = new double[15, 15] 
+        internal static double[15, 15] flightGraph = new double[15, 15]
         {//                 Nashville   Cleveland   New York    Seattle     Chicago     Austin      Orlando     Los Angeles     Denver      Minneapolis     Arlington   Atlanta     Toledo      Sacramento      Rapid City
         /*nashville*/       {0,         448.15,     764.13,     0,          409.17,     756.13,     616.11,     0,              1013.48,    695.07,         561.84,     213.87,     407.29,     0,              0},      //done
         /*cleveland*/       {448.15,    0,          418.59,     0,          315.47,     0,          895.46,     0,              0,          622.03,         309.97,     554.51,     102.30,     0,              0},      //done
@@ -68,9 +68,9 @@ namespace Software_Engineering_Project
         /*toledo*/          {407.29,    102.30,     520.68,     0,          213.33,     0,          917.91,     0,              0,          526.37,         404.58,     549.34,     0,          0,              0},      //done
         /*sacramento*/      {0,         0,          0,          605.35,     0,          0,          0,          372.68,         909.26,     0,              0,          0,          0,          0,              0},      //done
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
-        }
+        };
 
-        public findShortestPath(int begin, int end)
+        public FlightManifestObj findShortestPath(int begin, int end)
         {
             if (begin > 14 || begin < 0) return;
             if (end > 14 || end < 0) return;
