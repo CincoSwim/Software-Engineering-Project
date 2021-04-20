@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Software_Engineering_Project
 {
@@ -19,16 +21,39 @@ namespace Software_Engineering_Project
     /// </summary>
     public partial class AccountantWindow : Window
     {
-        public AccountantWindow()
-        {
+        private MainWindow m_parent;
+        public AccountantWindow(MainWindow main)
+        {  
             InitializeComponent();
+            this.Closed += new EventHandler(Accountant_Closed);
+            m_parent = main;
+            AccountingObjDataGrid.ItemsSource = App.TransactionHist;
+
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWin = new MainWindow();
-            mainWin.Show();
+           
+            m_parent.Show();
             this.Close();
+        }
+
+        private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
+        {   
+
+            MessageBox.Show("Printed: One object to C:\temp\\Printouts\\SingleSelection.txt");
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented));
+        }
+
+        private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Printed: All objects to C:\temp\\Printouts\\AllSelection.txt");
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented));
+        }
+        void Accountant_Closed(object sender, EventArgs e)
+        {
+            m_parent.Show();
+            App.LoggedInUser = null;
         }
     }
 }

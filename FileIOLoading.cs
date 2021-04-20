@@ -19,6 +19,8 @@ namespace Software_Engineering_Project
         static string TransactionHistPath = @"c:\temp\TransHistList.txt";
         static string FlightHistDictPath = @"c:\temp\FlightHistDict.txt";
         static string FlightPlanDictPath = @"c:\temp\FlightPlanDict.txt";
+        public static string AccountantSinglePath = @"c:\temp\Printouts\SingleSelection.txt";
+        public static string AccountantMultiPath = @"c:\temp\Printouts\AllSelection.txt";
 
         internal static void ReadAlltoMem() 
         {
@@ -38,7 +40,7 @@ namespace Software_Engineering_Project
             }
             if (File.Exists(TransactionHistPath))
             {   //===========================================================
-                var ReadTransactions = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(TransactionHistPath)); //NEED TO MAKE TRANSACTION OBJ
+                var ReadTransactions = JsonConvert.DeserializeObject<List<TransactionObj>>(File.ReadAllText(TransactionHistPath)); //NEED TO MAKE TRANSACTION OBJ
                 App.TransactionHist = ReadTransactions;
             }   //===========================================================
             if (File.Exists(FlightHistDictPath))

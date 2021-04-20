@@ -19,7 +19,7 @@ namespace Software_Engineering_Project
         internal static bool hasFirstLoaded = false;
         internal static Dictionary<string, UserAccountObj> UserAccountDict { get; set; } = new Dictionary<string, UserAccountObj>();
         internal static List<FlightManifestObj> MarketMangerQueue { get; set; } = new List<FlightManifestObj>();
-        internal static List<int> TransactionHist { get; set; } = new List<int>(); //NEED TO MAKE THIS FROM INT TO TRANSACTIONOBJ
+        internal static List<TransactionObj> TransactionHist { get; set; } = new List<TransactionObj>(); //NEED TO MAKE THIS FROM INT TO TRANSACTIONOBJ
 
         internal static Dictionary<string, FlightManifestObj> FlightHistoryDictionary = new Dictionary<string, FlightManifestObj>();
         internal static Dictionary<string, FlightManifestObj> FlightPlanDict { get; set; } = new Dictionary<string, FlightManifestObj>();
@@ -70,7 +70,7 @@ namespace Software_Engineering_Project
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
         };
 
-        public FlightManifestObj findShortestPath(int begin, int end)
+        /* (REMOVE AFTER TESTING) public FlightManifestObj findShortestPath(int begin, int end)
         {
             if (begin > 14 || begin < 0) return;
             if (end > 14 || end < 0) return;
@@ -160,9 +160,9 @@ namespace Software_Engineering_Project
                         }
                     }
                 }
-            */
+            
             }
-        }
+        }*/
     }
    
 }
