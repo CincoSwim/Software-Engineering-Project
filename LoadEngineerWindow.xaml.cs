@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Collections.ObjectModel;
 
 
 namespace Software_Engineering_Project
@@ -27,8 +28,16 @@ namespace Software_Engineering_Project
         {
             InitializeComponent();
             m_parent = main;
+            this.DataContext = this;
+            populateDataGrid();
+            
         }
-
+        public ObservableCollection<FlightManifestObj> flightManifestObj
+        {
+            get { return flightManifestObj; }
+            set { flightManifestObj = value; }
+        } 
+    
         private void DepartureComboBox_Changed(object sender, SelectionChangedEventArgs e)
         {
             ArrivalCitiesComboBox.Items.Clear();
@@ -37,121 +46,241 @@ namespace Software_Engineering_Project
             
             if(s == "Toledo, OH") 
             { 
-                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
-                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
-                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
-                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
-                
-            }else if (s == "Arlington, VA")
-            {
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
                 ArrivalCitiesComboBox.Items.Add("Chicago, IL");
                 ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
                 ArrivalCitiesComboBox.Items.Add("Nashville, TN");
                 ArrivalCitiesComboBox.Items.Add("New York City, NY");
                 ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
                 
+            }else if (s == "Arlington, VA")
+            {
+               ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
+
             }else if (s == "Atlanta, GA")
             {
                 ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
                 ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");                
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
                 ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Austin, TX")
             {
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Denver, CO");
                 ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
                 ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");                
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
                 ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Chicago, IL")
             {
-                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Austin, TX");
                 ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
-                ArrivalCitiesComboBox.Items.Add("Denver, CO");                
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
                 ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");   
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
                 ArrivalCitiesComboBox.Items.Add("Toledo, OH");                
 
             }else if (s == "Cleveland, OH")
             {
-                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
-                ArrivalCitiesComboBox.Items.Add("Chicago, IL"); 
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
                 ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");    
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
                 ArrivalCitiesComboBox.Items.Add("New York City, NY");
                 ArrivalCitiesComboBox.Items.Add("Orlando, FL");
-                ArrivalCitiesComboBox.Items.Add("Toledo, OH");  
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH"); 
 
             }else if (s == "Denver, CO")
             {
-                ArrivalCitiesComboBox.Items.Add("Austin, TX");                
-                ArrivalCitiesComboBox.Items.Add("Chicago, IL"); 
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");    
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
                 ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
                 ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
-                ArrivalCitiesComboBox.Items.Add("Seattle, WA");  
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");  
 
             }else if (s == "Los Angeles, CA")
             {
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
                 ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Minneapolis, MN")
             {
-                ArrivalCitiesComboBox.Items.Add("Austin, TX");                
+               ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
                 ArrivalCitiesComboBox.Items.Add("Chicago, IL");
-                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");                
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");    
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
                 ArrivalCitiesComboBox.Items.Add("New York City, NY");
-                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");                
-                ArrivalCitiesComboBox.Items.Add("Toledo, OH");  
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "New York City, NY")
             {
-                ArrivalCitiesComboBox.Items.Add("Arlington, VA");              
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
                 ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
                 ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Nashville, TN");               
-                ArrivalCitiesComboBox.Items.Add("Orlando, FL");  
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");  
 
             }else if (s == "Orlando, FL")
             {
-                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
-                ArrivalCitiesComboBox.Items.Add("Austin, TX");  
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
                 ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
                 ArrivalCitiesComboBox.Items.Add("New York City, NY");
-                ArrivalCitiesComboBox.Items.Add("Toledo, OH");  
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Rapid City, SD")
             {
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
                 ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
-                ArrivalCitiesComboBox.Items.Add("Seattle, WA");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Sacramento, CA")
             {
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Denver, CO");
                 ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
-                ArrivalCitiesComboBox.Items.Add("Seattle, WA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
             }else if (s == "Seattle, WA")
             {
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
                 ArrivalCitiesComboBox.Items.Add("Denver, CO");
-                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");  
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("Nashville, TN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
                 ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
             }
         }
 
@@ -210,21 +339,21 @@ namespace Software_Engineering_Project
             {
                 arrivalLocation = ArrivalCitiesComboBox.SelectedItem.ToString();
             }
-            
-            
 
+            
             if (parsedDepartDate.CompareTo( parsedArrivalDate) < 0)
             {
-                MessageBox.Show("Departure Date is before Arrival Date.");
+                
 
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
                 proposedFlightManifestObj.originCode = departureLocation;
                 proposedFlightManifestObj.destinationCode = arrivalLocation;
-                
-                
+                //proposedFlightManifestObj = convertLocationsToInt(departureLocation, arrivalLocation, proposedFlightManifestObj);
+
                 App.MarketMangerQueue.Add(proposedFlightManifestObj);
                 
+
                 Console.WriteLine(App.MarketMangerQueue.Count);
             }
         }
@@ -233,6 +362,50 @@ namespace Software_Engineering_Project
         {
 
 
+        }
+        private void populateDataGrid()
+        {
+            ApprovalQueueGrid.ItemsSource = App.MarketMangerQueue;
+        }
+        private FlightManifestObj convertLocationsToInt(string departureLocation, string arrivalLocation, FlightManifestObj flightManifestObj)
+        {
+            int departureNumber, arrivalNumber;
+            if (departureLocation == "Toledo, OH") { departureNumber = 12; }
+            else if (departureLocation == "Nashville, TN") { departureNumber = 0; }
+            else if (departureLocation == "Cleveland, OH") { departureNumber = 1; }
+            else if (departureLocation == "New York City, NY") { departureNumber = 2; }
+            else if (departureLocation == "Seattle, WA") { departureNumber = 3; }
+            else if (departureLocation == "Chicago, IL") { departureNumber = 4; }
+            else if (departureLocation == "Austin, TX") { departureNumber = 5; }
+            else if (departureLocation == "Orlando, FL") { departureNumber = 6; }
+            else if (departureLocation == "Los Angeles, CA") { departureNumber = 7; }
+            else if (departureLocation == "Denver, CO") { departureNumber = 8; }
+            else if (departureLocation == "Minneapolis, MN") { departureNumber = 9; }
+            else if (departureLocation == "Arlington, VA") { departureNumber = 10; }
+            else if (departureLocation == "Atlanta, GA") { departureNumber = 11; }
+            else if (departureLocation == "Sacramento, CA") { departureNumber = 13; }
+            else if (departureLocation == "Rapid City, SD") { departureNumber = 14; }
+            else departureNumber = 15;
+
+            if (arrivalLocation == "Toledo, OH") { arrivalNumber = 12; }
+            else if (arrivalLocation == "Nashville, TN") { arrivalNumber = 0; }
+            else if (arrivalLocation == "Cleveland, OH") { arrivalNumber = 1; }
+            else if (arrivalLocation == "New York City, NY") { arrivalNumber = 2; }
+            else if (arrivalLocation == "Seattle, WA") { arrivalNumber = 3; }
+            else if (arrivalLocation == "Chicago, IL") { arrivalNumber = 4; }
+            else if (arrivalLocation == "Austin, TX") { arrivalNumber = 5; }
+            else if (arrivalLocation == "Orlando, FL") { arrivalNumber = 6; }
+            else if (arrivalLocation == "Los Angeles, CA") { arrivalNumber = 7; }
+            else if (arrivalLocation == "Denver, CO") { arrivalNumber = 8; }
+            else if (arrivalLocation == "Minneapolis, MN") { arrivalNumber = 9; }
+            else if (arrivalLocation == "Arlington, VA") { arrivalNumber = 10; }
+            else if (arrivalLocation == "Atlanta, GA") { arrivalNumber = 11; }
+            else if (arrivalLocation == "Sacramento, CA") { arrivalNumber = 13; }
+            else if (arrivalLocation == "Rapid City, SD") { arrivalNumber = 14; }
+            else arrivalNumber = 15;
+
+            //flightManifestObj = App.findShortestPath(departureNumber, arrivalNumber);
+            return flightManifestObj;
         }
 
         //User wants to leave, and sign in as somebody else
