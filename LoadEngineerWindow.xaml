@@ -8,9 +8,13 @@
         mc:Ignorable="d"
         Title="Load Engineer Workbench" Height="450" Width="752.695">
     <Grid>
-        <DataGrid x:Name="ApprovalQueueGrid" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"/>
+      <DataGrid x:Name="ApprovalQueueGrid"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"  AlternatingRowBackground="LightBlue">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+        </DataGrid.Columns>
+      </DataGrid>
       <!--Depart Cities, Needs Border To Make Red When Not Selected!-->
-      <Border x:Name="DepartureCitiesBorderCB" BorderThickness ="1" HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top">
+      <Border x:Name="DepartureCitiesBorderCB" BorderThickness ="1" HorizontalAlignment="Left" Margin="555,40,0,0" VerticalAlignment="Top" >
       <ComboBox x:Name="DepartureCitiesComboBox"  Width="120" SelectionChanged="DepartureComboBox_Changed">
         <ComboBoxItem Content="Arlington, VA"></ComboBoxItem>
         <ComboBoxItem Content="Atlanta, GA"></ComboBoxItem>

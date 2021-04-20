@@ -11,9 +11,9 @@ namespace Software_Engineering_Project
     public class FlightManifestObj
     {
         int flightID;
-        public string originCode;
-        string layoverCodeA;
-        string layoverCodeB;
+        public string originCode { get; set; }
+        public string layoverCodeA;
+        public string layoverCodeB;
         public string destinationCode;
         public DateTime departTime;
         public DateTime arrivalTime;
@@ -27,6 +27,14 @@ namespace Software_Engineering_Project
         //Uses departTime from Flight ManifestObj
         DateTime getDeparture() {
             return departTime;
+        }
+        string getOriginCode(string originCode)
+        {
+            return originCode;
+        }
+        void setOriginCode()
+        {
+            originCode = originCode;
         }
 
         //Pays for flight and updates flight list
