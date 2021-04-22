@@ -343,8 +343,6 @@ namespace Software_Engineering_Project
             
             if (parsedDepartDate.CompareTo( parsedArrivalDate) < 0)
             {
-                
-
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
                 proposedFlightManifestObj.originCode = departureLocation;
@@ -360,8 +358,16 @@ namespace Software_Engineering_Project
 
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
         {
-
-
+            for (int i = 0; i < ApprovalQueueGrid.Items.Count; i++)
+            {
+                var myCheckBox = ApprovalQueueGrid.Columns[4].GetCellContent(ApprovalQueueGrid.Items[i]) as CheckBox;
+                if (myCheckBox.IsChecked == true)
+                {
+                    App.MarketMangerQueue.RemoveAt(i);
+                }
+            }
+            ApprovalQueueGrid.ItemsSource = null;
+            populateDataGrid();
         }
         private void populateDataGrid()
         {

@@ -12,7 +12,6 @@ namespace Software_Engineering_Project
 {
    
     public partial class App : Application
-
         
     {
         

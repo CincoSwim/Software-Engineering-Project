@@ -11,6 +11,10 @@
       <DataGrid x:Name="ApprovalQueueGrid"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"  AlternatingRowBackground="LightBlue">
         <DataGrid.Columns>
           <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+          <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
+          <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
+          <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+          <DataGridCheckBoxColumn Header="Cancel Flight?" Width="100"  />
         </DataGrid.Columns>
       </DataGrid>
       <!--Depart Cities, Needs Border To Make Red When Not Selected!-->
@@ -40,13 +44,12 @@
         <xctk:DateTimePicker x:Name="DepartureDateTimePicker" HorizontalAlignment="Left" Margin="437,154,0,0" VerticalAlignment="Top" Width="280"/>
         <xctk:DateTimePicker x:Name="ArrivalDateTimePicker" HorizontalAlignment="Left" Margin="437,204,0,0" VerticalAlignment="Top" Width="280"/>
         <Button x:Name="FlightProposeBtn" Content="Propose Flight Plan" Click ="FlightProposeBtn_isClicked" HorizontalAlignment="Left" Margin="437,239,0,0" VerticalAlignment="Top" Width="280" Height="48"/>
-        <Button x:Name="CancelProposalBtn" Content="Cancel Selected Proposal" Click ="CancelProposalBtn_isClicked" HorizontalAlignment="Left" Margin="437,379,0,0" VerticalAlignment="Top" Width="280" Height="30"/>
+        <Button x:Name="CancelProposalBtn" Content="Cancel Selected Proposals" Click ="CancelProposalBtn_isClicked" HorizontalAlignment="Left" Margin="437,379,0,0" VerticalAlignment="Top" Width="280" Height="30"/>
         <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="225"/>
         <Label x:Name="DepartureCityLabel" Content="Departure Airport:" HorizontalAlignment="Left" Margin="437,40,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="ArrivalCityLabel" Content="Arrival Airport:" HorizontalAlignment="Left" Margin="437,85,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="DepartureTimeDateLabel" Content="Departure Time:" HorizontalAlignment="Left" Margin="437,126,0,0" VerticalAlignment="Top" Width="129" Height="28"/>
         <Label x:Name="ArrivalDateTimeLabel" Content="Arrival Time:" HorizontalAlignment="Left" Margin="437,176,0,0" VerticalAlignment="Top" Width="129" Height="28"/>
         <Button x:Name="LogoutBtn" Content="Logout" Click ="Logout_isClicked" HorizontalAlignment="Left" Margin="660,10,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+  </Grid>
 </Window>
