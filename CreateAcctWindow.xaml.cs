@@ -107,6 +107,7 @@ namespace Software_Engineering_Project
                 }
             }
             Console.WriteLine("User with name " + App.UserAccountDict[foundNum].getFirstName() + " added at location " + App.UserAccountDict[foundNum].getUniqueID());
+            MessageBox.Show("Account Created!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             m_parent.Show();
             this.Close();
         }
