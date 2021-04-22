@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 // https://blog.thetravelinsider.info/airplane-types#Boeing
 namespace Software_Engineering_Project
 {
-    class Planes
+    public class Planes
     {
         string planeModel, uniquePlaneRegister;
         int numOfSeats;

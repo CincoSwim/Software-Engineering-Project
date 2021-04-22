@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 //import UserAcounnt Obj;
 
 namespace Software_Engineering_Project
-{
+{   [Serializable]
     public class FlightManifestObj
     {
-        int flightID { get; set; }
+        public int flightID { get; set; }
         public string originCode { get; set; }
         public string layoverCodeA { get; set; }
         public string layoverCodeB { get; set; }
         public string destinationCode { get; set; }
         public DateTime departTime { get; set; }
         public DateTime arrivalTime { get; set; }
-        Planes planeAssigned { get; set; }
-        int ticketPrice { get; set; }
-        int pointReward { get; set; }
-        List<UserAccountObj> bookedUsers; //I think this may have to be ints with the unique ID of the users. 
-        List<int> userPaymentType;
+        public Planes planeAssigned { get; set; }
+        public int ticketPrice { get; set; }
+        public int pointReward { get; set; }
+        public List<UserAccountObj> bookedUsers { get; set; } //I think this may have to be ints with the unique ID of the users. 
+        public List<int> userPaymentType { get; set; }
 
         //Recieve Departure Time for Each Plane. 
         //Uses departTime from Flight ManifestObj

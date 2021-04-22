@@ -61,9 +61,9 @@ namespace Software_Engineering_Project
         {
                       
             File.WriteAllText(UserDictPath, JsonConvert.SerializeObject(App.UserAccountDict, Formatting.Indented));            
-            File.WriteAllText(MMQueuePath, JsonConvert.SerializeObject(App.MarketMangerQueue));
-            File.WriteAllText(TransactionHistPath, JsonConvert.SerializeObject(App.TransactionHist));
-            File.WriteAllText(FlightHistDictPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary));
+            File.WriteAllText(MMQueuePath, JsonConvert.SerializeObject(App.MarketMangerQueue, Formatting.Indented));
+            File.WriteAllText(TransactionHistPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented));
+            File.WriteAllText(FlightHistDictPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary, Formatting.Indented));
             File.WriteAllText(FlightPlanDictPath, JsonConvert.SerializeObject(App.FlightPlanDict));
             
         }
