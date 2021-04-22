@@ -10,16 +10,15 @@ using System.IO;
 
 namespace Software_Engineering_Project
 {
-   
+
     public partial class App : Application
 
-        
     {
-        
+
         internal static bool hasFirstLoaded = false;
         internal static Dictionary<string, UserAccountObj> UserAccountDict { get; set; } = new Dictionary<string, UserAccountObj>();
         internal static List<FlightManifestObj> MarketMangerQueue { get; set; } = new List<FlightManifestObj>();
-        internal static List<int> TransactionHist { get; set; } = new List<int>(); //NEED TO MAKE THIS FROM INT TO TRANSACTIONOBJ
+        internal static List<TransactionObj> TransactionHist { get; set; } = new List<TransactionObj>(); //NEED TO MAKE THIS FROM INT TO TRANSACTIONOBJ
 
         internal static Dictionary<string, FlightManifestObj> FlightHistoryDictionary = new Dictionary<string, FlightManifestObj>();
         internal static Dictionary<string, FlightManifestObj> FlightPlanDict { get; set; } = new Dictionary<string, FlightManifestObj>();
@@ -27,12 +26,37 @@ namespace Software_Engineering_Project
 
         internal static UserAccountObj LoggedInUser = new UserAccountObj();
 
+
+
         void Application_Exit(object sender, ExitEventArgs e)
         {
+
             Console.WriteLine("App closing, saving to file");
             FileIOLoading.WriteAlltoFile();
             hasFirstLoaded = false;
 
+        }
+        internal void Update_Flights()
+        {
+            foreach (var entry in App.FlightPlanDict)
+            {
+                if (entry.Value.departTime < DateTime.Now)
+                {
+                    //Add entry to App.FlightHistoryDict
+                    App.FlightHistoryDictionary.Add(entry.Key, entry.Value);
+                    foreach (var user in App.UserAccountDict) //For each user acct
+                    {
+                        if (user.Value.upcomingFlights.Contains(entry.Key))
+                        {
+                            user.Value.takenFlights.Add(entry.Key);//add to taken flights
+                            user.Value.upcomingFlights.Remove(entry.Key);//remove from upcoming
+                            //if the flight was canceled, it stays in canceled
+                        }
+                    }
+
+                    App.FlightPlanDict.Remove(entry.Key);//remove flight from App.FlightPlanDict
+                }
+            }
         }
 
         internal static double[,] flightGraph = new double[15, 15]
@@ -223,8 +247,8 @@ namespace Software_Engineering_Project
                         }
                     }
                 }
-                return flightPlan;
             }
-        }
     }
 }
+   
+

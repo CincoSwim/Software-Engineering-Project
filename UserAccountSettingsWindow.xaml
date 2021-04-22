@@ -13,49 +13,102 @@
         <Label x:Name="PreviousFlightsLabel" Content="Previous Flights" HorizontalAlignment="Left" Margin="423,22,0,0" VerticalAlignment="Top" Width="622"/>
         <Label x:Name="CanceledFlightsLabel" Content="Canceled Flights" HorizontalAlignment="Left" Margin="423,296,0,0" VerticalAlignment="Top" Width="622"/>
         <GridSplitter HorizontalAlignment="Left" Height="589" Margin="397,10,0,0" VerticalAlignment="Top" Width="3" Background="#FFA2A2A2"/>
-        <Label x:Name="NameTagLabel" Content="_Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="29,41,0,0" VerticalAlignment="Top" Width="50" Background="White" FontWeight="Bold"/>
-        <Label x:Name="EmailTagLabel" Content="E-Mail:" HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold"/>
-        <Label x:Name="AddressTagLabel" Content="Address:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,179,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
-        <Label x:Name="CityTagLabel" Content="City:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,210,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
-        <Label x:Name="StateTagLabel" Content="State:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="207,210,0,0" VerticalAlignment="Top" Width="43" FontWeight="Bold"/>
-        <Label x:Name="PhoneNumberTagLabel" Content="Phone:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,102,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="NameTagLabel" Content="First Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,41,0,0" VerticalAlignment="Top" Width="79" Background="White" FontWeight="Bold"/>
+        <Label x:Name="EmailTagLabel" Content="E-Mail:" HorizontalAlignment="Left" Margin="29,103,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold"/>
+        <Label x:Name="AddressTagLabel" Content="Address:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,210,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="CityTagLabel" Content="City:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,241,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="StateTagLabel" Content="State:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="207,241,0,0" VerticalAlignment="Top" Width="43" FontWeight="Bold"/>
+        <Label x:Name="PhoneNumberTagLabel" Content="Phone:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,133,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
         <Label x:Name="AgeTagLabel" Content="Age:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="281,41,0,0" VerticalAlignment="Top" Width="42" FontWeight="Bold"/>
-        <Label x:Name="CreditCardNumTagLabel" Content="Credit Card:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,271,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
-        <Label x:Name="UserIDTagLabel" Content="User ID:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,132,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
-        <Label x:Name="PointsBalanceTagLabel" Content="Points Balance:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,312,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
+        <Label x:Name="CreditCardNumTagLabel" Content="Credit Card:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,302,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
+        <Label x:Name="UserIDTagLabel" Content="User ID:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,163,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="PointsBalanceTagLabel" Content="Points Balance:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,343,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="328,41,0,0" VerticalAlignment="Top" Width="44">
-            <Label x:Name="AgeLabel" Content="Label"/>
+            <TextBox x:Name="ageTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,72,0,0" VerticalAlignment="Top" Width="192">
-            <Label x:Name="EmailLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,103,0,0" VerticalAlignment="Top" Width="192">
+            <TextBox x:Name="emailTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,102,0,0" VerticalAlignment="Top" Width="192">
-            <Label x:Name="PhoneNumLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,133,0,0" VerticalAlignment="Top" Width="192">
+            <TextBox x:Name="phoneTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,132,0,0" VerticalAlignment="Top" Width="91">
-            <Label x:Name="UIDLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,163,0,0" VerticalAlignment="Top" Width="91">
+            <Label x:Name="uidLabel" Content=""/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,179,0,0" VerticalAlignment="Top" Width="288">
-            <Label x:Name="AddressLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,210,0,0" VerticalAlignment="Top" Width="288">
+            <TextBox x:Name="addressTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,210,0,0" VerticalAlignment="Top" Width="118">
-            <Label x:Name="CityLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,241,0,0" VerticalAlignment="Top" Width="118">
+            <TextBox x:Name="cityTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="250,210,0,0" VerticalAlignment="Top" Width="122">
-            <Label x:Name="StateLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="250,241,0,0" VerticalAlignment="Top" Width="122">
+            <ComboBox x:Name="USStateBox">
+                <ComboBoxItem Content="AL"></ComboBoxItem>
+                <ComboBoxItem Content="AS"></ComboBoxItem>
+                <ComboBoxItem Content="AZ"></ComboBoxItem>
+                <ComboBoxItem Content="AR"></ComboBoxItem>
+                <ComboBoxItem Content="CA"></ComboBoxItem>
+                <ComboBoxItem Content="CO"></ComboBoxItem>
+                <ComboBoxItem Content="CT"></ComboBoxItem>
+                <ComboBoxItem Content="DE"></ComboBoxItem>
+                <ComboBoxItem Content="FL"></ComboBoxItem>
+                <ComboBoxItem Content="GA"></ComboBoxItem>
+                <ComboBoxItem Content="ID"></ComboBoxItem>
+                <ComboBoxItem Content="IL"></ComboBoxItem>
+                <ComboBoxItem Content="IN"></ComboBoxItem>
+                <ComboBoxItem Content="IA"></ComboBoxItem>
+                <ComboBoxItem Content="KS"></ComboBoxItem>
+                <ComboBoxItem Content="KY"></ComboBoxItem>
+                <ComboBoxItem Content="LA"></ComboBoxItem>
+                <ComboBoxItem Content="ME"></ComboBoxItem>
+                <ComboBoxItem Content="MD"></ComboBoxItem>
+                <ComboBoxItem Content="MA"></ComboBoxItem>
+                <ComboBoxItem Content="MI"></ComboBoxItem>
+                <ComboBoxItem Content="MN"></ComboBoxItem>
+                <ComboBoxItem Content="MS"></ComboBoxItem>
+                <ComboBoxItem Content="MO"></ComboBoxItem>
+                <ComboBoxItem Content="MT"></ComboBoxItem>
+                <ComboBoxItem Content="NE"></ComboBoxItem>
+                <ComboBoxItem Content="NV"></ComboBoxItem>
+                <ComboBoxItem Content="NH"></ComboBoxItem>
+                <ComboBoxItem Content="NJ"></ComboBoxItem>
+                <ComboBoxItem Content="NM"></ComboBoxItem>
+                <ComboBoxItem Content="NY"></ComboBoxItem>
+                <ComboBoxItem Content="NC"></ComboBoxItem>
+                <ComboBoxItem Content="ND"></ComboBoxItem>
+                <ComboBoxItem Content="OH"></ComboBoxItem>
+                <ComboBoxItem Content="OK"></ComboBoxItem>
+                <ComboBoxItem Content="OR"></ComboBoxItem>
+                <ComboBoxItem Content="PA"></ComboBoxItem>
+                <ComboBoxItem Content="RI"></ComboBoxItem>
+                <ComboBoxItem Content="SC"></ComboBoxItem>
+                <ComboBoxItem Content="SD"></ComboBoxItem>
+                <ComboBoxItem Content="TN"></ComboBoxItem>
+                <ComboBoxItem Content="TX"></ComboBoxItem>
+                <ComboBoxItem Content="UT"></ComboBoxItem>
+                <ComboBoxItem Content="VT"></ComboBoxItem>
+                <ComboBoxItem Content="VA"></ComboBoxItem>
+                <ComboBoxItem Content="WA"></ComboBoxItem>
+                <ComboBoxItem Content="WV"></ComboBoxItem>
+                <ComboBoxItem Content="WI"></ComboBoxItem>
+                <ComboBoxItem Content="WY"></ComboBoxItem>
+            </ComboBox>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,271,0,0" VerticalAlignment="Top" Width="263">
-            <Label x:Name="CreditCardLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,302,0,0" VerticalAlignment="Top" Width="263">
+            <TextBox x:Name="CCTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,312,0,0" VerticalAlignment="Top" Width="141">
-            <Label x:Name="PointsBalanceLabel" Content="Label"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="109,343,0,0" VerticalAlignment="Top" Width="141">
+            <Label x:Name="PointsBalanceLabel" Content=""/>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,41,0,0" VerticalAlignment="Top" Width="192">
-            <Label x:Name="NameLabel" Content="Label"/>
+            <TextBox x:Name="firstNameTextBox" TextWrapping="Wrap"/>
         </Border>
-        <Button x:Name="EditFieldsBtn" Content="Edit Details" HorizontalAlignment="Left" Margin="109,362,0,0" VerticalAlignment="Top" Width="182" Height="32"/>
-        <Button x:Name="BackBtn" Content="&lt;- Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99"/>
-        <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="970,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="EditFieldsBtn" Content="Save Changes" HorizontalAlignment="Left" Margin="109,393,0,0" VerticalAlignment="Top" Width="182" Height="32" Click="EditFieldsBtn_Click"/>
+        <Button x:Name="BackBtn" Content="&lt;- Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Click="BackBtn_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="84,72,0,0" VerticalAlignment="Top" Width="192">
+            <TextBox x:Name="lastNameTextBox" TextWrapping="Wrap"/>
+        </Border>
+        <Label x:Name="lastNameLabel" Content=" Last Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,72,0,0" VerticalAlignment="Top" Width="79" Background="White" FontWeight="Bold"/>
 
     </Grid>
 </Window>

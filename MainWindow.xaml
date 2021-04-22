@@ -10,15 +10,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="21*"/>
-            <ColumnDefinition Width="28*"/>
-            <ColumnDefinition Width="149*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="PwdBox" Margin="25.816,273,255,0" TextWrapping="Wrap" Text="Password" Grid.Column="3" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="usrBox" Margin="25.816,230,255,0" TextWrapping="Wrap" Text="E-Mail" Grid.Column="3" Height="23" VerticalAlignment="Top"/>
-        <Button x:Name="LoginBtn" Content="Login" Grid.Column="3" HorizontalAlignment="Left" Margin="138.816,314,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
-        <Button x:Name="LoadEngineerLoginButton" Content="LoadEngineer" Grid.Column="3" HorizontalAlignment="Left" Margin="138.816,400,0,-1" VerticalAlignment="Top" Width="97" Click="LoadEngineer_Click" Height="20"/>
-        <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="3" HorizontalAlignment="Left" Margin="138.816,352,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
-        <Image x:Name="TEMPLOGO" Margin="79,21,218,210" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="LoginBtn" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="326,314,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
+        <Button x:Name="LoadEngineerLoginButton" Content="LoadEngineer" Grid.Column="1" HorizontalAlignment="Left" Margin="326,400,0,0" VerticalAlignment="Top" Width="97" Click="LoadEngineer_Click" Height="20"/>
+        <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="1" HorizontalAlignment="Left" Margin="326,352,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
+        <Image x:Name="TEMPLOGO" Margin="183,21,198,210" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="1"/>
+        <xctk:WatermarkTextBox x:Name="usrBox" Watermark ="UserID" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
+        <xctk:WatermarkTextBox x:Name="pwdBox" Watermark ="Password" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
     </Grid>
 </Window>
