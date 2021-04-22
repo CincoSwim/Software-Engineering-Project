@@ -29,6 +29,7 @@ namespace Software_Engineering_Project
             InitializeComponent();
             m_parent = main;
             this.DataContext = this;
+            this.Closed += new EventHandler(LoadEng_Closed);
             populateDataGrid();
             
         }
@@ -36,8 +37,14 @@ namespace Software_Engineering_Project
         {
             get { return flightManifestObj; }
             set { flightManifestObj = value; }
-        } 
-    
+        }
+
+        void LoadEng_Closed(object sender, EventArgs e)
+        {
+            m_parent.Show();
+            App.LoggedInUser = null;
+        }
+
         private void DepartureComboBox_Changed(object sender, SelectionChangedEventArgs e)
         {
             ArrivalCitiesComboBox.Items.Clear();
@@ -417,8 +424,7 @@ namespace Software_Engineering_Project
         //User wants to leave, and sign in as somebody else
         private void Logout_isClicked(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWin = new MainWindow();
-            mainWin.Show();
+            m_parent.Show();
             this.Close();
         }        
     }
