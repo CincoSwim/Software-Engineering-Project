@@ -26,6 +26,13 @@ namespace Software_Engineering_Project
         {
             InitializeComponent();
             FileIOLoading.ReadAlltoMem();
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(5);
+
+            var timer = new System.Threading.Timer((e) =>
+            {
+                //Method();
+            }, null, startTimeSpan, periodTimeSpan);
         }
 
         private void LoadEngineer_Click(object sender, RoutedEventArgs e)
@@ -42,7 +49,7 @@ namespace Software_Engineering_Project
                 //check if password match
                 using (SHA512 sha512hash = SHA512.Create())
                 {
-                    byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(PwdBox.Text); //hash can only be done on string of bytes
+                    byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(pwdBox.Text); //hash can only be done on string of bytes
                     byte[] hashBytes = sha512hash.ComputeHash(sourcePwdBytes);
                     hashedPwd = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
 

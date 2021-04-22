@@ -33,14 +33,33 @@ namespace Software_Engineering_Project
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {   
             //Do input checks HERE*****
-            if(passwordInput.Text == "")
+            if(passwordInput.Text == "" || passwordInput != passwordConfirm)
             {
-                MessageBox.Show("Please ensure all fields are complete!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please ensure a password is entered, and that both passwords match.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if(FirstName.Text =="" || LastName.Text == "")
+            {
+                MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if(AgeInput.Text == "")
+            {
+                MessageBox.Show("Please enter your Age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if(address.Text == "" || city.Text == "" || USState.SelectedItem == null)
+            {
+                MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if(phone_number.Text == "")
+            {
+                MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if(ccNumber.Text == "")
+            {
+                MessageBox.Show("Please enter a Credit Card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             //*************************
-            //-Check Passwords match
-            //-Check inputs filled
+            
 
             UserAccountObj newAcct = new UserAccountObj();
             newAcct.setFirstName(FirstName.Text);
@@ -88,6 +107,7 @@ namespace Software_Engineering_Project
                 }
             }
             Console.WriteLine("User with name " + App.UserAccountDict[foundNum].getFirstName() + " added at location " + App.UserAccountDict[foundNum].getUniqueID());
+            MessageBox.Show("Account Created!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             m_parent.Show();
             this.Close();
         }

@@ -118,6 +118,7 @@
       <DependentUpon>MarketingManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Planes.cs" />
+    <Compile Include="TransactionObj.cs" />
     <Compile Include="UserAccountObj.cs" />
     <Compile Include="UserAccountSettingsWindow.xaml.cs">
       <DependentUpon>UserAccountSettingsWindow.xaml</DependentUpon>
