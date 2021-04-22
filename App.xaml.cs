@@ -82,103 +82,77 @@ namespace Software_Engineering_Project
         {
             switch(code)
             {
-                case code.Equals("BNA"):
+                case "BNA":
                     return 0;
-                    break;
-                case code.Equals("CLE"):
+                case "CLE":
                     return 1;
-                    break;
-                case code.Equals("LGA"):
+                case "LGA":
                     return 2;
-                    break;
-                case code.Equals("SEA"):
+                case "SEA":
                     return 3;
-                    break;
-                case code.Equals("ORD"):
+                case "ORD":
                     return 4;
-                    break;
-                case code.Equals("AUS"):
+                case "AUS":
                     return 5;
-                    break;
-                case code.Equals("MCO"):
+                case "MCO":
                     return 6;
-                    break;
-                case code.Equals("LAX"):
+                case "LAX":
                     return 7;
-                    break;
-                case code.Equals("DEN"):
+                case "DEN":
                     return 8;
-                    break;
-                case code.Equals("MSP"):
+                case "MSP":
                     return 9;
-                    break;
-                case code.Equals("DCA"):
+                case "DCA":
                     return 10;
-                    break;
-                case code.Equals("ATL"):
+                case "ATL":
                     return 11;
-                    break;
-                case code.Equals("TOL"):
+                case "TOL":
                     return 12;
-                    break;
-                case code.Equals("SMF"):
+                case "SMF":
                     return 13;
-                    break;
-                case code.Equals("RAP"):
+                case "RAP":
                     return 14;
-                    break;
+                default:
+                    return 15;
             }
         }
 
-        public int intToCode(int value)
+        public String intToCode(int value)
         {
             switch(value)
             {
                 case 0:
                     return "BNA";
-                    break;
                 case 1:
                     return "CLE";
-                    break;
                 case 2:
                     return "LGA";
-                    break;
                 case 3:
                     return "SEA";
-                    break;
                 case 4:
                     return "ORD";
-                    break;
                 case 5:
                     return "AUS";
-                    break;
                 case 6:
                     return "MCO";
-                    break;
                 case 7:
                     return "LAX";
-                    break;
                 case 8:
                     return "DEN";
-                    break;
                 case 9:
                     return "MSP";
-                    break;
                 case 10:
                     return "DCA";
-                    break;
                 case 11:
                     return "ATL";
-                    break;
                 case 12:
                     return "TOL";
-                    break;
                 case 13:
                     return "SMF";
-                    break;
                 case 14:
                     return "RAP";
-                    break;
+                default:
+                    return "ERR";
             }
         }
 
@@ -192,34 +166,31 @@ namespace Software_Engineering_Project
 
             double miles = 0;
             double minMiles = 0;
-            double price = 0;
-            int layoverOne = 15;
-            int layoverTwo = 15;
             
             //no layovers
-            if (flightGraph[begin][end] != 0)
+            if (flightGraph[begin, end] != 0)
             {
-                miles = flightGraph[begin][end];
+                miles = flightGraph[begin, end];
                 flightPlan.ticketPrice = 0.15 * miles;
-                flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
-                return;
+                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                return flightPlan;
             } 
             //will go through every possible path and save the shortest one
             else
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    if (flightGraph[begin][i] != 0)
+                    if (flightGraph[begin, i] != 0)
                     {   
                         //1 layover
-                        if (flightGraph[i][end] != 0)
+                        if (flightGraph[i, end] != 0)
                         {
-                            miles = (flightGraph[begin][i] + flightGraph[i][end]);
+                            miles = (flightGraph[begin, i] + flightGraph[i, end]);
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
                                 flightPlan.ticketPrice = 0.15 * miles;
-                                flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
+                                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                 flightPlan.layoverCodeA = intToCode(i);
                             }
                         }
@@ -228,16 +199,16 @@ namespace Software_Engineering_Project
                         {
                             for (int j = 0; j < 15; j++)
                             {
-                                if (flightGraph[i][j] != 0)
+                                if (flightGraph[i, j] != 0)
                                 {
-                                    if (flightGraph[j][end] != 0)
+                                    if (flightGraph[j, end] != 0)
                                     {
-                                        miles = (flightGraph[begin][i] + flightGraph[i][j] + flightGraph[j][end]);
+                                        miles = (flightGraph[begin, i] + flightGraph[i, j] + flightGraph[j, end]);
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
                                             flightPlan.ticketPrice = 0.15 * miles;
-                                            flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
+                                            flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
                                         }
@@ -248,6 +219,7 @@ namespace Software_Engineering_Project
                     }
                 }
             }
+            return flightPlan;
         }
     }
 }
