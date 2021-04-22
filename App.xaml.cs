@@ -35,22 +35,6 @@ namespace Software_Engineering_Project
 
         }
 
-        int nashville = 0;
-        int cleveland = 1;
-        int newYork = 2;
-        int seattle = 3;
-        int chicago = 4;
-        int austin = 5;
-        int orlando = 6;
-        int losAngeles = 7;
-        int denver = 8;
-        int minneapolis = 9;
-        int arlington = 10;
-        int atlanta = 11;
-        int toledo = 12;
-        int sacramento = 13;
-        int rapidCity = 14;
-
         internal static double[,] flightGraph = new double[15, 15]
         {//                 Nashville   Cleveland   New York    Seattle     Chicago     Austin      Orlando     Los Angeles     Denver      Minneapolis     Arlington   Atlanta     Toledo      Sacramento      Rapid City
         /*nashville*/       {0,         448.15,     764.13,     0,          409.17,     756.13,     616.11,     0,              1013.48,    695.07,         561.84,     213.87,     407.29,     0,              0},      //done
@@ -69,11 +53,118 @@ namespace Software_Engineering_Project
         /*sacramento*/      {0,         0,          0,          605.35,     0,          0,          0,          372.68,         909.26,     0,              0,          0,          0,          0,              0},      //done
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
         };
-
-        public FlightManifestObj findShortestPath(int begin, int end)
+        
+        public int codeToInt(String code)
         {
-            if (begin > 14 || begin < 0) return;
-            if (end > 14 || end < 0) return;
+            switch(code)
+            {
+                case code.Equals("BNA"):
+                    return 0;
+                    break;
+                case code.Equals("CLE"):
+                    return 1;
+                    break;
+                case code.Equals("LGA"):
+                    return 2;
+                    break;
+                case code.Equals("SEA"):
+                    return 3;
+                    break;
+                case code.Equals("ORD"):
+                    return 4;
+                    break;
+                case code.Equals("AUS"):
+                    return 5;
+                    break;
+                case code.Equals("MCO"):
+                    return 6;
+                    break;
+                case code.Equals("LAX"):
+                    return 7;
+                    break;
+                case code.Equals("DEN"):
+                    return 8;
+                    break;
+                case code.Equals("MSP"):
+                    return 9;
+                    break;
+                case code.Equals("DCA"):
+                    return 10;
+                    break;
+                case code.Equals("ATL"):
+                    return 11;
+                    break;
+                case code.Equals("TOL"):
+                    return 12;
+                    break;
+                case code.Equals("SMF"):
+                    return 13;
+                    break;
+                case code.Equals("RAP"):
+                    return 14;
+                    break;
+            }
+        }
+
+        public int intToCode(int value)
+        {
+            switch(value)
+            {
+                case 0:
+                    return "BNA";
+                    break;
+                case 1:
+                    return "CLE";
+                    break;
+                case 2:
+                    return "LGA";
+                    break;
+                case 3:
+                    return "SEA";
+                    break;
+                case 4:
+                    return "ORD";
+                    break;
+                case 5:
+                    return "AUS";
+                    break;
+                case 6:
+                    return "MCO";
+                    break;
+                case 7:
+                    return "LAX";
+                    break;
+                case 8:
+                    return "DEN";
+                    break;
+                case 9:
+                    return "MSP";
+                    break;
+                case 10:
+                    return "DCA";
+                    break;
+                case 11:
+                    return "ATL";
+                    break;
+                case 12:
+                    return "TOL";
+                    break;
+                case 13:
+                    return "SMF";
+                    break;
+                case 14:
+                    return "RAP";
+                    break;
+            }
+        }
+
+        public FlightManifestObj findShortestPath(FlightManifestObj flightPlan)
+        {
+            int begin = codeToInt(flightPlan.originCode);
+            int end = codeToInt(flightPlan.destinationCode);
+
+            if (begin > 14 || begin < 0) return flightPlan;
+            if (end > 14 || end < 1) return flightPlan;
 
             double miles = 0;
             double minMiles = 0;
@@ -85,7 +176,8 @@ namespace Software_Engineering_Project
             if (flightGraph[begin][end] != 0)
             {
                 miles = flightGraph[begin][end];
-                price = 0.15 * miles;
+                flightPlan.ticketPrice = 0.15 * miles;
+                flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
                 return;
             } 
             //will go through every possible path and save the shortest one
@@ -102,9 +194,9 @@ namespace Software_Engineering_Project
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
-                                double price = 0.15 * miles;
-                                layoverOne = i;
-                                layoverTwo = 15;
+                                flightPlan.ticketPrice = 0.15 * miles;
+                                flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
+                                flightPlan.layoverCodeA = intToCode(i);
                             }
                         }
                         //2 layovers
@@ -120,9 +212,10 @@ namespace Software_Engineering_Project
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
-                                            double price = 0.15 * miles;
-                                            layoverOne = i;
-                                            layoverTwo = j;
+                                            flightPlan.ticketPrice = 0.15 * miles;
+                                            flightPlan.pointReward = 0.1 * flightPlan.ticketPrice;
+                                            flightPlan.layoverCodeA = intToCode(i);
+                                            flightPlan.layoverCodeB = intToCode(j);
                                         }
                                     }
                                 }
@@ -130,39 +223,8 @@ namespace Software_Engineering_Project
                         }
                     }
                 }
-            }
-            /*
-            //if path still hasn't been found, we need 2 layovers
-            //2 layovers
-            //will go through every possible path and save the shortest one
-            if (miles == 0)
-            {
-                for (int i = 0; i < 15; i++)
-                {
-                    if (flightGraph[begin][i] != 0)
-                    {
-                        for(int j = 0; j < 15; j++)
-                        {
-                            if (flightGraph[i][j] != 0)
-                            {
-                                if (flightGraph[j][end] != 0)
-                                { 
-                                    miles = (flightGraph[begin][i] + flightGraph[i][j] + flightGraph[j][end]);
-                                    if (minMiles > miles || minMiles == 0) 
-                                    {
-                                        minMiles = miles;
-                                        double price = 0.15 * miles;
-                                        layoverOne = i;
-                                        layoverTwo = j;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            */
+                return flightPlan;
             }
         }
     }
-   
 }
