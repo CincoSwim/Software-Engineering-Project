@@ -33,7 +33,7 @@ namespace Software_Engineering_Project
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {   
             //Do input checks HERE*****
-            if(passwordInput.Text == "" || passwordInput != passwordConfirm)
+            if(passwordInput.Text == "" || passwordInput.Text != passwordConfirm.Text)
             {
                 MessageBox.Show("Please ensure a password is entered, and that both passwords match.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
