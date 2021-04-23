@@ -1,20 +1,58 @@
-﻿<Window x:Class="Software_Engineering_Project.UserFlightSearchWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Software_Engineering_Project.UserFlightSearchWindow"
         mc:Ignorable="d"
         Title="Flight Search" Height="354" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="151*"/>
-            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="FoundFlightsGrid" HorizontalAlignment="Left" Height="218" Margin="10,95,0,0" VerticalAlignment="Top" Width="772" Grid.ColumnSpan="2"/>
-        <Button x:Name="SearchRefreshBtn" Content="Search" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top" Width="128" Height="57" Grid.Column="1"/>
-        <ComboBox x:Name="DepartureSelectionBox" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="ArrivalSelectionBox" HorizontalAlignment="Left" Margin="187,26,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="FoundFlightsGrid" HorizontalAlignment="Left" Height="218" Margin="10,95,0,0" VerticalAlignment="Top" Width="637"/>
+        <Button x:Name="SearchRefreshBtn" Content="Search" HorizontalAlignment="Left" Margin="654,211,0,0" VerticalAlignment="Top" Width="128" Height="102" Click="SearchRefreshBtn_Click"/>
+        <ComboBox x:Name="DepartureSelectionBox" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="204" Height="26" SelectedValuePath="Content">
+            <ComboBoxItem Content="Arlington, VA"/>
+            <ComboBoxItem Content="Atlanta, GA"/>
+            <ComboBoxItem Content="Austin, TX"/>
+            <ComboBoxItem Content="Chicago, IL"/>
+            <ComboBoxItem Content="Cleveland, OH"/>
+            <ComboBoxItem Content="Denver, CO"/>
+            <ComboBoxItem Content="Los Angeles, CA"/>
+            <ComboBoxItem Content="Minneapolis, MN"/>
+            <ComboBoxItem Content="New York City, NY"/>
+            <ComboBoxItem Content="Orlando, FL"/>
+            <ComboBoxItem Content="Rapid City, SD"/>
+            <ComboBoxItem Content="Sacramento, CA"/>
+            <ComboBoxItem Content="Seattle, WA"/>
+            <ComboBoxItem Content="Toledo, OH"/>
+        </ComboBox>
+        <ComboBox x:Name="ArrivalSelectionBox" HorizontalAlignment="Left" Margin="392,10,0,0" VerticalAlignment="Top" Width="222" Height="26">
+            <ComboBoxItem Content="Arlington, VA"/>
+            <ComboBoxItem Content="Atlanta, GA"/>
+            <ComboBoxItem Content="Austin, TX"/>
+            <ComboBoxItem Content="Chicago, IL"/>
+            <ComboBoxItem Content="Cleveland, OH"/>
+            <ComboBoxItem Content="Denver, CO"/>
+            <ComboBoxItem Content="Los Angeles, CA"/>
+            <ComboBoxItem Content="Minneapolis, MN"/>
+            <ComboBoxItem Content="New York City, NY"/>
+            <ComboBoxItem Content="Orlando, FL"/>
+            <ComboBoxItem Content="Rapid City, SD"/>
+            <ComboBoxItem Content="Sacramento, CA"/>
+            <ComboBoxItem Content="Seattle, WA"/>
+            <ComboBoxItem Content="Toledo, OH"/>
+        </ComboBox>
+        <Label x:Name="DepartureBoxLabel" Content="Departing From:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label x:Name="ArrivalLabel" Content="Arrives At:" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="DepartureTimeLabel" Content="Depart Time:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="77"/>
+
+        <xctk:DateTimePicker x:Name="DepartTimePick" HorizontalAlignment="Left" Margin="87,49,0,0" VerticalAlignment="Top" Height="26" Width="222"/>
+        <Button x:Name="BookFlightButton" Content="Book Selected" HorizontalAlignment="Left" Margin="654,10,0,0" VerticalAlignment="Top" Width="128" Height="196" Click="BookFlightButton_Click"/>
+        <Label x:Name="ArrivalTimeLabel" Content="Depart Time:" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Width="77"/>
+        <xctk:DateTimePicker x:Name="ArriveTimePick" HorizontalAlignment="Left" Margin="392,49,0,0" VerticalAlignment="Top" Height="26" Width="222"/>
 
     </Grid>
 </Window>
