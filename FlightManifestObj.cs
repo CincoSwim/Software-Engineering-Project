@@ -18,7 +18,7 @@ namespace Software_Engineering_Project
         public DateTime departTime { get; set; }
         public DateTime arrivalTime { get; set; }
         public Planes planeAssigned { get; set; }
-        public int ticketPrice { get; set; }
+        public double ticketPrice { get; set; }
         public int pointReward { get; set; }
         public List<UserAccountObj> bookedUsers { get; set; } //I think this may have to be ints with the unique ID of the users. 
         public List<int> userPaymentType { get; set; }
