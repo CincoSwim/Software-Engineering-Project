@@ -10,7 +10,7 @@ namespace Software_Engineering_Project
 {   [Serializable]
     public class FlightManifestObj
     {
-        public int flightID { get; set; }
+        public string flightID { get; set; }
         public string originCode { get; set; }
         public string layoverCodeA { get; set; }
         public string layoverCodeB { get; set; }
@@ -20,8 +20,8 @@ namespace Software_Engineering_Project
         public Planes planeAssigned { get; set; }
         public int ticketPrice { get; set; }
         public int pointReward { get; set; }
-        public List<UserAccountObj> bookedUsers { get; set; } //I think this may have to be ints with the unique ID of the users. 
-        public List<int> userPaymentType { get; set; }
+        public List<UserAccountObj> bookedUsers { get; set; } = new List<UserAccountObj>(); //I think this may have to be ints with the unique ID of the users. 
+        
 
         //Recieve Departure Time for Each Plane. 
         //Uses departTime from Flight ManifestObj

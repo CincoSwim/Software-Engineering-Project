@@ -59,8 +59,9 @@ namespace Software_Engineering_Project
                 else
                 {
                     //do yes stuff
-                    App.LoggedInUser.upcomingFlights.Add(selected.flightID.ToString());
+                   //this line might be causing the dual addition //App.LoggedInUser.upcomingFlights.Add(selected.flightID.ToString());
                     App.UserAccountDict[App.LoggedInUser.uniqueID].upcomingFlights.Add(selected.flightID.ToString());
+                    App.FlightPlanDict[selected.flightID].bookedUsers.Add(App.UserAccountDict[App.LoggedInUser.uniqueID]);
                     if(App.LoggedInUser.balance > selected.ticketPrice)
                     {
                         if((MessageBox.Show("Would you like to use your Points? \n Flight Price: " + selected.ticketPrice +
@@ -71,6 +72,8 @@ namespace Software_Engineering_Project
                             newTransact.FlightUID = selected.flightID.ToString();
                             newTransact.UserUID = App.LoggedInUser.uniqueID;
                             newTransact.transactionAmt = selected.ticketPrice;
+                            App.TransactionHist.Add(newTransact);
+
                         }
                         else
                         {
@@ -79,6 +82,7 @@ namespace Software_Engineering_Project
                             newTransact.FlightUID = selected.flightID.ToString();
                             newTransact.UserUID = App.LoggedInUser.uniqueID;
                             newTransact.transactionAmt = 0;
+                            App.TransactionHist.Add(newTransact);
 
                             App.LoggedInUser.balance = App.LoggedInUser.balance - selected.ticketPrice;
                             App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - selected.ticketPrice;
@@ -92,6 +96,7 @@ namespace Software_Engineering_Project
                         newTransact.FlightUID = selected.flightID.ToString();
                         newTransact.UserUID = App.LoggedInUser.uniqueID;
                         newTransact.transactionAmt = selected.ticketPrice;
+                        App.TransactionHist.Add(newTransact);
                     }
                 }
             }
