@@ -50,7 +50,11 @@ namespace Software_Engineering_Project
         }
 
         private void FinalizeWindowBtn_Click(object sender, RoutedEventArgs e)
-        {
+        {   if(PlaneTypeBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a plane!", "Alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             FlightManifestObj selected = (FlightManifestObj)ApprovalQueueGrid.SelectedItem;
             selected.planeAssigned.planeModel = PlaneTypeBox.SelectedValue.ToString();
             selected.planeAssigned.numOfSeats = selected.planeAssigned.getNumOfSeats();
@@ -71,7 +75,9 @@ namespace Software_Engineering_Project
         }
 
         private void CancelFlightBtn_Click(object sender, RoutedEventArgs e)
-        { FlightManifestObj selected = (FlightManifestObj)PostedFlightsGrid.SelectedItem;
+        { 
+            
+            FlightManifestObj selected = (FlightManifestObj)PostedFlightsGrid.SelectedItem;
             foreach(var user in App.UserAccountDict)
             {
                 if (user.Value.upcomingFlights.Contains(selected.flightID))

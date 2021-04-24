@@ -8,8 +8,28 @@
         mc:Ignorable="d"
         Title="Flight Assist - Account Settings" Height="640.431" Width="1063.208">
     <Grid>
-        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False"/>
-        <DataGrid x:Name="CanceledFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622" IsReadOnly="True" CanUserAddRows="False"/>
+        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
+                <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+                <DataGridTextColumn Header="Layover #1" Binding="{Binding layoverCodeA}" />
+                <DataGridTextColumn Header="Layover #2" Binding="{Binding layoverCodeB}" />
+                <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
+                <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
+                <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="CanceledFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
+                <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+                <DataGridTextColumn Header="Layover #1" Binding="{Binding layoverCodeA}" />
+                <DataGridTextColumn Header="Layover #2" Binding="{Binding layoverCodeB}" />
+                <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
+                <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
+                <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Label x:Name="PreviousFlightsLabel" Content="Previous Flights" HorizontalAlignment="Left" Margin="423,22,0,0" VerticalAlignment="Top" Width="622"/>
         <Label x:Name="CanceledFlightsLabel" Content="Canceled Flights" HorizontalAlignment="Left" Margin="423,296,0,0" VerticalAlignment="Top" Width="622"/>
         <GridSplitter HorizontalAlignment="Left" Height="589" Margin="397,10,0,0" VerticalAlignment="Top" Width="3" Background="#FFA2A2A2"/>

@@ -33,6 +33,13 @@ namespace Software_Engineering_Project
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
             gridList.AddRange(App.FlightPlanDict.Values);
+            foreach(var flight in gridList)
+            {
+                if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID))
+                {
+                    gridList.Remove(flight);
+                }
+            }
             return gridList;
         }
         void FlightSearch_Closed(object sender, EventArgs e)
@@ -46,12 +53,17 @@ namespace Software_Engineering_Project
             {
                 MessageBox.Show("Please select an item.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            
             else
             {   FlightManifestObj selected = (FlightManifestObj)FoundFlightsGrid.SelectedItem;
                 if(selected.bookedUsers.Count >= selected.planeAssigned.numOfSeats)
                 {
                     MessageBox.Show("There are no seats remaining for this flight", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
+                }
+                if (App.LoggedInUser.upcomingFlights.Contains(selected.flightID))
+                {
+                    return; //already booked
                 }
                 //Confirm, then book the flight
                 if (MessageBox.Show("Are you sure you want to book the following flight? \n Flight ID: " + selected.flightID +
