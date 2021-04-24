@@ -35,7 +35,7 @@ namespace Software_Engineering_Project
 
         }
 
-        internal void Update_Flights()
+        internal static void Update_Flights()
         {
             foreach (var entry in App.FlightPlanDict)
             {
@@ -49,6 +49,7 @@ namespace Software_Engineering_Project
                         {
                             user.Value.takenFlights.Add(entry.Key);//add to taken flights
                             user.Value.upcomingFlights.Remove(entry.Key);//remove from upcoming
+                            user.Value.balance += entry.Value.pointReward;
                             //if the flight was canceled, it stays in canceled
                         }
                     }
@@ -165,13 +166,28 @@ namespace Software_Engineering_Project
 
             double miles = 0;
             double minMiles = 0;
-            
+            TimeSpan redEyeStart = new TimeSpan(0, 0, 0);
+            TimeSpan redEyeEnd = new TimeSpan(5, 0, 0);
+            TimeSpan offPkStart = new TimeSpan(8, 0, 0);
+            TimeSpan offPkEnd = new TimeSpan(19, 0, 0);
+
             //no layovers
             if (flightGraph[begin, end] != 0)
             {
                 miles = flightGraph[begin, end];
-                flightPlan.ticketPrice = 0.15 * miles;
+                flightPlan.ticketPrice = 50 + (0.12 * miles);
                 flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+               
+                if(flightPlan.departTime.TimeOfDay> redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
+                {
+                    flightPlan.ticketPrice = 0.8 * flightPlan.ticketPrice;
+                    flightPlan.pointReward = 0.8 * flightPlan.pointReward;
+                }
+                else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
+                {
+                    flightPlan.ticketPrice = 0.9 * flightPlan.ticketPrice;
+                    flightPlan.pointReward = 0.9 * flightPlan.ticketPrice;
+                }
                 return flightPlan;
             } 
             //will go through every possible path and save the shortest one
@@ -188,9 +204,11 @@ namespace Software_Engineering_Project
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
-                                flightPlan.ticketPrice = 0.15 * miles;
+                                flightPlan.ticketPrice = (0.15 * miles) + 58;
                                 flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                 flightPlan.layoverCodeA = intToCode(i);
+
+
                             }
                         }
                         //2 layovers
@@ -206,7 +224,7 @@ namespace Software_Engineering_Project
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
-                                            flightPlan.ticketPrice = 0.15 * miles;
+                                            flightPlan.ticketPrice = (0.15 * miles) + 66;
                                             flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
@@ -217,6 +235,16 @@ namespace Software_Engineering_Project
                         }
                     }
                 }
+            }
+            if (flightPlan.departTime.TimeOfDay > redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
+            {
+                flightPlan.ticketPrice = 0.8 * flightPlan.ticketPrice;
+                flightPlan.pointReward = 0.8 * flightPlan.pointReward;
+            }
+            else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
+            {
+                flightPlan.ticketPrice = 0.9 * flightPlan.ticketPrice;
+                flightPlan.pointReward = 0.9 * flightPlan.ticketPrice;
             }
             return flightPlan;
         }

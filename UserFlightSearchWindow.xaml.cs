@@ -103,7 +103,7 @@ namespace Software_Engineering_Project
                             newTransact.transactionAmt = 0;
                             App.TransactionHist.Add(newTransact);
 
-                            App.LoggedInUser.balance = App.LoggedInUser.balance - selected.ticketPrice;
+                            //App.LoggedInUser.balance = App.LoggedInUser.balance - selected.ticketPrice;
                             App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - selected.ticketPrice;
 
                         }

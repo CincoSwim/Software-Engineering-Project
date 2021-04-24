@@ -26,12 +26,13 @@ namespace Software_Engineering_Project
         {
             InitializeComponent();
             FileIOLoading.ReadAlltoMem();
+            App.Update_Flights();
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(5);
 
             var timer = new System.Threading.Timer((e) =>
             {
-                //Method();
+                App.Update_Flights();
             }, null, startTimeSpan, periodTimeSpan);
         }
 

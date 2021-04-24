@@ -85,5 +85,20 @@ namespace Software_Engineering_Project
             userAccountDetailsWindow.Show();
             this.Hide();
         }
+
+        private void CancelFlightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(UpcomingFlightsGrid.SelectedItem == null)
+            {
+                MessageBox.Show("You must select a flight to cancel.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            FlightManifestObj selected = (FlightManifestObj)UpcomingFlightsGrid.SelectedItem;
+            App.LoggedInUser.canceledFlights.Add(selected.flightID);
+            App.LoggedInUser.upcomingFlights.Remove(selected.flightID);
+            App.LoggedInUser.balance += selected.pointReward * 10;
+            App.FlightPlanDict[selected.flightID].bookedUsers.Remove(App.LoggedInUser);
+            MessageBox.Show("Flight Canceled!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
