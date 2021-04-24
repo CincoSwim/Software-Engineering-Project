@@ -91,6 +91,18 @@ namespace Software_Engineering_Project
             this.Hide();
         }
 
-       
+        private void FlightManager_Click(object sender, RoutedEventArgs e)
+        {
+            FlightManagerWindow flightManager = new FlightManagerWindow(this);
+            flightManager.Show();
+            this.Hide();
+        }
+
+        private void Accountant_Click(object sender, RoutedEventArgs e)
+        {
+            AccountantWindow accountantWindow = new AccountantWindow(this);
+            accountantWindow.Show();
+            this.Hide();
+        }
     }
 }
