@@ -64,17 +64,22 @@ namespace Software_Engineering_Project
                 {
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " Logged In Successfully");
                     UserLandingWindow landingWindow = new UserLandingWindow(this);
+                    pwdBox.Text = "";
                     landingWindow.Show();
                     this.Hide();
                 }
                 else
                 {
+                    MessageBox.Show("Failed to Log in\nUserID or Password is incorrect", "Error");
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " did not log in - PWD hash did not match.");
+                    pwdBox.Text = "";
                 }
             }
             else
             {
+                MessageBox.Show("Failed to Log in\nUser with this ID does not exist. Please double check your ID", "Error");
                 Console.WriteLine("User not found with UID " + usrBox.Text);
+                pwdBox.Text = "";
             }
         }
 

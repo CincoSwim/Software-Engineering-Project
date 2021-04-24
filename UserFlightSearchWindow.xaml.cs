@@ -71,7 +71,9 @@ namespace Software_Engineering_Project
                             TransactionObj newTransact = new TransactionObj();
                             newTransact.FlightUID = selected.flightID.ToString();
                             newTransact.UserUID = App.LoggedInUser.uniqueID;
-                            newTransact.transactionAmt = (float)selected.ticketPrice;
+
+                            newTransact.transactionAmt = selected.ticketPrice;
+
                             App.TransactionHist.Add(newTransact);
 
                         }
@@ -95,7 +97,9 @@ namespace Software_Engineering_Project
                         TransactionObj newTransact = new TransactionObj();
                         newTransact.FlightUID = selected.flightID.ToString();
                         newTransact.UserUID = App.LoggedInUser.uniqueID;
-                        newTransact.transactionAmt = (float)selected.ticketPrice;
+
+                        newTransact.transactionAmt = selected.ticketPrice;
+
                         App.TransactionHist.Add(newTransact);
                     }
                 }

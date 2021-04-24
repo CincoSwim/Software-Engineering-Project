@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace Software_Engineering_Project
 {
@@ -32,18 +34,15 @@ namespace Software_Engineering_Project
             PointsBalanceLabel.Content = App.LoggedInUser.balance.ToString();
             uidLabel.Content = App.LoggedInUser.uniqueID;
 
-            firstNameTextBox.Text = App.LoggedInUser.firstName;
-            lastNameTextBox.Text = App.LoggedInUser.lastName;
-            emailTextBox.Text = App.LoggedInUser.emailAddress;
-            ageTextBox.Text = App.LoggedInUser.age.ToString();
-            phoneTextBox.Text = App.LoggedInUser.phoneNumber.ToString();
-            addressTextBox.Text = App.LoggedInUser.address;
-            cityTextBox.Text = App.LoggedInUser.city;
-            USStateBox.SelectedItem = App.LoggedInUser.state;
-            CCTextBox.Text = App.LoggedInUser.creditCardNumber.ToString();
-                        
-            //Contents of UserAcctObj laid bare
-
+            firstNameTextBox.Text = App.LoggedInUser.firstName.Trim();
+            lastNameTextBox.Text = App.LoggedInUser.lastName.Trim();
+            emailTextBox.Text = App.LoggedInUser.emailAddress.Trim();
+            ageTextBox.Text = App.LoggedInUser.age.ToString().Trim(); ;
+            addressTextBox.Text = App.LoggedInUser.address.Trim();
+            cityTextBox.Text = App.LoggedInUser.city.Trim();
+            phoneTextBox.Text = App.LoggedInUser.phoneNumber.ToString().Trim();
+            USStateBox.Text = App.LoggedInUser.state.Trim();
+            CCTextBox.Text = App.LoggedInUser.creditCardNumber.ToString().Trim();
         }
 
         private List<FlightManifestObj> LoadCanceledFlights()
@@ -79,49 +78,59 @@ namespace Software_Engineering_Project
 
         private void EditFieldsBtn_Click(object sender, RoutedEventArgs e)
         {   //fix to reference user object in Dictionary
-            if (firstNameTextBox.Text != "") 
-            {
-                App.LoggedInUser.firstName = firstNameTextBox.Text;
-                App.UserAccountDict[App.LoggedInUser.uniqueID].firstName = firstNameTextBox.Text;
-            }
-            if (lastNameTextBox.Text != "")
-            {
-                App.LoggedInUser.lastName = lastNameTextBox.Text;
-                App.UserAccountDict[App.LoggedInUser.uniqueID].lastName = lastNameTextBox.Text;
-            }
-            if (emailTextBox.Text != "")
-            {
-                App.LoggedInUser.emailAddress = emailTextBox.Text;
-                App.UserAccountDict[App.LoggedInUser.uniqueID].emailAddress = emailTextBox.Text;
-            }
-            if (phoneTextBox.Text != "")
-            {
-                App.LoggedInUser.phoneNumber = Int64.Parse(firstNameTextBox.Text);
-                App.UserAccountDict[App.LoggedInUser.uniqueID].phoneNumber = Int64.Parse(firstNameTextBox.Text);
 
-            }
-            if (addressTextBox.Text != "")
+            //Do input checks HERE*****
+            if (firstNameTextBox.Text.Trim() == "" || lastNameTextBox.Text.Trim() == "")
             {
-                App.LoggedInUser.address = addressTextBox.Text;
-                App.UserAccountDict[App.LoggedInUser.uniqueID].address = addressTextBox.Text;
+                MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            if (cityTextBox.Text != "")
+            else if (ageTextBox.Text.Trim() == "")
             {
-                App.LoggedInUser.city = cityTextBox.Text;
-                App.UserAccountDict[App.LoggedInUser.uniqueID].city = cityTextBox.Text;
+                MessageBox.Show("Please enter your age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            if (USStateBox.SelectedItem != null)
+            else if (addressTextBox.Text.Trim() == "" || cityTextBox.Text.Trim() == "" || USStateBox.SelectedItem == null)
             {
-                App.LoggedInUser.state = USStateBox.SelectedValue.ToString();
-                App.UserAccountDict[App.LoggedInUser.uniqueID].state = USStateBox.SelectedValue.ToString();
+                MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            if (CCTextBox.Text != "")
+            else if (phoneTextBox.Text.Trim() == "")
             {
-                App.LoggedInUser.creditCardNumber = Int64.Parse(CCTextBox.Text);
-                App.UserAccountDict[App.LoggedInUser.uniqueID].creditCardNumber = Int64.Parse(CCTextBox.Text);
+                MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else if (CCTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter a credit card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
-            MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            App.LoggedInUser.setFirstName(firstNameTextBox.Text.Trim());
+            App.LoggedInUser.setLastName(lastNameTextBox.Text.Trim());
+            App.LoggedInUser.setEmailAddress(emailTextBox.Text.Trim());
+            App.LoggedInUser.setAge(Int32.Parse(ageTextBox.Text.Trim()));
+            App.LoggedInUser.setAddress(addressTextBox.Text.Trim());
+            App.LoggedInUser.setCity(cityTextBox.Text.Trim());
+            App.LoggedInUser.setPhoneNum(Int64.Parse(phoneTextBox.Text.Trim()));
+            App.LoggedInUser.setState(USStateBox.SelectedValue.ToString().Trim());
+            App.LoggedInUser.setCCNumber(Int64.Parse(CCTextBox.Text.Trim()));
+
+            App.UserAccountDict.Remove(App.LoggedInUser.getUniqueID());
+            App.UserAccountDict.Add(App.LoggedInUser.getUniqueID(), App.LoggedInUser);
+
+            MessageBox.Show("Account Updated", "Success", MessageBoxButton.OK);
+            m_parent.WelcomeMessageLabel.Content = $"Welcome, {App.LoggedInUser.firstName} {App.LoggedInUser.lastName}!";
+            m_parent.Show();
+            this.Close();
+
+
+            //MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void PreviousFlightsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

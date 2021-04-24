@@ -21,7 +21,7 @@ namespace Software_Engineering_Project
     public partial class UserLandingWindow : Window
     {
         private MainWindow m_parent;
-        public string userWelcomeStr { get; set; } = "Welcome, " + App.LoggedInUser.firstName + " " + App.LoggedInUser.lastName + "!";
+        public string userWelcomeStr { get; set; } = $"Welcome, {App.LoggedInUser.firstName} {App.LoggedInUser.lastName}!";
         public UserLandingWindow(MainWindow main)
         {
             InitializeComponent();
@@ -79,5 +79,11 @@ namespace Software_Engineering_Project
             App.LoggedInUser = null;
         }
 
+        private void AccountSettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserAccountDetailsWindow userAccountDetailsWindow = new UserAccountDetailsWindow(this);
+            userAccountDetailsWindow.Show();
+            this.Hide();
+        }
     }
 }
