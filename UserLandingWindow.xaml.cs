@@ -28,7 +28,7 @@ namespace Software_Engineering_Project
             this.Closed += new EventHandler(UserLanding_Closed);
             m_parent = main;
             //UpcomingFlightsGrid.ItemsSource = LoadUpcomingFlights();
-            UpcomingFlightsGrid.ItemsSource = LoadUsersTest();
+            UpcomingFlightsGrid.ItemsSource = LoadUpcomingFlights();
             WelcomeMessageLabel.Content = userWelcomeStr;
             
 

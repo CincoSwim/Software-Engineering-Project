@@ -64,7 +64,9 @@ namespace Software_Engineering_Project
         }
         private void populateFinalizedFlights()
         {
-            PostedFlightsGrid.ItemsSource = App.FlightPlanDict;
+            List<FlightManifestObj> flightList = new List<FlightManifestObj>();
+            flightList.AddRange(App.FlightPlanDict.Values);
+            PostedFlightsGrid.ItemsSource = flightList;
             PostedFlightsGrid.Items.Refresh();
         }
 

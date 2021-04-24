@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="Flight Assist - Account Settings" Height="640.431" Width="1063.208">
     <Grid>
-        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged"/>
-        <DataGrid x:Name="CanceledFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622"/>
+        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False"/>
+        <DataGrid x:Name="CanceledFlightsGrid" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622" IsReadOnly="True" CanUserAddRows="False"/>
         <Label x:Name="PreviousFlightsLabel" Content="Previous Flights" HorizontalAlignment="Left" Margin="423,22,0,0" VerticalAlignment="Top" Width="622"/>
         <Label x:Name="CanceledFlightsLabel" Content="Canceled Flights" HorizontalAlignment="Left" Margin="423,296,0,0" VerticalAlignment="Top" Width="622"/>
         <GridSplitter HorizontalAlignment="Left" Height="589" Margin="397,10,0,0" VerticalAlignment="Top" Width="3" Background="#FFA2A2A2"/>

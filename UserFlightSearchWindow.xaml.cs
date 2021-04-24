@@ -48,6 +48,11 @@ namespace Software_Engineering_Project
             }
             else
             {   FlightManifestObj selected = (FlightManifestObj)FoundFlightsGrid.SelectedItem;
+                if(selected.bookedUsers.Count >= selected.planeAssigned.numOfSeats)
+                {
+                    MessageBox.Show("There are no seats remaining for this flight", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 //Confirm, then book the flight
                 if (MessageBox.Show("Are you sure you want to book the following flight? \n Flight ID: " + selected.flightID +
                      "\n Departs From: " + selected.originCode + "\n Departure Time: " + selected.departTime.ToLongDateString(),

@@ -377,11 +377,12 @@ namespace Software_Engineering_Project
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
         {
             FlightManifestObj selectedFlightManifestObj = (FlightManifestObj) ApprovalQueueGrid.SelectedItem;
-            for(int i = 0; i < App.MarketMangerQueue.Count; i++) { 
+            /*for(int i = 0; i < App.MarketMangerQueue.Count; i++) { 
                 if (selectedFlightManifestObj.flightID.Equals(App.MarketMangerQueue.ElementAt(i).flightID)){
                     App.MarketMangerQueue.RemoveAt(i);
                 }
-            }
+            }*/
+            App.MarketMangerQueue.Remove(selectedFlightManifestObj);
             
             populateDataGrid();
         }
