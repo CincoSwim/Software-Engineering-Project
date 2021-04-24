@@ -33,27 +33,27 @@ namespace Software_Engineering_Project
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
         {   
             //Do input checks HERE*****
-            if(passwordInput.Text == "" || passwordInput.Text != passwordConfirm.Text)
+            if(passwordInput.Text.Trim() == "" || passwordInput.Text.Trim() != passwordConfirm.Text.Trim())
             {
                 MessageBox.Show("Please ensure a password is entered, and that both passwords match.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(FirstName.Text =="" || LastName.Text == "")
+            }else if(FirstName.Text.Trim() == "" || LastName.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(AgeInput.Text == "")
+            }else if(AgeInput.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter your Age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(address.Text == "" || city.Text == "" || USState.SelectedItem == null)
+            }else if(address.Text.Trim() == "" || city.Text.Trim() == "" || USState.SelectedItem == null)
             {
                 MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(phone_number.Text == "")
+            }else if(phone_number.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(ccNumber.Text == "")
+            }else if(ccNumber.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter a Credit Card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -62,25 +62,24 @@ namespace Software_Engineering_Project
             
 
             UserAccountObj newAcct = new UserAccountObj();
-            newAcct.setFirstName(FirstName.Text);
-            newAcct.setLastName(LastName.Text);
-            newAcct.setEmailAddress(emailAddress.Text);
-            newAcct.setAge(Int32.Parse(AgeInput.Text));
-            newAcct.setAddress(address.Text);
-            newAcct.setCity(city.Text);
-            newAcct.setPhoneNum(Int64.Parse(phone_number.Text));
-            newAcct.setState(USState.SelectedValue.ToString());
+            newAcct.setFirstName(FirstName.Text.Trim());
+            newAcct.setLastName(LastName.Text.Trim());
+            newAcct.setEmailAddress(emailAddress.Text.Trim());
+            newAcct.setAge(Int32.Parse(AgeInput.Text.Trim()));
+            newAcct.setAddress(address.Text.Trim());
+            newAcct.setCity(city.Text.Trim());
+            newAcct.setPhoneNum(Int64.Parse(phone_number.Text.Trim()));
+            newAcct.setState(USState.SelectedValue.ToString().Trim());
 
             using (SHA512 sha512hash = SHA512.Create())
             {
-                byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(passwordInput.Text); //hash can only be done on string of bytes
+                byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(passwordInput.Text.Trim()); //hash can only be done on string of bytes
                 byte[] hashBytes = sha512hash.ComputeHash(sourcePwdBytes);
                 string hashedPwd = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
                 newAcct.setPwdHash(hashedPwd);
             }
 
-            newAcct.setCCNumber(Int64.Parse(ccNumber.Text));
-
+            newAcct.setCCNumber(Int64.Parse(ccNumber.Text.Trim()));
 
 
 

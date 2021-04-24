@@ -45,7 +45,7 @@ namespace Software_Engineering_Project
         }
 
 
-        int getTotalSales() {
+        double getTotalSales() {
             return ticketPrice * bookedUsers.Count;
         }
 
