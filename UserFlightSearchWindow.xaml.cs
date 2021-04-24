@@ -108,7 +108,7 @@ namespace Software_Engineering_Project
 
             foreach (var flight in App.FlightPlanDict)
             {
-                if(flight.Value.originCode == DepartureSelectionBox.SelectedValue.ToString())
+                if(flight.Value.originCode == DepartureSelectionBox.SelectedValue.ToString() && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
                 {
                     if(ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.layoverCodeA || ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.layoverCodeB || ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.destinationCode)
                     {
