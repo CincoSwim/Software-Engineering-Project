@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Software_Engineering_Project
-{
+{   [Serializable]
     class TransactionObj
     {
-        string UserUID { get; set; }
-        string FlightUID { get; set; }
-        float transactionAmt { get; set; }
+        public string UserUID { get; set; }
+        public string FlightUID { get; set; }
+        public float transactionAmt { get; set; }
     }
 }

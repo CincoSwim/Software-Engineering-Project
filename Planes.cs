@@ -11,8 +11,8 @@ namespace Software_Engineering_Project
 {
     public class Planes
     {
-        string planeModel, uniquePlaneRegister;
-        int numOfSeats;
+        public string planeModel, uniquePlaneRegister;
+        public int numOfSeats;
 
         int getNumOfSeats() { //could this be done with a switch? - p
 

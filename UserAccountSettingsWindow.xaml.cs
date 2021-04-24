@@ -78,15 +78,48 @@ namespace Software_Engineering_Project
         }
 
         private void EditFieldsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (firstNameTextBox.Text != "") App.LoggedInUser.firstName = firstNameTextBox.Text;
-            if (lastNameTextBox.Text != "") App.LoggedInUser.lastName = lastNameTextBox.Text;
-            if (emailTextBox.Text != "") App.LoggedInUser.emailAddress = emailTextBox.Text;
-            if (phoneTextBox.Text != "") App.LoggedInUser.phoneNumber = Int64.Parse(firstNameTextBox.Text);
-            if (addressTextBox.Text != "") App.LoggedInUser.address = addressTextBox.Text;
-            if (cityTextBox.Text != "") App.LoggedInUser.city = cityTextBox.Text;
-            if (USStateBox.SelectedItem != null) App.LoggedInUser.state = USStateBox.Text;
-            if (CCTextBox.Text != "") App.LoggedInUser.creditCardNumber = Int64.Parse(CCTextBox.Text);
+        {   //fix to reference user object in Dictionary
+            if (firstNameTextBox.Text != "") 
+            {
+                App.LoggedInUser.firstName = firstNameTextBox.Text;
+                App.UserAccountDict[App.LoggedInUser.uniqueID].firstName = firstNameTextBox.Text;
+            }
+            if (lastNameTextBox.Text != "")
+            {
+                App.LoggedInUser.lastName = lastNameTextBox.Text;
+                App.UserAccountDict[App.LoggedInUser.uniqueID].lastName = lastNameTextBox.Text;
+            }
+            if (emailTextBox.Text != "")
+            {
+                App.LoggedInUser.emailAddress = emailTextBox.Text;
+                App.UserAccountDict[App.LoggedInUser.uniqueID].emailAddress = emailTextBox.Text;
+            }
+            if (phoneTextBox.Text != "")
+            {
+                App.LoggedInUser.phoneNumber = Int64.Parse(firstNameTextBox.Text);
+                App.UserAccountDict[App.LoggedInUser.uniqueID].phoneNumber = Int64.Parse(firstNameTextBox.Text);
+
+            }
+            if (addressTextBox.Text != "")
+            {
+                App.LoggedInUser.address = addressTextBox.Text;
+                App.UserAccountDict[App.LoggedInUser.uniqueID].address = addressTextBox.Text;
+            }
+            if (cityTextBox.Text != "")
+            {
+                App.LoggedInUser.city = cityTextBox.Text;
+                App.UserAccountDict[App.LoggedInUser.uniqueID].city = cityTextBox.Text;
+            }
+            if (USStateBox.SelectedItem != null)
+            {
+                App.LoggedInUser.state = USStateBox.SelectedValue.ToString();
+                App.UserAccountDict[App.LoggedInUser.uniqueID].state = USStateBox.SelectedValue.ToString();
+            }
+            if (CCTextBox.Text != "")
+            {
+                App.LoggedInUser.creditCardNumber = Int64.Parse(CCTextBox.Text);
+                App.UserAccountDict[App.LoggedInUser.uniqueID].creditCardNumber = Int64.Parse(CCTextBox.Text);
+            }
 
             MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
 

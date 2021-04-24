@@ -69,7 +69,7 @@ namespace Software_Engineering_Project
             newAcct.setAddress(address.Text);
             newAcct.setCity(city.Text);
             newAcct.setPhoneNum(Int64.Parse(phone_number.Text));
-            newAcct.setState(USState.SelectedItem.ToString());
+            newAcct.setState(USState.SelectedValue.ToString());
 
             using (SHA512 sha512hash = SHA512.Create())
             {
@@ -107,7 +107,7 @@ namespace Software_Engineering_Project
                 }
             }
             Console.WriteLine("User with name " + App.UserAccountDict[foundNum].getFirstName() + " added at location " + App.UserAccountDict[foundNum].getUniqueID());
-            MessageBox.Show("Account Created!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Account Created! Your Login ID is: " + foundNum, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             m_parent.Show();
             this.Close();
         }

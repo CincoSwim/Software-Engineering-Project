@@ -79,5 +79,10 @@ namespace Software_Engineering_Project
             acctWindow.Show();
             this.Hide();
         }
+
+        private void testbtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Are you sure you want to book the following flight? \n Departure: " + "testdepart" + "\n Arrival: " + "testArrive", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        }
     }
 }
