@@ -19,9 +19,31 @@ namespace Software_Engineering_Project
     /// </summary>
     public partial class MarketingManagerWindow : Window
     {
-        public MarketingManagerWindow()
+        private MainWindow m_parent;
+
+        public MarketingManagerWindow(MainWindow main)
         {
             InitializeComponent();
+            m_parent = main;
+            this.DataContext = this;
+            this.Closed += new EventHandler(MarketManager_Closed);
+            populateLoadEngineerProposaedFlights();
+        }
+        void MarketManager_Closed(object sender, EventArgs e)
+        {
+            m_parent.Show();
+            App.LoggedInUser = null;
+        }
+        //User wants to leave, and sign in as somebody else
+        private void Logout_isClicked(object sender, RoutedEventArgs e)
+        {
+            m_parent.Show();
+            this.Close();
+        }  
+        private void populateLoadEngineerProposaedFlights()
+        {
+            ApprovalQueueGrid.ItemsSource = App.MarketMangerQueue;
+            ApprovalQueueGrid.Items.Refresh();
         }
 
         private void FinalizeWindowBtn_Click(object sender, RoutedEventArgs e)

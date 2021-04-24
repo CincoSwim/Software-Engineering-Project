@@ -8,13 +8,13 @@
         mc:Ignorable="d"
         Title="Load Engineer Workbench" Height="450" Width="752.695">
     <Grid>
-      <DataGrid x:Name="ApprovalQueueGrid"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"  AlternatingRowBackground="LightBlue">
+      <DataGrid x:Name="ApprovalQueueGrid" CanUserAddRows="false" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"  AlternatingRowBackground="LightBlue">
         <DataGrid.Columns>
+          <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
           <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
           <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
           <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
           <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
-          <DataGridCheckBoxColumn Header="Cancel Flight?" Width="100"  />
         </DataGrid.Columns>
       </DataGrid>
       <!--Depart Cities, Needs Border To Make Red When Not Selected!-->
