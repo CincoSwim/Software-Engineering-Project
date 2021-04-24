@@ -10,7 +10,7 @@ namespace Software_Engineering_Project
 {   [Serializable]
     public class FlightManifestObj
     {
-        public int flightID { get; set; }
+        public string flightID { get; set; }
         public string originCode { get; set; }
         public string layoverCodeA { get; set; }
         public string layoverCodeB { get; set; }

@@ -41,6 +41,12 @@ namespace Software_Engineering_Project
             loadEngineerWindow.Show();
             this.Hide();
         }
+        private void MarketManager_Click(object sender, RoutedEventArgs e)
+        {
+            MarketingManagerWindow marketingManagerWindow = new MarketingManagerWindow(this);
+            marketingManagerWindow.Show();
+            this.Hide();
+        }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -70,7 +76,6 @@ namespace Software_Engineering_Project
             {
                 Console.WriteLine("User not found with UID " + usrBox.Text);
             }
-
         }
 
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)

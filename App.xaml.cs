@@ -14,7 +14,7 @@ namespace Software_Engineering_Project
     public partial class App : Application
 
     {
-
+        
         internal static bool hasFirstLoaded = false;
         internal static Dictionary<string, UserAccountObj> UserAccountDict { get; set; } = new Dictionary<string, UserAccountObj>();
         internal static List<FlightManifestObj> MarketMangerQueue { get; set; } = new List<FlightManifestObj>();
@@ -22,8 +22,6 @@ namespace Software_Engineering_Project
 
         internal static Dictionary<string, FlightManifestObj> FlightHistoryDictionary = new Dictionary<string, FlightManifestObj>();
         internal static Dictionary<string, FlightManifestObj> FlightPlanDict { get; set; } = new Dictionary<string, FlightManifestObj>();
-
-
         internal static UserAccountObj LoggedInUser = new UserAccountObj();
 
 
@@ -36,6 +34,7 @@ namespace Software_Engineering_Project
             hasFirstLoaded = false;
 
         }
+
         internal void Update_Flights()
         {
             foreach (var entry in App.FlightPlanDict)

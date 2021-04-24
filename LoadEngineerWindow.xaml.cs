@@ -31,12 +31,6 @@ namespace Software_Engineering_Project
             this.DataContext = this;
             this.Closed += new EventHandler(LoadEng_Closed);
             populateDataGrid();
-            
-        }
-        public ObservableCollection<FlightManifestObj> flightManifestObj
-        {
-            get { return flightManifestObj; }
-            set { flightManifestObj = value; }
         }
 
         void LoadEng_Closed(object sender, EventArgs e)
@@ -350,36 +344,49 @@ namespace Software_Engineering_Project
             
             if (parsedDepartDate.CompareTo( parsedArrivalDate) < 0)
             {
+                
+                Random generator = new Random();
+                string genNum;
+                genNum = generator.Next(0, 1000000).ToString("000000");
+                for(int i = 0; i < App.MarketMangerQueue.Count; i++)
+                {
+                    if (genNum.Equals(App.MarketMangerQueue.ElementAt(i).flightID))
+                    {
+                        genNum = generator.Next(0, 1000000).ToString("000000");
+                        i = 0;
+                    }
+                }
+                proposedFlightManifestObj.flightID = genNum;
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
                 proposedFlightManifestObj.originCode = departureLocation;
                 proposedFlightManifestObj.destinationCode = arrivalLocation;
-                //proposedFlightManifestObj = convertLocationsToInt(departureLocation, arrivalLocation, proposedFlightManifestObj);
 
                 App.MarketMangerQueue.Add(proposedFlightManifestObj);
                 
-
+                populateDataGrid();
                 Console.WriteLine(App.MarketMangerQueue.Count);
             }
         }
 
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < ApprovalQueueGrid.Items.Count; i++)
-            {
-                var myCheckBox = ApprovalQueueGrid.Columns[4].GetCellContent(ApprovalQueueGrid.Items[i]) as CheckBox;
-                if (myCheckBox.IsChecked == true)
-                {
+            FlightManifestObj selectedFlightManifestObj = (FlightManifestObj) ApprovalQueueGrid.SelectedItem;
+            for(int i = 0; i < App.MarketMangerQueue.Count; i++) { 
+                if (selectedFlightManifestObj.flightID.Equals(App.MarketMangerQueue.ElementAt(i).flightID)){
                     App.MarketMangerQueue.RemoveAt(i);
                 }
             }
-            ApprovalQueueGrid.ItemsSource = null;
+            
             populateDataGrid();
         }
+
         private void populateDataGrid()
         {
             ApprovalQueueGrid.ItemsSource = App.MarketMangerQueue;
+            ApprovalQueueGrid.Items.Refresh();
         }
+
         private FlightManifestObj convertLocationsToInt(string departureLocation, string arrivalLocation, FlightManifestObj flightManifestObj)
         {
             int departureNumber, arrivalNumber;
