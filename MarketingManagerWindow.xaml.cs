@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace Software_Engineering_Project
 {
@@ -28,6 +29,7 @@ namespace Software_Engineering_Project
             this.DataContext = this;
             this.Closed += new EventHandler(MarketManager_Closed);
             populateLoadEngineerProposaedFlights();
+            
         }
         void MarketManager_Closed(object sender, EventArgs e)
         {
@@ -48,7 +50,8 @@ namespace Software_Engineering_Project
 
         private void FinalizeWindowBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            
         }
     }
 }

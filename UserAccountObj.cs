@@ -113,7 +113,7 @@ namespace Software_Engineering_Project
         {
             uniqueID = UID;
         }
-        public int getBalance()
+        public double getBalance()
         {
             return balance;
         }
