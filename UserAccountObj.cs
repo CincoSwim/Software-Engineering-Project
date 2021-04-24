@@ -19,7 +19,7 @@ namespace Software_Engineering_Project
         public long creditCardNumber { get; set; }
         public string uniqueID { get; set; }
         public int age { get; set; }
-        public int balance { get; set; }
+        public double balance { get; set; }
         public List<string> upcomingFlights { get; set; } = new List<string>();
         public List<string> takenFlights { get; set; } = new List<string>();
         public List<string> canceledFlights { get; set; } = new List<string>();
