@@ -84,5 +84,7 @@ namespace Software_Engineering_Project
             acctWindow.Show();
             this.Hide();
         }
+
+       
     }
 }

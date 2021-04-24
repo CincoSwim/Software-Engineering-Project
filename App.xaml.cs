@@ -58,22 +58,6 @@ namespace Software_Engineering_Project
             }
         }
 
-        int nashville = 0;
-        int cleveland = 1;
-        int newYork = 2;
-        int seattle = 3;
-        int chicago = 4;
-        int austin = 5;
-        int orlando = 6;
-        int losAngeles = 7;
-        int denver = 8;
-        int minneapolis = 9;
-        int arlington = 10;
-        int atlanta = 11;
-        int toledo = 12;
-        int sacramento = 13;
-        int rapidCity = 14;
-
         internal static double[,] flightGraph = new double[15, 15]
         {//                 Nashville   Cleveland   New York    Seattle     Chicago     Austin      Orlando     Los Angeles     Denver      Minneapolis     Arlington   Atlanta     Toledo      Sacramento      Rapid City
         /*nashville*/       {0,         448.15,     764.13,     0,          409.17,     756.13,     616.11,     0,              1013.48,    695.07,         561.84,     213.87,     407.29,     0,              0},      //done
@@ -92,43 +76,121 @@ namespace Software_Engineering_Project
         /*sacramento*/      {0,         0,          0,          605.35,     0,          0,          0,          372.68,         909.26,     0,              0,          0,          0,          0,              0},      //done
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
         };
-
-        /* (REMOVE AFTER TESTING) public FlightManifestObj findShortestPath(int begin, int end)
-
+        
+        public int codeToInt(String code)
         {
-            if (begin > 14 || begin < 0) return;
-            if (end > 14 || end < 0) return;
+            switch(code)
+            {
+                case "BNA":
+                    return 0;
+                case "CLE":
+                    return 1;
+                case "LGA":
+                    return 2;
+                case "SEA":
+                    return 3;
+                case "ORD":
+                    return 4;
+                case "AUS":
+                    return 5;
+                case "MCO":
+                    return 6;
+                case "LAX":
+                    return 7;
+                case "DEN":
+                    return 8;
+                case "MSP":
+                    return 9;
+                case "DCA":
+                    return 10;
+                case "ATL":
+                    return 11;
+                case "TOL":
+                    return 12;
+                case "SMF":
+                    return 13;
+                case "RAP":
+                    return 14;
+                default:
+                    return 15;
+            }
+        }
+
+        public String intToCode(int value)
+        {
+            switch(value)
+            {
+                case 0:
+                    return "BNA";
+                case 1:
+                    return "CLE";
+                case 2:
+                    return "LGA";
+                case 3:
+                    return "SEA";
+                case 4:
+                    return "ORD";
+                case 5:
+                    return "AUS";
+                case 6:
+                    return "MCO";
+                case 7:
+                    return "LAX";
+                case 8:
+                    return "DEN";
+                case 9:
+                    return "MSP";
+                case 10:
+                    return "DCA";
+                case 11:
+                    return "ATL";
+                case 12:
+                    return "TOL";
+                case 13:
+                    return "SMF";
+                case 14:
+                    return "RAP";
+                default:
+                    return "ERR";
+            }
+        }
+
+        public FlightManifestObj findShortestPath(FlightManifestObj flightPlan)
+        {
+            int begin = codeToInt(flightPlan.originCode);
+            int end = codeToInt(flightPlan.destinationCode);
+
+            if (begin > 14 || begin < 0) return flightPlan;
+            if (end > 14 || end < 1) return flightPlan;
 
             double miles = 0;
             double minMiles = 0;
-            double price = 0;
-            int layoverOne = 15;
-            int layoverTwo = 15;
             
             //no layovers
-            if (flightGraph[begin][end] != 0)
+            if (flightGraph[begin, end] != 0)
             {
-                miles = flightGraph[begin][end];
-                price = 0.15 * miles;
-                return;
+                miles = flightGraph[begin, end];
+                flightPlan.ticketPrice = 0.15 * miles;
+                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                return flightPlan;
             } 
             //will go through every possible path and save the shortest one
             else
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    if (flightGraph[begin][i] != 0)
+                    if (flightGraph[begin, i] != 0)
                     {   
                         //1 layover
-                        if (flightGraph[i][end] != 0)
+                        if (flightGraph[i, end] != 0)
                         {
-                            miles = (flightGraph[begin][i] + flightGraph[i][end]);
+                            miles = (flightGraph[begin, i] + flightGraph[i, end]);
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
-                                double price = 0.15 * miles;
-                                layoverOne = i;
-                                layoverTwo = 15;
+                                flightPlan.ticketPrice = 0.15 * miles;
+                                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                                flightPlan.layoverCodeA = intToCode(i);
                             }
                         }
                         //2 layovers
@@ -136,17 +198,18 @@ namespace Software_Engineering_Project
                         {
                             for (int j = 0; j < 15; j++)
                             {
-                                if (flightGraph[i][j] != 0)
+                                if (flightGraph[i, j] != 0)
                                 {
-                                    if (flightGraph[j][end] != 0)
+                                    if (flightGraph[j, end] != 0)
                                     {
-                                        miles = (flightGraph[begin][i] + flightGraph[i][j] + flightGraph[j][end]);
+                                        miles = (flightGraph[begin, i] + flightGraph[i, j] + flightGraph[j, end]);
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
-                                            double price = 0.15 * miles;
-                                            layoverOne = i;
-                                            layoverTwo = j;
+                                            flightPlan.ticketPrice = 0.15 * miles;
+                                            flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                                            flightPlan.layoverCodeA = intToCode(i);
+                                            flightPlan.layoverCodeB = intToCode(j);
                                         }
                                     }
                                 }
@@ -155,40 +218,8 @@ namespace Software_Engineering_Project
                     }
                 }
             }
-            /*
-            //if path still hasn't been found, we need 2 layovers
-            //2 layovers
-            //will go through every possible path and save the shortest one
-            if (miles == 0)
-            {
-                for (int i = 0; i < 15; i++)
-                {
-                    if (flightGraph[begin][i] != 0)
-                    {
-                        for(int j = 0; j < 15; j++)
-                        {
-                            if (flightGraph[i][j] != 0)
-                            {
-                                if (flightGraph[j][end] != 0)
-                                { 
-                                    miles = (flightGraph[begin][i] + flightGraph[i][j] + flightGraph[j][end]);
-                                    if (minMiles > miles || minMiles == 0) 
-                                    {
-                                        minMiles = miles;
-                                        double price = 0.15 * miles;
-                                        layoverOne = i;
-                                        layoverTwo = j;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            
-
-            }
-        }*/
-
+            return flightPlan;
+        }
     }
 }
    

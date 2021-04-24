@@ -42,7 +42,7 @@
             <TextBox x:Name="cityTextBox" TextWrapping="Wrap"/>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="250,241,0,0" VerticalAlignment="Top" Width="122">
-            <ComboBox x:Name="USStateBox">
+            <ComboBox x:Name="USStateBox" SelectedValuePath="Content">
                 <ComboBoxItem Content="AL"></ComboBoxItem>
                 <ComboBoxItem Content="AS"></ComboBoxItem>
                 <ComboBoxItem Content="AZ"></ComboBoxItem>
