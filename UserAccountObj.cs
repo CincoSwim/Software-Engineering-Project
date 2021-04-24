@@ -105,6 +105,14 @@ namespace Software_Engineering_Project
         {
             creditCardNumber = ccNum;
         }
+        public long getCCSecurityCode()
+        {
+            return creditCardSecurityCode;
+        }
+        public void setCCSecurityCode(long ccSecCode)
+        {
+            creditCardSecurityCode = ccSecCode;
+        }
         public string getUniqueID()
         {
             return uniqueID;
@@ -113,7 +121,7 @@ namespace Software_Engineering_Project
         {
             uniqueID = UID;
         }
-        public int getBalance()
+        public double getBalance()
         {
             return balance;
         }

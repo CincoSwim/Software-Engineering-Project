@@ -10,6 +10,6 @@ namespace Software_Engineering_Project
     {
         public string UserUID { get; set; }
         public string FlightUID { get; set; }
-        public float transactionAmt { get; set; }
+        public double transactionAmt { get; set; }
     }
 }
