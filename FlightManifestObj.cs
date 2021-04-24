@@ -17,7 +17,7 @@ namespace Software_Engineering_Project
         public string destinationCode { get; set; }
         public DateTime departTime { get; set; }
         public DateTime arrivalTime { get; set; }
-        public Planes planeAssigned { get; set; }
+        public Planes planeAssigned { get; set; } = new Planes();
         public double ticketPrice { get; set; }
         public int pointReward { get; set; }
         public List<UserAccountObj> bookedUsers { get; set; } = new List<UserAccountObj>(); //I think this may have to be ints with the unique ID of the users. 

@@ -33,13 +33,13 @@
         <DataGrid x:Name="PostedFlightsGrid" Height="250" Margin="400,60,30,0" VerticalAlignment="Top"/>
         <Label x:Name="ApprovalQueueLabel_Copy" Content="Posted Flights" HorizontalAlignment="Left" Margin="400,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
         <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="95,360,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
-        <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" />
+        <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="CancelFlightBtn_Click" />
         <Button x:Name="LogoutBtn" Content="Logout" Click ="Logout_isClicked" HorizontalAlignment="Left" Margin="600,10,0,0" VerticalAlignment="Top" Width="75"/>
       
-        <Label x:Name="PlaneTypeLabel" Content="Plane Type?" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="225"/>
+        <Label x:Name="PlaneTypeLabel" Content="Plane Type:" HorizontalAlignment="Left" Margin="15,329,0,0" VerticalAlignment="Top" Width="80"/>
 
         <Border x:Name="PlaneType" BorderThickness ="1" HorizontalAlignment="Left" Margin="95,330,0,0" VerticalAlignment="Top">
-          <ComboBox x:Name="PlaneType"  Width="120">
+          <ComboBox x:Name="PlaneTypeBox"  Width="120" SelectedValuePath="Content">
             <ComboBoxItem Content="737"></ComboBoxItem>
             <ComboBoxItem Content="747"></ComboBoxItem>
             <ComboBoxItem Content="757"></ComboBoxItem>

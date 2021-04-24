@@ -12,6 +12,8 @@
         <DataGrid.Columns>
           <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
           <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+          <DataGridTextColumn Header="Layover #1" Binding="{Binding layoverCodeA}" />
+          <DataGridTextColumn Header="Layover #2" Binding="{Binding layoverCodeB}" />
           <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
           <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
           <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />

@@ -29,6 +29,7 @@ namespace Software_Engineering_Project
             this.DataContext = this;
             this.Closed += new EventHandler(MarketManager_Closed);
             populateLoadEngineerProposaedFlights();
+            populateFinalizedFlights();
             
         }
         void MarketManager_Closed(object sender, EventArgs e)
@@ -50,8 +51,38 @@ namespace Software_Engineering_Project
 
         private void FinalizeWindowBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            FlightManifestObj selected = (FlightManifestObj)ApprovalQueueGrid.SelectedItem;
+            selected.planeAssigned.planeModel = PlaneTypeBox.SelectedValue.ToString();
+            selected.planeAssigned.numOfSeats = selected.planeAssigned.getNumOfSeats();
+            App.FlightPlanDict.Add(selected.flightID, selected);
+            App.MarketMangerQueue.Remove(selected);
+
+            populateLoadEngineerProposaedFlights();
+            populateFinalizedFlights();
+
+
+        }
+        private void populateFinalizedFlights()
+        {
+            PostedFlightsGrid.ItemsSource = App.FlightPlanDict;
+            PostedFlightsGrid.Items.Refresh();
+        }
+
+        private void CancelFlightBtn_Click(object sender, RoutedEventArgs e)
+        { FlightManifestObj selected = (FlightManifestObj)PostedFlightsGrid.SelectedItem;
+            foreach(var user in App.UserAccountDict)
+            {
+                if (user.Value.upcomingFlights.Contains(selected.flightID))
+                {
+                    user.Value.balance += selected.pointReward;
+                    user.Value.canceledFlights.Add(selected.flightID);
+                    user.Value.upcomingFlights.Remove(selected.flightID);
+                }
+            }
+            App.MarketMangerQueue.Add(selected);
+            App.FlightPlanDict.Remove(selected.flightID);
+            populateFinalizedFlights();
+            populateLoadEngineerProposaedFlights();
         }
     }
 }

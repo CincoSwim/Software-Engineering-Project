@@ -362,7 +362,12 @@ namespace Software_Engineering_Project
                 proposedFlightManifestObj.originCode = departureLocation;
                 proposedFlightManifestObj.destinationCode = arrivalLocation;
 
-                App.MarketMangerQueue.Add(proposedFlightManifestObj);
+                int begin = convertLocationsToInt(proposedFlightManifestObj.originCode);
+                int end = convertLocationsToInt(proposedFlightManifestObj.destinationCode);
+
+                FlightManifestObj planWithLayovers = App.findShortestPath(proposedFlightManifestObj, begin, end);
+
+                App.MarketMangerQueue.Add(planWithLayovers);
                 
                 populateDataGrid();
                 Console.WriteLine(App.MarketMangerQueue.Count);
@@ -387,45 +392,29 @@ namespace Software_Engineering_Project
             ApprovalQueueGrid.Items.Refresh();
         }
 
-        private FlightManifestObj convertLocationsToInt(string departureLocation, string arrivalLocation, FlightManifestObj flightManifestObj)
+        private int convertLocationsToInt(string location)
         {
-            int departureNumber, arrivalNumber;
-            if (departureLocation == "Toledo, OH") { departureNumber = 12; }
-            else if (departureLocation == "Nashville, TN") { departureNumber = 0; }
-            else if (departureLocation == "Cleveland, OH") { departureNumber = 1; }
-            else if (departureLocation == "New York City, NY") { departureNumber = 2; }
-            else if (departureLocation == "Seattle, WA") { departureNumber = 3; }
-            else if (departureLocation == "Chicago, IL") { departureNumber = 4; }
-            else if (departureLocation == "Austin, TX") { departureNumber = 5; }
-            else if (departureLocation == "Orlando, FL") { departureNumber = 6; }
-            else if (departureLocation == "Los Angeles, CA") { departureNumber = 7; }
-            else if (departureLocation == "Denver, CO") { departureNumber = 8; }
-            else if (departureLocation == "Minneapolis, MN") { departureNumber = 9; }
-            else if (departureLocation == "Arlington, VA") { departureNumber = 10; }
-            else if (departureLocation == "Atlanta, GA") { departureNumber = 11; }
-            else if (departureLocation == "Sacramento, CA") { departureNumber = 13; }
-            else if (departureLocation == "Rapid City, SD") { departureNumber = 14; }
-            else departureNumber = 15;
+            int locationNum = -1;
+            if (location == "Toledo, OH") {locationNum = 12; }
+            else if (location == "Nashville, TN") { locationNum = 0; }
+            else if (location == "Cleveland, OH") { locationNum = 1; }
+            else if (location == "New York City, NY") { locationNum = 2; }
+            else if (location == "Seattle, WA") { locationNum = 3; }
+            else if (location == "Chicago, IL") { locationNum = 4; }
+            else if (location == "Austin, TX") { locationNum = 5; }
+            else if (location == "Orlando, FL") { locationNum = 6; }
+            else if (location == "Los Angeles, CA") { locationNum = 7; }
+            else if (location == "Denver, CO") { locationNum = 8; }
+            else if (location == "Minneapolis, MN") { locationNum = 9; }
+            else if (location == "Arlington, VA") { locationNum = 10; }
+            else if (location == "Atlanta, GA") { locationNum = 11; }
+            else if (location == "Sacramento, CA") { locationNum = 13; }
+            else if (location == "Rapid City, SD") { locationNum = 14; }
+            else locationNum = 15;
 
-            if (arrivalLocation == "Toledo, OH") { arrivalNumber = 12; }
-            else if (arrivalLocation == "Nashville, TN") { arrivalNumber = 0; }
-            else if (arrivalLocation == "Cleveland, OH") { arrivalNumber = 1; }
-            else if (arrivalLocation == "New York City, NY") { arrivalNumber = 2; }
-            else if (arrivalLocation == "Seattle, WA") { arrivalNumber = 3; }
-            else if (arrivalLocation == "Chicago, IL") { arrivalNumber = 4; }
-            else if (arrivalLocation == "Austin, TX") { arrivalNumber = 5; }
-            else if (arrivalLocation == "Orlando, FL") { arrivalNumber = 6; }
-            else if (arrivalLocation == "Los Angeles, CA") { arrivalNumber = 7; }
-            else if (arrivalLocation == "Denver, CO") { arrivalNumber = 8; }
-            else if (arrivalLocation == "Minneapolis, MN") { arrivalNumber = 9; }
-            else if (arrivalLocation == "Arlington, VA") { arrivalNumber = 10; }
-            else if (arrivalLocation == "Atlanta, GA") { arrivalNumber = 11; }
-            else if (arrivalLocation == "Sacramento, CA") { arrivalNumber = 13; }
-            else if (arrivalLocation == "Rapid City, SD") { arrivalNumber = 14; }
-            else arrivalNumber = 15;
-
-            //flightManifestObj = App.findShortestPath(departureNumber, arrivalNumber);
-            return flightManifestObj;
+            
+            //flightManifestObj = App.findShortestPath();
+            return locationNum;
         }
 
         //User wants to leave, and sign in as somebody else

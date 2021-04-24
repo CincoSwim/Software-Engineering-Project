@@ -11,10 +11,10 @@ namespace Software_Engineering_Project
 {
     public class Planes
     {
-        public string planeModel, uniquePlaneRegister;
+        public string planeModel;
         public int numOfSeats;
 
-        int getNumOfSeats() { //could this be done with a switch? - p
+        internal int getNumOfSeats() { //could this be done with a switch? - p
 
 
             if (planeModel == "737") //using the 737-100 variant

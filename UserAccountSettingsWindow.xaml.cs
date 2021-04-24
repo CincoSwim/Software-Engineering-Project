@@ -67,7 +67,7 @@ namespace Software_Engineering_Project
         void UserSettings_Closed(object sender, EventArgs e)
         {
             m_parent.Show();
-            App.LoggedInUser = null;
+            
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

@@ -77,7 +77,7 @@ namespace Software_Engineering_Project
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
         };
         
-        public int codeToInt(String code)
+        /*public int codeToInt(String code)
         {
             switch(code)
             {
@@ -114,51 +114,51 @@ namespace Software_Engineering_Project
                 default:
                     return 15;
             }
-        }
+        }*/
 
-        public String intToCode(int value)
+        public static String intToCode(int value)
         {
             switch(value)
             {
                 case 0:
-                    return "BNA";
+                    return "Nashville, TN";
                 case 1:
-                    return "CLE";
+                    return "Cleveland, OH";
                 case 2:
-                    return "LGA";
+                    return "New York City, NY";
                 case 3:
-                    return "SEA";
+                    return "Seattle, WA";
                 case 4:
-                    return "ORD";
+                    return "Chicago, IL";
                 case 5:
-                    return "AUS";
+                    return "Austin, TX";
                 case 6:
-                    return "MCO";
+                    return "Orlando, FL";
                 case 7:
-                    return "LAX";
+                    return "Los Angeles, CA";
                 case 8:
-                    return "DEN";
+                    return "Denver, CO";
                 case 9:
-                    return "MSP";
+                    return "Minneapolis, MN";
                 case 10:
-                    return "DCA";
+                    return "Arlington, VA";
                 case 11:
-                    return "ATL";
+                    return "Atlanta, GA";
                 case 12:
-                    return "TOL";
+                    return "Toledo, OH";
                 case 13:
-                    return "SMF";
+                    return "Sacramento, CA";
                 case 14:
-                    return "RAP";
+                    return "Rapid City, SD";
                 default:
-                    return "ERR";
+                    return "Hell, MI";
             }
         }
 
-        public FlightManifestObj findShortestPath(FlightManifestObj flightPlan)
+        public static FlightManifestObj findShortestPath(FlightManifestObj flightPlan, int begin, int end)
         {
-            int begin = codeToInt(flightPlan.originCode);
-            int end = codeToInt(flightPlan.destinationCode);
+            //int begin = codeToInt(flightPlan.originCode);
+            //int end = codeToInt(flightPlan.destinationCode);
 
             if (begin > 14 || begin < 0) return flightPlan;
             if (end > 14 || end < 1) return flightPlan;
