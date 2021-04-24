@@ -43,7 +43,7 @@ namespace Software_Engineering_Project
         private List<FlightManifestObj> LoadUpcomingFlightsManager()
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
-            foreach (string str in App.LoggedInUser.upcomingFlights)
+            foreach (string str in App.LoggedInUser.upcomingFlights.ToList())
             {
                 gridList.Add(App.FlightPlanDict[str]);
             }
