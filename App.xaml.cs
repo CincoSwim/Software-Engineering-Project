@@ -204,7 +204,7 @@ namespace Software_Engineering_Project
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
-                                flightPlan.ticketPrice = (0.15 * miles) + 58;
+                                flightPlan.ticketPrice = (0.12 * miles) + 58;
                                 flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                 flightPlan.layoverCodeA = intToCode(i);
 
@@ -224,7 +224,7 @@ namespace Software_Engineering_Project
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
-                                            flightPlan.ticketPrice = (0.15 * miles) + 66;
+                                            flightPlan.ticketPrice = (0.12 * miles) + 66;
                                             flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
