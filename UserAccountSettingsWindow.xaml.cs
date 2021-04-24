@@ -78,6 +78,7 @@ namespace Software_Engineering_Project
 
         private void EditFieldsBtn_Click(object sender, RoutedEventArgs e)
         {   //fix to reference user object in Dictionary
+
             //Do input checks HERE*****
             if (firstNameTextBox.Text.Trim() == "" || lastNameTextBox.Text.Trim() == "")
             {
@@ -123,7 +124,8 @@ namespace Software_Engineering_Project
             m_parent.Show();
             this.Close();
 
-            MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 

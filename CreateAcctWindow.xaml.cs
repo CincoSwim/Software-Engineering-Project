@@ -62,6 +62,7 @@ namespace Software_Engineering_Project
             
 
             UserAccountObj newAcct = new UserAccountObj();
+
             newAcct.setFirstName(FirstName.Text.Trim());
             newAcct.setLastName(LastName.Text.Trim());
             newAcct.setEmailAddress(emailAddress.Text.Trim());
@@ -70,6 +71,7 @@ namespace Software_Engineering_Project
             newAcct.setCity(city.Text.Trim());
             newAcct.setPhoneNum(Int64.Parse(phone_number.Text.Trim()));
             newAcct.setState(USState.SelectedValue.ToString().Trim());
+
 
             using (SHA512 sha512hash = SHA512.Create())
             {

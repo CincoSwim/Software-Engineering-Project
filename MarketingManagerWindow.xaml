@@ -20,7 +20,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-      <DataGrid x:Name="ApprovalQueueGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" HorizontalAlignment="Left" Height="250" Margin="40,60,0,0" VerticalAlignment="Top" Width="260">
+      <DataGrid x:Name="ApprovalQueueGrid" CanUserAddRows="false" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" HorizontalAlignment="Left" Height="250" Margin="40,60,0,0" VerticalAlignment="Top" Width="260">
         <DataGrid.Columns>
           <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
           <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
@@ -32,9 +32,18 @@
         <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
         <DataGrid x:Name="PostedFlightsGrid" Height="250" Margin="400,60,30,0" VerticalAlignment="Top"/>
         <Label x:Name="ApprovalQueueLabel_Copy" Content="Posted Flights" HorizontalAlignment="Left" Margin="400,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
-        <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="95,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
-        <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
+        <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="95,360,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
+        <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" />
         <Button x:Name="LogoutBtn" Content="Logout" Click ="Logout_isClicked" HorizontalAlignment="Left" Margin="600,10,0,0" VerticalAlignment="Top" Width="75"/>
+      
+        <Label x:Name="PlaneTypeLabel" Content="Plane Type?" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="225"/>
 
+        <Border x:Name="PlaneType" BorderThickness ="1" HorizontalAlignment="Left" Margin="95,330,0,0" VerticalAlignment="Top">
+          <ComboBox x:Name="PlaneType"  Width="120">
+            <ComboBoxItem Content="737"></ComboBoxItem>
+            <ComboBoxItem Content="747"></ComboBoxItem>
+            <ComboBoxItem Content="757"></ComboBoxItem>
+          </ComboBox>
+        </Border>
     </Grid>
 </Window>
