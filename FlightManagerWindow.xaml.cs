@@ -27,7 +27,7 @@ namespace Software_Engineering_Project
             InitializeComponent();
             this.Closed += new EventHandler(FlightManagerWindow_Closed);
             m_parent = main;
-            FlightManagerObjDataGrid.ItemsSource = LoadUpcomingFlightsManager();
+            populateFMGrid();
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
@@ -39,6 +39,11 @@ namespace Software_Engineering_Project
         {
             m_parent.Show();
             App.LoggedInUser = null;
+        }
+        private void populateFMGrid()
+        {
+            FlightManagerObjDataGrid.ItemsSource = LoadUpcomingFlightsManager();
+            FlightManagerObjDataGrid.Items.Refresh();
         }
         private List<FlightManifestObj> LoadUpcomingFlightsManager()
         {
@@ -54,13 +59,13 @@ namespace Software_Engineering_Project
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBox.Show("Printed: One object to C:\temp\\Printouts\\SingleSelection.txt");
+            MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
             File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(FlightManagerObjDataGrid.SelectedItem, Formatting.Indented));
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Printed: All objects to C:\temp\\Printouts\\AllSelection.txt");
+            MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
             File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightPlanDict, Formatting.Indented));
         }
     }
