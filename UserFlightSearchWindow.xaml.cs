@@ -33,7 +33,7 @@ namespace Software_Engineering_Project
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
             gridList.AddRange(App.FlightPlanDict.Values);
-            foreach(var flight in gridList)
+            foreach(var flight in gridList.ToList())
             {
                 if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID) || flight.bookedUsers.Count >= flight.planeAssigned.numOfSeats) ;
                 {

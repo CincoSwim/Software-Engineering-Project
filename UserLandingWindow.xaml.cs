@@ -12,6 +12,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace Software_Engineering_Project
 {
@@ -105,6 +110,28 @@ namespace Software_Engineering_Project
             App.LoggedInUser.balance += selected.pointReward * 10;
             App.FlightPlanDict[selected.flightID].bookedUsers.Remove(App.LoggedInUser);
             MessageBox.Show("Flight Canceled!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void PrintBoardingPassBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(UpcomingFlightsGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select a Flight", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            FlightManifestObj selected = (FlightManifestObj)UpcomingFlightsGrid.SelectedItem;
+            if(DateTime.Now.AddHours(24) < selected.departTime)
+            {
+                MessageBox.Show("You are unable to print a boarding pass at this time.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                File.WriteAllText(FileIOLoading.BoardingPassPath, JsonConvert.SerializeObject(selected, Formatting.Indented));
+                MessageBox.Show("Boarding Pass Printed To: C:\temp\\Printouts\\BoardingPass.txt", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            
         }
     }
 }

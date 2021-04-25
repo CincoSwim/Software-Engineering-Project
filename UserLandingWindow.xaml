@@ -24,8 +24,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Upcoming Flights" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" Width="150" FontSize="18"/>
-        <Button x:Name="BookFlightBtn" Content="Book A Flight!" HorizontalAlignment="Left" Margin="531,78,0,0" VerticalAlignment="Top" Width="240" Height="210" Click="BookFlightBtn_Click"/>
+        <Button x:Name="BookFlightBtn" Content="Book A Flight!" HorizontalAlignment="Left" Margin="531,78,0,0" VerticalAlignment="Top" Width="240" Height="173" Click="BookFlightBtn_Click"/>
         <Button x:Name="CancelFlight" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="531,293,0,0" VerticalAlignment="Top" Width="240" Height="29" Click="CancelFlightBtn_Click"/>
+        <Button x:Name="PrintBoardingPassBtn" Content="Print Selected Ticket" HorizontalAlignment="Left" Margin="531,256,0,0" VerticalAlignment="Top" Width="240" Height="32" Click="PrintBoardingPassBtn_Click"/>
 
     </Grid>
 </Window>

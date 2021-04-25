@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="FoundFlightsGrid" HorizontalAlignment="Left" Height="218" Margin="10,95,0,0" VerticalAlignment="Top" Width="637" CanUserAddRows="False" IsReadOnly="True">
+        <DataGrid x:Name="FoundFlightsGrid" HorizontalAlignment="Left" AutoGenerateColumns="False" Height="218" Margin="10,95,0,0" VerticalAlignment="Top" Width="637" CanUserAddRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
                 <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />

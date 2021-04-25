@@ -21,6 +21,7 @@ namespace Software_Engineering_Project
         static string FlightPlanDictPath = @"c:\temp\FlightPlanDict.txt";
         public static string AccountantSinglePath = @"c:\temp\Printouts\SingleSelection.txt";
         public static string AccountantMultiPath = @"c:\temp\Printouts\AllSelection.txt";
+        public static string BoardingPassPath = @"c:\temp\Printouts\BoardingPass.txt";
 
         internal static void ReadAlltoMem() 
         {
