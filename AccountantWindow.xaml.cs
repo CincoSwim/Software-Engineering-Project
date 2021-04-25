@@ -40,16 +40,26 @@ namespace Software_Engineering_Project
 
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
         {   
-
+            double transactionForPlane = 0;
+            TransactionObj selected = (TransactionObj)AccountingObjDataGrid.SelectedItem;
+            transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + (transactionForPlane.ToString()));
+            //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(transactionForPlane, Formatting.Indented));
+            
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
+            double totalBalance = 0;
+            foreach (var value in App.TransactionHist)
+            {
+                totalBalance += value.FlightUID.ticketPrice * value.FlightUID.bookedUsers.Count;
+            }
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + (totalBalance.ToString()));
         }
+
         void Accountant_Closed(object sender, EventArgs e)
         {
             m_parent.Show();
