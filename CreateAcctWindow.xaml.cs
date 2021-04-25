@@ -32,8 +32,10 @@ namespace Software_Engineering_Project
         }
 
         private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
-        {   
+        {
             //Input Checks HERE ******
+            int parseTry;
+            long parseLongTry;
             if(passwordInput.Text.Trim() == "" || passwordInput.Text.Trim() != passwordConfirm.Text.Trim()) 
             {   
                 //Passwords do not match or no password is entered
@@ -44,7 +46,7 @@ namespace Software_Engineering_Project
                 //First name or Last Name are empty, those are required
                 MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(AgeInput.Text.Trim() == "")
+            }else if(AgeInput.Text.Trim() == "" || !int.TryParse(AgeInput.Text, out parseTry) )
             {   
                 //No age is specified
                 MessageBox.Show("Please enter your Age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -54,12 +56,12 @@ namespace Software_Engineering_Project
                 //Something is missing in the addressing fields, either address, city, or state
                 MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(phone_number.Text.Trim() == "")
+            }else if(phone_number.Text.Trim() == "" || phone_number.Text.Trim().Length != 10 || !long.TryParse(phone_number.Text, out parseLongTry))
             {   
                 //No phone number
                 MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }else if(ccNumber.Text.Trim() == "")
+            }else if(ccNumber.Text.Trim() == "" || ccNumber.Text.Trim().Length != 16 || !long.TryParse(ccNumber.Text, out parseLongTry))
             {   
                 //No Credit Card
                 MessageBox.Show("Please enter a Credit Card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
