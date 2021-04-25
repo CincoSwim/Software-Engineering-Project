@@ -37,6 +37,7 @@ namespace Software_Engineering_Project
 
         internal static void Update_Flights()
         {
+            Console.WriteLine("Time hit, Running Update_Flights()");
             foreach (var entry in App.FlightPlanDict.ToList())
             {
                 if (entry.Value.departTime < DateTime.Now)
