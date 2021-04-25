@@ -93,7 +93,13 @@ namespace Software_Engineering_Project
                 MessageBox.Show("You must select a flight to cancel.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            
             FlightManifestObj selected = (FlightManifestObj)UpcomingFlightsGrid.SelectedItem;
+            if(DateTime.Now.AddHours(1) >= selected.departTime)
+            {
+                MessageBox.Show("You cannot cancel a flight within 1 hour of departure!", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
+            }
             App.LoggedInUser.canceledFlights.Add(selected.flightID);
             App.LoggedInUser.upcomingFlights.Remove(selected.flightID);
             App.LoggedInUser.balance += selected.pointReward * 10;
