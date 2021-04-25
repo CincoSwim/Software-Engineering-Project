@@ -82,44 +82,6 @@ namespace Software_Engineering_Project
         /*rapidCity*/       {0,         0,          0,          957.36,     779.54,     999.82,     0,          0,              300.49,     489.44,         0,          0,          0,          0,              0},      //done
         };
         
-        /*public int codeToInt(String code)
-        {
-            switch(code)
-            {
-                case "BNA":
-                    return 0;
-                case "CLE":
-                    return 1;
-                case "LGA":
-                    return 2;
-                case "SEA":
-                    return 3;
-                case "ORD":
-                    return 4;
-                case "AUS":
-                    return 5;
-                case "MCO":
-                    return 6;
-                case "LAX":
-                    return 7;
-                case "DEN":
-                    return 8;
-                case "MSP":
-                    return 9;
-                case "DCA":
-                    return 10;
-                case "ATL":
-                    return 11;
-                case "TOL":
-                    return 12;
-                case "SMF":
-                    return 13;
-                case "RAP":
-                    return 14;
-                default:
-                    return 15;
-            }
-        }*/
 
         public static String intToCode(int value)
         {
@@ -162,9 +124,6 @@ namespace Software_Engineering_Project
 
         public static FlightManifestObj findShortestPath(FlightManifestObj flightPlan, int begin, int end)
         {
-            //int begin = codeToInt(flightPlan.originCode);
-            //int end = codeToInt(flightPlan.destinationCode);
-
             if (begin > 14 || begin < 0) return flightPlan;
             if (end > 14 || end < 1) return flightPlan;
 
@@ -179,18 +138,18 @@ namespace Software_Engineering_Project
             if (flightGraph[begin, end] != 0)
             {
                 miles = flightGraph[begin, end];
-                flightPlan.ticketPrice = 50 + (0.12 * miles);
-                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                flightPlan.ticketPrice = Math.Round(50 + (0.12 * miles), 2);
+                flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
                
                 if(flightPlan.departTime.TimeOfDay> redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
                 {
-                    flightPlan.ticketPrice = 0.8 * flightPlan.ticketPrice;
-                    flightPlan.pointReward = 0.8 * flightPlan.pointReward;
+                    flightPlan.ticketPrice = Math.Round(0.8 * flightPlan.ticketPrice, 2);
+                    flightPlan.pointReward = Math.Round(0.8 * flightPlan.pointReward, 2);
                 }
                 else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
                 {
-                    flightPlan.ticketPrice = 0.9 * flightPlan.ticketPrice;
-                    flightPlan.pointReward = 0.9 * flightPlan.ticketPrice;
+                    flightPlan.ticketPrice = Math.Round(0.9 * flightPlan.ticketPrice, 2);
+                    flightPlan.pointReward = Math.Round(0.9 * flightPlan.ticketPrice, 2);
                 }
                 return flightPlan;
             } 
@@ -208,11 +167,9 @@ namespace Software_Engineering_Project
                             if (minMiles > miles || minMiles == 0) 
                             {
                                 minMiles = miles;
-                                flightPlan.ticketPrice = (0.12 * miles) + 58;
-                                flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                                flightPlan.ticketPrice = Math.Round((0.12 * miles) + 58, 2);
+                                flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
                                 flightPlan.layoverCodeA = intToCode(i);
-
-
                             }
                         }
                         //2 layovers
@@ -228,8 +185,8 @@ namespace Software_Engineering_Project
                                         if (minMiles > miles || minMiles == 0) 
                                         {
                                             minMiles = miles;
-                                            flightPlan.ticketPrice = (0.12 * miles) + 66;
-                                            flightPlan.pointReward = Convert.ToInt32(0.1 * flightPlan.ticketPrice);
+                                            flightPlan.ticketPrice = Math.Round((0.12 * miles) + 66, 2);
+                                            flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
                                         }
@@ -242,17 +199,16 @@ namespace Software_Engineering_Project
             }
             if (flightPlan.departTime.TimeOfDay > redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
             {
-                flightPlan.ticketPrice = 0.8 * flightPlan.ticketPrice;
-                flightPlan.pointReward = 0.8 * flightPlan.pointReward;
+                flightPlan.ticketPrice = Math.Round(0.8 * flightPlan.ticketPrice, 2);
+                flightPlan.pointReward = Math.Round(0.8 * flightPlan.pointReward, 2);
             }
             else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
             {
-                flightPlan.ticketPrice = 0.9 * flightPlan.ticketPrice;
-                flightPlan.pointReward = 0.9 * flightPlan.ticketPrice;
+                flightPlan.ticketPrice = Math.Round(0.9 * flightPlan.ticketPrice, 2);
+                flightPlan.pointReward = Math.Round(0.9 * flightPlan.ticketPrice, 2);
             }
             return flightPlan;
         }
-
     }
 }
    
