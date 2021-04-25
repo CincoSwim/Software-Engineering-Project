@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="Accounting Workstation" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="AccountingObjDataGrid" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" AutoGenerateColumns="True" VerticalAlignment="Top" Width="552" AlternatingRowBackground="LightBlue"/>
+        <DataGrid x:Name="AccountingObjDataGrid" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" Width="552" AlternatingRowBackground="LightBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight ID" Binding="{Binding FlightUID.flightID}"/>
+                <DataGridTextColumn Header="Customer" Binding="{Binding UserUID}"/>
+                <DataGridTextColumn Header="Income" Binding="{Binding transactionAmt}"/>
+                <DataGridTextColumn Header="Takeoff Location" Binding="{Binding FlightUID.originCode}" />
+                <DataGridTextColumn Header="Layover #1" Binding="{Binding FlightUID.layoverCodeA}" />
+                <DataGridTextColumn Header="Layover #2" Binding="{Binding FlightUID.layoverCodeB}" />
+                <DataGridTextColumn Header="Arrival Location" Binding="{Binding FlightUID.destinationCode}" />
+                <DataGridTextColumn Header="Takeoff Time" Binding="{Binding FlightUID.departTime}" />
+                <DataGridTextColumn Header="Arrival Time" Binding="{Binding FlightUID.arrivalTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="LogoutBtn" Content="Logout" HorizontalAlignment="Left" Margin="707,389,0,0" VerticalAlignment="Top" Width="75" Click="LogoutBtn_Click"/>
         <Button x:Name="PrintSelectedBtn" Content="Print Selected Records" HorizontalAlignment="Left" Margin="567,10,0,0" VerticalAlignment="Top" Width="215" Height="45" Click="PrintSelectedBtn_Click"/>
         <Button x:Name="PrintAllRecords" Content="Print All Records" HorizontalAlignment="Left" Margin="567,60,0,0" VerticalAlignment="Top" Width="215" Height="45" Click="PrintAllRecords_Click"/>
