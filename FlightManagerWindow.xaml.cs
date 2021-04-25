@@ -43,10 +43,12 @@ namespace Software_Engineering_Project
         private List<FlightManifestObj> LoadUpcomingFlightsManager()
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
-            foreach (string str in App.LoggedInUser.upcomingFlights.ToList())
+            /*foreach (string str in App.LoggedInUser.upcomingFlights.ToList())
             {
                 gridList.Add(App.FlightPlanDict[str]);
-            }
+            }*/
+            gridList.AddRange(App.FlightPlanDict.Values);
+            gridList.AddRange(App.FlightHistoryDictionary.Values);
             return gridList;
         }
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
