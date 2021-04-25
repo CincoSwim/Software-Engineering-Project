@@ -16,9 +16,9 @@ using System.Security.Cryptography;
 
 namespace Software_Engineering_Project
 {
-    /// <summary>
-    /// Interaction logic for UserAccountDetailsWindow.xaml
-    /// </summary>
+    //UserAccountDetailsWindow
+    //Shows the user's taken and canceled flights, as well as gives fields for the user to correct any changeable information about themselves. 
+    //Changing any fields in the user information, then clicking the Edit Fields button will make the requested changes to their UserAcctObj and return them to the landing page.
     public partial class UserAccountDetailsWindow : Window
     {
         private UserLandingWindow m_parent;
@@ -28,12 +28,14 @@ namespace Software_Engineering_Project
             InitializeComponent();
             this.Closed += new EventHandler(UserSettings_Closed);
             m_parent = main;
-            CanceledFlightsGrid.ItemsSource = LoadCanceledFlights();
-            PreviousFlightsGrid.ItemsSource = LoadTakenFlights();
+            CanceledFlightsGrid.ItemsSource = LoadCanceledFlights(); //Loads user's cancelled flights into grid.
+            PreviousFlightsGrid.ItemsSource = LoadTakenFlights();   //Load's user's taken flights into grid.
 
+            //Fields the user cannot change are loaded into Labels
             PointsBalanceLabel.Content = App.LoggedInUser.balance.ToString();
             uidLabel.Content = App.LoggedInUser.uniqueID;
 
+            //Fields the user can change are loaded into TextBoxes
             firstNameTextBox.Text = App.LoggedInUser.firstName.Trim();
             lastNameTextBox.Text = App.LoggedInUser.lastName.Trim();
             emailTextBox.Text = App.LoggedInUser.emailAddress.Trim();
@@ -46,7 +48,7 @@ namespace Software_Engineering_Project
         }
 
         private List<FlightManifestObj> LoadCanceledFlights()
-        {
+        {   //Loads the details for each flight the user has cancelled by adding the FlightManifestObject corresponding to that flightID to the list. This is loaded into the grid.
             List<FlightManifestObj> cancelList = new List<FlightManifestObj>();
             foreach (string str in App.LoggedInUser.canceledFlights)
             {
@@ -55,7 +57,7 @@ namespace Software_Engineering_Project
             return cancelList;
         }
         private List<FlightManifestObj> LoadTakenFlights()
-        {
+        {   //Loads the details for each flight the user has taken by adding the FlightManifestObject corresponding to that flightID to the list. This is loaded into the grid.
             List<FlightManifestObj> takenList = new List<FlightManifestObj>();
             foreach (string str in App.LoggedInUser.takenFlights)
             {
@@ -65,47 +67,49 @@ namespace Software_Engineering_Project
         }
 
         void UserSettings_Closed(object sender, EventArgs e)
-        {
+        {   //Shows parent after closing window
             m_parent.Show();
             
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
+        {   //shows parent and closes window after clicking Back button
             m_parent.Show();
             this.Close();
         }
 
         private void EditFieldsBtn_Click(object sender, RoutedEventArgs e)
-        {   //fix to reference user object in Dictionary
+        {   //Checks to see what fields are changed in the Editable fields, and makes changes if changes are found.
+            //If fields are found to be empty, the user is prompted to enter "something" into the fields, and no changes are made
 
-            //Do input checks HERE*****
-            if (firstNameTextBox.Text.Trim() == "" || lastNameTextBox.Text.Trim() == "")
+            //Input Checks done HERE *******
+            if (firstNameTextBox.Text.Trim() == "" || lastNameTextBox.Text.Trim() == "")//First or last name are empty, pop prompt
             {
                 MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (ageTextBox.Text.Trim() == "")
+            else if (ageTextBox.Text.Trim() == "") //Age empty, pop prompt
             {
                 MessageBox.Show("Please enter your age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (addressTextBox.Text.Trim() == "" || cityTextBox.Text.Trim() == "" || USStateBox.SelectedItem == null)
+            else if (addressTextBox.Text.Trim() == "" || cityTextBox.Text.Trim() == "" || USStateBox.SelectedItem == null)//something in address empty, pop prompt
             {
                 MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (phoneTextBox.Text.Trim() == "")
+            else if (phoneTextBox.Text.Trim() == "")//phone empty, pop prompt
             {
                 MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (CCTextBox.Text.Trim() == "")
+            else if (CCTextBox.Text.Trim() == "")//Credit Card empty, pop prompt
             {
                 MessageBox.Show("Please enter a credit card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
+            //Sets all the changed fields to those in the Logged in User object to reflect any changes.
             App.LoggedInUser.setFirstName(firstNameTextBox.Text.Trim());
             App.LoggedInUser.setLastName(lastNameTextBox.Text.Trim());
             App.LoggedInUser.setEmailAddress(emailTextBox.Text.Trim());
@@ -116,17 +120,17 @@ namespace Software_Engineering_Project
             App.LoggedInUser.setState(USStateBox.SelectedValue.ToString().Trim());
             App.LoggedInUser.setCCNumber(Int64.Parse(CCTextBox.Text.Trim()));
 
+            //Removes the old object residing at the current user's key and re-adds the updated user object at that location.
             App.UserAccountDict.Remove(App.LoggedInUser.getUniqueID());
             App.UserAccountDict.Add(App.LoggedInUser.getUniqueID(), App.LoggedInUser);
 
             MessageBox.Show("Account Updated", "Success", MessageBoxButton.OK);
-            m_parent.WelcomeMessageLabel.Content = $"Welcome, {App.LoggedInUser.firstName} {App.LoggedInUser.lastName}!";
+            m_parent.WelcomeMessageLabel.Content = $"Welcome, {App.LoggedInUser.firstName} {App.LoggedInUser.lastName}!"; //Changes welcome label to be accurate to new name.
             m_parent.Show();
-            this.Close();
+            this.Close(); //Return to Landing Page
 
 
-            //MessageBox.Show("Fields Changed!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-
+           
         }
 
         private void PreviousFlightsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

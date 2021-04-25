@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 namespace Software_Engineering_Project
 {  [Serializable]
    public class UserAccountObj
-    {
+    {   //UserAccountObj contains the data stored for each unique user in the system.
+        //This object is checked for on login, then loaded into memory as the Logged-In User.
+        //The user's password is stored as a SHA-512 hash to prevent storage of passwords in a plaintext or reversable-encryption format.
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string emailAddress { get; set; }
-        public string passwordHash { get; set; }
+        public string passwordHash { get; set; } 
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }
@@ -20,9 +22,9 @@ namespace Software_Engineering_Project
         public string uniqueID { get; set; }
         public int age { get; set; }
         public double balance { get; set; }
-        public List<string> upcomingFlights { get; set; } = new List<string>();
-        public List<string> takenFlights { get; set; } = new List<string>();
-        public List<string> canceledFlights { get; set; } = new List<string>();
+        public List<string> upcomingFlights { get; set; } = new List<string>(); //Initializes empty list of flights this user has booked.
+        public List<string> takenFlights { get; set; } = new List<string>(); //Initializes empty list of flights this user has taken
+        public List<string> canceledFlights { get; set; } = new List<string>(); //Initializes empty list of flight this user has cancelled or has been canceled on.
 
         //Getters and setters in order-------------------------------------------------------------------------------------------
         public string getFirstName()

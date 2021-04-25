@@ -14,9 +14,10 @@ using System.Windows.Shapes;
 
 namespace Software_Engineering_Project
 {
-    /// <summary>
-    /// Interaction logic for UserFlightSearchWindow.xaml
-    /// </summary>
+    //UserFlightSearchWindow
+    //Primary Window for users to book and search for new flights. Users can search for flights by their departure times, arrival times, destinations, and origins.
+    //Flights that result from the search can be sorted in their list by clicking the field they wish to sort by in the DataGrid
+    //Attempting to search while missing information will prompt the user to fill in missing information, and return them to the search screen.
     public partial class UserFlightSearchWindow : Window
     {
         private UserLandingWindow m_parent;
@@ -25,35 +26,36 @@ namespace Software_Engineering_Project
             InitializeComponent();
             m_parent = landingWindow;
             this.Closed += new EventHandler(FlightSearch_Closed);
-            FoundFlightsGrid.ItemsSource=LoadAllFlights();
+            FoundFlightsGrid.ItemsSource=LoadAllFlights(); //Loads all flights available to book, minus any the user has already booked.
 
         }
 
         private List<FlightManifestObj> LoadAllFlights()
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
-            gridList.AddRange(App.FlightPlanDict.Values);
+            gridList.AddRange(App.FlightPlanDict.Values); //Add all upcoming flights
             foreach(var flight in gridList.ToList())
             {
-                if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID) || flight.bookedUsers.Count >= flight.planeAssigned.numOfSeats) ;
-                {
+                if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID) || flight.bookedUsers.Count >= flight.planeAssigned.numOfSeats) 
+                {   //If the user is already booked for the flight, or the flight is already fully booked, the flight is removed from the view
                     gridList.Remove(flight);
                 }
             }
             return gridList;
         }
         void FlightSearch_Closed(object sender, EventArgs e)
-        {
+        {   //window closed, return to prior window
             m_parent.Show();
         }
 
         private void BookFlightButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(FoundFlightsGrid.SelectedItem == null)
+        {   //Finalizes booking a user on a flight they've selected from the DataGrid
+
+            if(FoundFlightsGrid.SelectedItem == null) //They haven't selected a flight, so ask them to do so.
             {
                 MessageBox.Show("Please select an item.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            
+                return;
+            }           
             else
             {   FlightManifestObj selected = (FlightManifestObj)FoundFlightsGrid.SelectedItem;
                 if(selected.bookedUsers.Count >= selected.planeAssigned.numOfSeats)

@@ -28,8 +28,10 @@ namespace Software_Engineering_Project
         public MainWindow()
         {
             InitializeComponent();
-            FileIOLoading.ReadAlltoMem(); 
-            App.Update_Flights();
+            FileIOLoading.ReadAlltoMem(); //Read collections from files
+            App.Update_Flights(); //Check for any flights that have taken off since last loading, and moves them as needed.
+
+            //Start a timer to call App.Update_Flights() every 5 minutes, for continuous flight management over time.
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(5);
 
@@ -39,22 +41,12 @@ namespace Software_Engineering_Project
             
         }
 
-        private void LoadEngineer()
-        {
-            LoadEngineerWindow loadEngineerWindow = new LoadEngineerWindow(this);
-            loadEngineerWindow.Show();
-            this.Hide();
-        }
-        private void MarketManager()
-        {
-            MarketingManagerWindow marketingManagerWindow = new MarketingManagerWindow(this);
-            marketingManagerWindow.Show();
-            this.Hide();
-        }
+        
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (usrBox.Text.Length == 1)
+        {   //Called when the Login button is clicked. Checks username and password inputs, and opens the requested window when asked.
+
+            if (usrBox.Text.Length == 1)//length of 1 means you're probably logging in with an employee integer
             {  
                 if(pwdBox.Text == "alpha")
                 {
@@ -74,6 +66,7 @@ namespace Software_Engineering_Project
                             FlightManager();
                             return;
                         default:
+                            //Failed to login to employee acct
                             MessageBox.Show("Failed to Log in\nUserID or Password is incorrect", "Error");
                             return;
 
@@ -84,9 +77,9 @@ namespace Software_Engineering_Project
                     MessageBox.Show("Failed to Log in\nUserID or Password is incorrect", "Error");
                 }
             }
-            else if (App.UserAccountDict.TryGetValue(usrBox.Text, out App.LoggedInUser))
+            else if (App.UserAccountDict.TryGetValue(usrBox.Text, out App.LoggedInUser))//Checks if a user exists with that UID and stores it in App.LoggedInUser if one exists
             {
-                //check if password match
+                //Check if password match
                 using (SHA512 sha512hash = SHA512.Create())
                 {
                     byte[] sourcePwdBytes = Encoding.UTF8.GetBytes(pwdBox.Text); //hash can only be done on string of bytes
@@ -94,24 +87,25 @@ namespace Software_Engineering_Project
                     hashedPwd = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
 
                 }
-                if (hashedPwd == App.LoggedInUser.getPwdHash())
+                if (hashedPwd == App.LoggedInUser.getPwdHash())//Passwords match, so log them in successfully
                 {
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " Logged In Successfully");
                     UserLandingWindow landingWindow = new UserLandingWindow(this);
-                    pwdBox.Text = "";
-                    landingWindow.Show();
+                    pwdBox.Text = "";//Cleared so when they logout password doesn't persist for next user
+                    landingWindow.Show();//Load UserLandingWindow
                     this.Hide();
                 }
                 else
-                {
+                {   //Wrong Password, don't log them in
                     MessageBox.Show("Failed to Log in\nUserID or Password is incorrect", "Error");
                     Console.WriteLine("User " + App.LoggedInUser.getUniqueID() + " did not log in - PWD hash did not match.");
-                    pwdBox.Text = "";
+                    App.LoggedInUser = null;//Clear LoggedInUser to prevent unwanted access
+                    pwdBox.Text = "";//Clear pwd box
                     return;
                 }
             }
             else
-            {
+            {   //User doesn't exist with that UID, so cannot login
                 MessageBox.Show("Failed to Log in\nUser with this ID does not exist. Please double check your ID", "Error");
                 Console.WriteLine("User not found with UID " + usrBox.Text);
                 pwdBox.Text = "";
@@ -119,24 +113,36 @@ namespace Software_Engineering_Project
             }
         }
 
-        private void CreateAcctBtn()
-        {
+        private void CreateAcctBtn_Click(object sender, RoutedEventArgs e)
+        {   //Open CreateAcctWindow so a new user can be made
             CreateAcctWindow acctWindow = new CreateAcctWindow(this);
             acctWindow.Show();
             this.Hide();
         }
 
         private void FlightManager()
-        {
+        {   //Called when logging in as a FlightManager
             FlightManagerWindow flightManager = new FlightManagerWindow(this);
             flightManager.Show();
             this.Hide();
         }
 
         private void Accountant()
-        {
+        {   //Called when logging in as an Accountant
             AccountantWindow accountantWindow = new AccountantWindow(this);
             accountantWindow.Show();
+            this.Hide();
+        }
+        private void LoadEngineer()
+        {   //Called when logging in as a LoadEngineer
+            LoadEngineerWindow loadEngineerWindow = new LoadEngineerWindow(this);
+            loadEngineerWindow.Show();
+            this.Hide();
+        }
+        private void MarketManager()
+        {   //Called when logging in as a Marketing Manager
+            MarketingManagerWindow marketingManagerWindow = new MarketingManagerWindow(this);
+            marketingManagerWindow.Show();
             this.Hide();
         }
     }
