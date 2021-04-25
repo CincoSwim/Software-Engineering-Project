@@ -22,7 +22,7 @@ namespace Software_Engineering_Project
 
         //Windows Filesystem paths for saving and reading files. Those in the \Printouts\ directory are made public so that other windows can use them to write that directory.
         static string tempDir = @"c:\temp\";
-        static string printoutDir = @"c:\temp\Printouts\";
+        public static string printoutDir = @"c:\temp\Printouts\";
         static string UserDictPath = @"c:\temp\UserDict.txt";
         static string MMQueuePath = @"c:\temp\MMQueueDict.txt";
         static string TransactionHistPath = @"c:\temp\TransHistList.txt";
