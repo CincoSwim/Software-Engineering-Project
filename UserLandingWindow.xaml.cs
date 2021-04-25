@@ -109,6 +109,8 @@ namespace Software_Engineering_Project
             App.LoggedInUser.balance += selected.pointReward * 10; //Credit the user for money or points spent on ticket
             App.FlightPlanDict[selected.flightID].bookedUsers.Remove(App.LoggedInUser); //remove the user from the Flight Manifest
             MessageBox.Show("Flight Canceled!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information); //Let user know flight was cancelled.
+            UpcomingFlightsGrid.SelectedItem = null;
+            UpcomingFlightsGrid.ItemsSource = LoadUpcomingFlights();
         }
 
         private void PrintBoardingPassBtn_Click(object sender, RoutedEventArgs e)
@@ -129,7 +131,7 @@ namespace Software_Engineering_Project
                 FileInfo path = new FileInfo(FileIOLoading.printoutDir); //make path if doesn't exist
                 path.Directory.Create();
                 File.WriteAllText(FileIOLoading.BoardingPassPath, JsonConvert.SerializeObject(selected, Formatting.Indented)); //write to path
-                MessageBox.Show("Boarding Pass Printed To: C:\temp\\Printouts\\BoardingPass.txt", "Success!", MessageBoxButton.OK, MessageBoxImage.Information); //let user know
+                MessageBox.Show("Boarding Pass Printed To: C:\\temp\\Printouts\\BoardingPass.txt", "Success!", MessageBoxButton.OK, MessageBoxImage.Information); //let user know
                 return;
             }
             

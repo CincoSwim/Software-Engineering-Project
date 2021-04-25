@@ -55,6 +55,11 @@ namespace Software_Engineering_Project
                 MessageBox.Show("Please select a plane!", "Alert!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if(ApprovalQueueGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a flight!", "Alert!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             FlightManifestObj selected = (FlightManifestObj)ApprovalQueueGrid.SelectedItem;
             selected.planeAssigned.planeModel = PlaneTypeBox.SelectedValue.ToString();
             selected.planeAssigned.numOfSeats = selected.planeAssigned.getNumOfSeats();
