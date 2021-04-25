@@ -45,7 +45,6 @@ namespace Software_Engineering_Project
             transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
             File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + (transactionForPlane.ToString()));
-            //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(transactionForPlane, Formatting.Indented));
             
         }
 
