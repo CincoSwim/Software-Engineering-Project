@@ -40,6 +40,10 @@ namespace Software_Engineering_Project
                 {   //If the user is already booked for the flight, or the flight is already fully booked, the flight is removed from the view
                     gridList.Remove(flight);
                 }
+                if (DateTime.Now.AddMonths(6) < flight.departTime)
+                {
+                    gridList.Remove(flight);
+                }
             }
             return gridList;
         }
