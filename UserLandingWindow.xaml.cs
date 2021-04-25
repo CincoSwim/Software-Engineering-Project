@@ -41,7 +41,7 @@ namespace Software_Engineering_Project
             var periodSpan = TimeSpan.FromMinutes(5);
 
             System.Threading.Timer timer2 = null;
-            timer2 = new System.Threading.Timer(_ => UpcomingFlightsGrid.Items.Refresh());
+            timer2 = new System.Threading.Timer(e => UpcomingFlightsGrid.Items.Refresh());
             timer2.Change(startSpan, periodSpan);
 
         }
