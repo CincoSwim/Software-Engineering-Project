@@ -140,8 +140,10 @@ namespace Software_Engineering_Project
                 miles = flightGraph[begin, end];
                 flightPlan.ticketPrice = Math.Round(50 + (0.12 * miles), 2);
                 flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
-               
-                if(flightPlan.departTime.TimeOfDay> redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
+                flightPlan.layoverCodeA = "N/A";
+                flightPlan.layoverCodeB = "N/A";
+
+                if (flightPlan.departTime.TimeOfDay> redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
                 {
                     flightPlan.ticketPrice = Math.Round(0.8 * flightPlan.ticketPrice, 2);
                     flightPlan.pointReward = Math.Round(0.8 * flightPlan.pointReward, 2);
@@ -170,6 +172,7 @@ namespace Software_Engineering_Project
                                 flightPlan.ticketPrice = Math.Round((0.12 * miles) + 58, 2);
                                 flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
                                 flightPlan.layoverCodeA = intToCode(i);
+                                flightPlan.layoverCodeB = "N/A";
                             }
                         }
                         //2 layovers
