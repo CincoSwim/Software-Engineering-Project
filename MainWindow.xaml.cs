@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace Software_Engineering_Project
 {
@@ -30,10 +31,10 @@ namespace Software_Engineering_Project
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(5);
 
-            var timer = new System.Threading.Timer((e) =>
-            {
-                App.Update_Flights();
-            }, null, startTimeSpan, periodTimeSpan);
+            System.Threading.Timer timer1 = null;
+            timer1 = new System.Threading.Timer(_ => App.Update_Flights());
+            timer1.Change(startTimeSpan, periodTimeSpan);
+            //Timer timer = new Timer((e) => { App.Update_Flights(); Console.WriteLine("Stay Alive:" + this.GetType().Name  }, null, startTimeSpan, periodTimeSpan);
         }
 
         private void LoadEngineer_Click(object sender, RoutedEventArgs e)
