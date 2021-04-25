@@ -44,11 +44,13 @@ namespace Software_Engineering_Project
                 if (entry.Value.departTime < DateTime.Now)
                 {
                     //Add entry to App.FlightHistoryDict
+                    Console.WriteLine("Found a Flight, moving it: " + entry.Value.flightID);
                     App.FlightHistoryDictionary.Add(entry.Key, entry.Value);
                     foreach (var user in App.UserAccountDict) //For each user acct
                     {
                         if (user.Value.upcomingFlights.Contains(entry.Key))
                         {
+                            Console.WriteLine("This user has this flight, moving: " + user.Value.uniqueID);
                             user.Value.takenFlights.Add(entry.Key);//add to taken flights
                             user.Value.upcomingFlights.Remove(entry.Key);//remove from upcoming
                             user.Value.balance += entry.Value.pointReward;
