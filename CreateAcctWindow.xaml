@@ -14,8 +14,8 @@
             <RowDefinition Height="265*"/>
             <RowDefinition Height="264*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="CreateAcctBtn" Content="Create Account" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top" Width="334" Height="46" Click="CreateAcctBtn_Click" Grid.Row="1"/>
-        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="391,190,0,0" VerticalAlignment="Top" Width="94" Height="46" Click="CancelBtn_Click" Grid.Row="1"/>
+        <Button x:Name="CreateAcctBtn" Content="Create Account" HorizontalAlignment="Left" Margin="46,171,0,0" VerticalAlignment="Top" Width="334" Height="46" Click="CreateAcctBtn_Click" Grid.Row="1"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="397,171,0,0" VerticalAlignment="Top" Width="94" Height="46" Click="CancelBtn_Click" Grid.Row="1"/>
         <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="114,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" />
         <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="114,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
         <TextBlock x:Name="FirstNameLabel" HorizontalAlignment="Left" Margin="46,35,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top"/>
@@ -25,7 +25,7 @@
         <TextBox x:Name="address" HorizontalAlignment="Left" Height="23" Margin="114,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
         <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="114,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Row="1"/>
         <ComboBox x:Name="USState" HorizontalAlignment="Left" Margin="379,6,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" SelectedValuePath="Content">
-            <ComboBoxItem Content="AL"></ComboBoxItem>           
+            <ComboBoxItem Content="AL"></ComboBoxItem>
             <ComboBoxItem Content="AS"></ComboBoxItem>
             <ComboBoxItem Content="AZ"></ComboBoxItem>
             <ComboBoxItem Content="AR"></ComboBoxItem>
@@ -80,7 +80,6 @@
         <TextBox x:Name="ccNumber" HorizontalAlignment="Left" Height="23" Margin="114,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="385" MaxLength="16" Grid.Row="1"/>
         <TextBlock x:Name="AgeLabel" HorizontalAlignment="Left" Margin="351,34,0,0" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top"/>
         <TextBox x:Name="passwordConfirm" HorizontalAlignment="Left" Height="23" Margin="371,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
-        <TextBox x:Name="CCSecurityCode" HorizontalAlignment="Left" Height="23" Margin="114,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" MaxLength="3" Grid.Row="1"/>
         <TextBlock x:Name="emailLabel" HorizontalAlignment="Left" Margin="26,115,0,0" TextWrapping="Wrap" Text="Email Address: " VerticalAlignment="Top"/>
         <TextBlock x:Name="passwordLabel" HorizontalAlignment="Left" Margin="50,157,0,0" TextWrapping="Wrap" Text="Password: " VerticalAlignment="Top"/>
         <TextBlock x:Name="passConfirmLabel" HorizontalAlignment="Left" Margin="261,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Re-type Password:" Width="104"/>
@@ -89,7 +88,6 @@
         <TextBlock x:Name="stateLabel" HorizontalAlignment="Left" Margin="345,7,0,0" TextWrapping="Wrap" Text="State:" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock x:Name="phoneNumLabel" HorizontalAlignment="Left" Margin="19,45,0,0" TextWrapping="Wrap" Text="Phone Number: " VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock x:Name="ccNumLabel" HorizontalAlignment="Left" Margin="40,111,0,0" TextWrapping="Wrap" Text="Credit Card: " VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBlock x:Name="ccSecurityCodeLabel" HorizontalAlignment="Left" Margin="44,146,0,0" TextWrapping="Wrap" Text="3-Digit PIN: " VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
 </Window>
