@@ -20,6 +20,7 @@
                 <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
                 <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
                 <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding ticketPrice}"/>
             </DataGrid.Columns> 
             
         </DataGrid>
