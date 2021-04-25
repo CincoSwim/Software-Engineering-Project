@@ -20,17 +20,17 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-      <DataGrid x:Name="ApprovalQueueGrid" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" HorizontalAlignment="Left" Height="250" Margin="40,60,0,0" VerticalAlignment="Top" Width="260">
-        <DataGrid.Columns>
-          <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
-          <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
-          <DataGridTextColumn Header="Layover #1" Binding="{Binding layoverCodeA}" />
-          <DataGridTextColumn Header="Layover #2" Binding="{Binding layoverCodeB}" />
-          <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
-          <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
-          <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
-        </DataGrid.Columns>
-      </DataGrid>
+        <DataGrid x:Name="ApprovalQueueGrid" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" HorizontalAlignment="Left" Height="250" Margin="40,60,0,0" VerticalAlignment="Top" Width="260">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
+                <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
+                <DataGridTextColumn Header="Layover #1" Binding="{Binding layoverCodeA}" />
+                <DataGridTextColumn Header="Layover #2" Binding="{Binding layoverCodeB}" />
+                <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
+                <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
+                <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
         <DataGrid x:Name="PostedFlightsGrid" Height="250" Margin="400,60,30,0" VerticalAlignment="Top" CanUserAddRows="False">
             <DataGrid.Columns>
@@ -42,19 +42,20 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="ApprovalQueueLabel_Copy" Content="Posted Flights" HorizontalAlignment="Left" Margin="400,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
-        <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="95,360,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
+        <Button x:Name="FinalizeWindowBtn" Content="Finalize Selected" HorizontalAlignment="Left" Margin="40,359,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="FinalizeWindowBtn_Click"/>
         <Button x:Name="CancelFlightBtn" Content="Cancel Selected Flight" HorizontalAlignment="Left" Margin="470,330,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="CancelFlightBtn_Click" />
         <Button x:Name="LogoutBtn" Content="Logout" Click ="Logout_isClicked" HorizontalAlignment="Left" Margin="600,10,0,0" VerticalAlignment="Top" Width="75"/>
-      
-        <Label x:Name="PlaneTypeLabel" Content="Plane Type:" HorizontalAlignment="Left" Margin="15,329,0,0" VerticalAlignment="Top" Width="80"/>
 
-        <Border x:Name="PlaneType" BorderThickness ="1" HorizontalAlignment="Left" Margin="95,330,0,0" VerticalAlignment="Top">
-          <ComboBox x:Name="PlaneTypeBox"  Width="120" SelectedValuePath="Content">
-            <ComboBoxItem Content="737"></ComboBoxItem>
-            <ComboBoxItem Content="747"></ComboBoxItem>
-            <ComboBoxItem Content="757"></ComboBoxItem>
-            <ComboBoxItem Content="Cessena"></ComboBoxItem>  
-          </ComboBox>
+        <Label x:Name="PlaneTypeLabel" Content="Plane Type:" HorizontalAlignment="Left" Margin="72,321,0,0" VerticalAlignment="Top" Width="80"/>
+
+        <Border x:Name="PlaneType" BorderThickness ="1" HorizontalAlignment="Left" Margin="152,322,0,0" VerticalAlignment="Top">
+            <ComboBox x:Name="PlaneTypeBox"  Width="120" SelectedValuePath="Content">
+                <ComboBoxItem Content="737"></ComboBoxItem>
+                <ComboBoxItem Content="747"></ComboBoxItem>
+                <ComboBoxItem Content="757"></ComboBoxItem>
+                <ComboBoxItem Content="Cessena"></ComboBoxItem>
+            </ComboBox>
         </Border>
+        <Button x:Name="RejectFlightBtn_Copy" Content="Reject Selected" HorizontalAlignment="Left" Margin="185,359,0,0" VerticalAlignment="Top" Width="140" Height="40" Click="RejectFlightBtn_Click"/>
     </Grid>
 </Window>
