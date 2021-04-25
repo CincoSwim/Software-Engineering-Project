@@ -51,8 +51,13 @@ namespace Software_Engineering_Project
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
+            double totalBalance = 0;
+            foreach (var value in App.TransactionHist)
+            {
+                totalBalance += value.FlightUID.ticketPrice * value.FlightUID.bookedUsers.Count;
+            }
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + (totalBalance.ToString()));
         }
 
         void Accountant_Closed(object sender, EventArgs e)
