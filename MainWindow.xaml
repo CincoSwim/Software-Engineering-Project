@@ -13,15 +13,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="MarketManagerLoginButton" Content="Market Manager" Grid.Column="1" HorizontalAlignment="Left" Margin="326,460,0,0" VerticalAlignment="Top" Width="97" Click="MarketManager_Click" Height="20"/>
-        <Button x:Name="LoadEngineerLoginButton" Content="Load Engineer" Grid.Column="1" HorizontalAlignment="Left" Margin="326,485,0,0" VerticalAlignment="Top" Width="97" Click="LoadEngineer_Click" Height="20"/>
-
         <Button x:Name="LoginBtn" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="326,314,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
         <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="1" HorizontalAlignment="Left" Margin="326,339,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
         <Image x:Name="TEMPLOGO" Margin="183,21,198,210" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="1"/>
         <xctk:WatermarkTextBox x:Name="usrBox" Watermark ="UserID" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
         <xctk:WatermarkTextBox x:Name="pwdBox" Watermark ="Password" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
-        <Button x:Name="FlightManagerLoginButton_Copy" Content="Flight Manager" Grid.Column="1" HorizontalAlignment="Left" Margin="326,435,0,0" VerticalAlignment="Top" Width="97" Click="FlightManager_Click" Height="20"/>
-        <Button x:Name="AccountantLoginButton_Copy" Content="Accountant" Grid.Column="1" HorizontalAlignment="Left" Margin="326,410,0,0" VerticalAlignment="Top" Width="97" Click="Accountant_Click" Height="20"/>
     </Grid>
 </Window>
