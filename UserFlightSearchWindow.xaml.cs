@@ -92,7 +92,7 @@ namespace Software_Engineering_Project
 
                             //Make and add transaction object to show purchase history
                             TransactionObj newTransact = new TransactionObj();
-                            newTransact.FlightUID = selected.flightID.ToString();
+                            newTransact.FlightUID = selected;
                             newTransact.UserUID = App.LoggedInUser.uniqueID;
 
                             newTransact.transactionAmt = selected.ticketPrice;
@@ -106,7 +106,7 @@ namespace Software_Engineering_Project
 
                             //Make transaction object, use 0 as amount to show they used points
                             TransactionObj newTransact = new TransactionObj();
-                            newTransact.FlightUID = selected.flightID.ToString();
+                            newTransact.FlightUID = selected;
                             newTransact.UserUID = App.LoggedInUser.uniqueID;
                             newTransact.transactionAmt = 0;
                             App.TransactionHist.Add(newTransact);
@@ -120,7 +120,7 @@ namespace Software_Engineering_Project
                     {
                         //Books flight without using points -- because the user doesn't have enough!
                         TransactionObj newTransact = new TransactionObj();
-                        newTransact.FlightUID = selected.flightID.ToString();
+                        newTransact.FlightUID = selected;
                         newTransact.UserUID = App.LoggedInUser.uniqueID;
 
                         newTransact.transactionAmt = selected.ticketPrice;
