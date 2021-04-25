@@ -36,7 +36,13 @@ namespace Software_Engineering_Project
             
             UpcomingFlightsGrid.ItemsSource = LoadUpcomingFlights(); //Load the user's flights into the DataGrid
             WelcomeMessageLabel.Content = userWelcomeStr; //Sets binding for label to the welcome message
-            
+            //Start a timer to refresh the datagrid every 5 minutes, for continuous flight management over time.
+            var startSpan = TimeSpan.Zero;
+            var periodSpan = TimeSpan.FromMinutes(5);
+
+            System.Threading.Timer timer2 = null;
+            timer2 = new System.Threading.Timer(_ => UpcomingFlightsGrid.Items.Refresh());
+            timer2.Change(startSpan, periodSpan);
 
         }
 
