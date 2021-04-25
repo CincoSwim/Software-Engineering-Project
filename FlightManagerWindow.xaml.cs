@@ -52,7 +52,7 @@ namespace Software_Engineering_Project
             {
                 gridList.Add(App.FlightPlanDict[str]);
             }*/
-            gridList.AddRange(App.FlightPlanDict.Values);
+            
             gridList.AddRange(App.FlightHistoryDictionary.Values);
             return gridList;
         }
@@ -66,7 +66,7 @@ namespace Software_Engineering_Project
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightPlanDict, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary, Formatting.Indented));
         }
     }
 }
