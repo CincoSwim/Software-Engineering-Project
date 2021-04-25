@@ -35,7 +35,7 @@ namespace Software_Engineering_Project
             gridList.AddRange(App.FlightPlanDict.Values);
             foreach(var flight in gridList)
             {
-                if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID))
+                if (App.LoggedInUser.upcomingFlights.Contains(flight.flightID) || flight.bookedUsers.Count >= flight.planeAssigned.numOfSeats) ;
                 {
                     gridList.Remove(flight);
                 }
