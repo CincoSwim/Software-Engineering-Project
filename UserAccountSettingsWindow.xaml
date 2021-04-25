@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Flight Assist - Account Settings" Height="640.431" Width="1063.208">
     <Grid>
-        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False">
+        <DataGrid x:Name="PreviousFlightsGrid" ScrollViewer.CanContentScroll="True" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,48,0,0" VerticalAlignment="Top" Width="622" SelectionChanged="PreviousFlightsGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
                 <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
@@ -19,7 +19,7 @@
                 <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="CanceledFlightsGrid" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622" IsReadOnly="True" CanUserAddRows="False">
+        <DataGrid x:Name="CanceledFlightsGrid" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="236" Margin="423,322,0,0" VerticalAlignment="Top" Width="622" IsReadOnly="True" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
                 <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />

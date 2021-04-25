@@ -27,7 +27,7 @@ namespace Software_Engineering_Project
             m_parent = landingWindow;
             this.Closed += new EventHandler(FlightSearch_Closed);
             FoundFlightsGrid.ItemsSource=LoadAllFlights(); //Loads all flights available to book, minus any the user has already booked.
-
+            FoundFlightsGrid.Items.Refresh();
         }
 
         private List<FlightManifestObj> LoadAllFlights()
@@ -146,11 +146,19 @@ namespace Software_Engineering_Project
                 MessageBox.Show("Please input search criteria!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
+            string departureLocation, arrivalLocation;
+            ComboBoxItem comboBoxItem = (ComboBoxItem)DepartureSelectionBox.SelectedItem;
+            ComboBoxItem comboBoxItem2 = (ComboBoxItem)ArrivalSelectionBox.SelectedItem;
+
+            departureLocation = comboBoxItem.Content.ToString();
+            arrivalLocation = comboBoxItem2.Content.ToString();
+
             foreach (var flight in App.FlightPlanDict)
             {
-                if(flight.Value.originCode == DepartureSelectionBox.SelectedValue.ToString() && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
+                if(flight.Value.originCode == departureLocation && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
                 {   //Flight originates from where they want and has available seats
-                    if(ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.layoverCodeA || ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.layoverCodeB || ArrivalSelectionBox.SelectedValue.ToString() == flight.Value.destinationCode)
+                    if(arrivalLocation == flight.Value.layoverCodeA || arrivalLocation == flight.Value.layoverCodeB || arrivalLocation == flight.Value.destinationCode)
                     {   //Flight lands in the arrival city they wanted, either as a layover or the final destination
                         if(ArriveTimePick.Value == null || DepartTimePick.Value == null)
                         {   //user doesn't care about time, so add any old flight
@@ -163,6 +171,7 @@ namespace Software_Engineering_Project
                 }
             }
             FoundFlightsGrid.ItemsSource = searchList; //change DataGrid to point towards the new list of items that were found.
+            FoundFlightsGrid.Items.Refresh();
         }
     }
 }

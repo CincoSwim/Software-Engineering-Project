@@ -63,7 +63,7 @@
 
         <xctk:DateTimePicker x:Name="DepartTimePick" HorizontalAlignment="Left" Margin="87,49,0,0" VerticalAlignment="Top" Height="26" Width="222"/>
         <Button x:Name="BookFlightButton" Content="Book Selected" HorizontalAlignment="Left" Margin="654,10,0,0" VerticalAlignment="Top" Width="128" Height="196" Click="BookFlightButton_Click"/>
-        <Label x:Name="ArrivalTimeLabel" Content="Depart Time:" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="ArrivalTimeLabel" Content="Arrival Time:" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Width="77"/>
         <xctk:DateTimePicker x:Name="ArriveTimePick" HorizontalAlignment="Left" Margin="392,49,0,0" VerticalAlignment="Top" Height="26" Width="222"/>
 
     </Grid>
