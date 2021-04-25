@@ -127,6 +127,8 @@ namespace Software_Engineering_Project
 
                         App.TransactionHist.Add(newTransact);
                     }
+                    m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
+                    FoundFlightsGrid.ItemsSource = LoadAllFlights();
                     //Put logic here for round trip -------- for each to find a flight with criteria
                 }
             }
