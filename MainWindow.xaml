@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:Software_Engineering_Project"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Software_Engineering_Project.MainWindow"
         mc:Ignorable="d"
-        Title="FlightAssist - Login" Height="546.372" Width="800">
+        Title="FlightAssist - Login" Height="428.372" Width="400" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="LoginBtn" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="326,314,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
-        <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="1" HorizontalAlignment="Left" Margin="326,339,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
-        <Image x:Name="TEMPLOGO" Margin="183,21,198,210" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="1"/>
-        <xctk:WatermarkTextBox x:Name="usrBox" Watermark ="UserID" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
-        <xctk:WatermarkTextBox x:Name="pwdBox" Watermark ="Password" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
+        <Button x:Name="LoginBtn" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="140,322,0,0" VerticalAlignment="Top" Width="97" Click="LoginBtn_Click" Height="20"/>
+        <Button x:Name="CreateAcctBtn" Content="Create Account" Grid.Column="1" HorizontalAlignment="Left" Margin="140,347,0,0" VerticalAlignment="Top" Width="97" Click="CreateAcctBtn_Click" Height="20"/>
+        <Image x:Name="TEMPLOGO" Margin="26,27,0,0" Source="poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg" Stretch="Fill" Grid.Column="1" Height="192" VerticalAlignment="Top" HorizontalAlignment="Left" Width="334"/>
+        <xctk:WatermarkTextBox x:Name="usrBox" Watermark ="UserID" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="41,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
+        <xctk:WatermarkTextBox x:Name="pwdBox" Watermark ="Password" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="41,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
     </Grid>
 </Window>
