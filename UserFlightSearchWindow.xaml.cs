@@ -126,7 +126,11 @@ namespace Software_Engineering_Project
         private void SearchRefreshBtn_Click(object sender, RoutedEventArgs e)
         {
             List<FlightManifestObj> searchList = new List<FlightManifestObj>();
-
+            if(DepartureSelectionBox.SelectedItem == null || ArrivalSelectionBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please input search criteria!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             foreach (var flight in App.FlightPlanDict)
             {
                 if(flight.Value.originCode == DepartureSelectionBox.SelectedValue.ToString() && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
