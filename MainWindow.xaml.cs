@@ -38,7 +38,6 @@ namespace Software_Engineering_Project
             System.Threading.Timer timer1 = null;
             timer1 = new System.Threading.Timer(_ => App.Update_Flights());
             timer1.Change(startTimeSpan, periodTimeSpan);
-            
         }
 
         
