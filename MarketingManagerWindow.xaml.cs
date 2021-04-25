@@ -83,7 +83,8 @@ namespace Software_Engineering_Project
         { 
             
             FlightManifestObj selected = (FlightManifestObj)PostedFlightsGrid.SelectedItem;
-            foreach(var user in App.UserAccountDict)
+            if (selected == null) return;
+            foreach (var user in App.UserAccountDict)
             {
                 if (user.Value.upcomingFlights.Contains(selected.flightID))
                 {
@@ -95,6 +96,13 @@ namespace Software_Engineering_Project
             App.MarketMangerQueue.Add(selected);
             App.FlightPlanDict.Remove(selected.flightID);
             populateFinalizedFlights();
+            populateLoadEngineerProposaedFlights();
+        }
+
+        private void RejectFlightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FlightManifestObj selectedFlightManifestObj = (FlightManifestObj)ApprovalQueueGrid.SelectedItem;
+            App.MarketMangerQueue.Remove(selectedFlightManifestObj);
             populateLoadEngineerProposaedFlights();
         }
     }
