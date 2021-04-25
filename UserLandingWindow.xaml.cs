@@ -40,7 +40,7 @@ namespace Software_Engineering_Project
 
         }
 
-        private List<FlightManifestObj> LoadUpcomingFlights()
+        public List<FlightManifestObj> LoadUpcomingFlights()
         {   List<FlightManifestObj> gridList = new List<FlightManifestObj>();
             //adds each flight the user is booked for into the list, and returns that list.
             foreach(string str in App.LoggedInUser.upcomingFlights)
