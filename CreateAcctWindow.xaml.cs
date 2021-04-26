@@ -98,7 +98,7 @@ namespace Software_Engineering_Project
             string genNum, foundNum;
             bool foundSpace = false;
             foundNum = "000000";
-            while (!foundSpace
+            while (!foundSpace)
             {
                 genNum = generator.Next(100000, 1000000).ToString("000000");//Generate a random number between 1 and 999999, then mask it to a 6-char string to ensure uniform length
                 try
