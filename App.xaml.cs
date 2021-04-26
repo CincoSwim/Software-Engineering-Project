@@ -129,30 +129,15 @@ namespace Software_Engineering_Project
 
             double miles = 0;
             double minMiles = 0;
-            TimeSpan redEyeStart = new TimeSpan(0, 0, 0);
-            TimeSpan redEyeEnd = new TimeSpan(5, 0, 0);
-            TimeSpan offPkStart = new TimeSpan(8, 0, 0);
-            TimeSpan offPkEnd = new TimeSpan(19, 0, 0);
 
             //no layovers
             if (flightGraph[begin, end] != 0)
             {
                 miles = flightGraph[begin, end];
                 flightPlan.ticketPrice = Math.Round(50 + (0.12 * miles), 2);
-                flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
+                flightPlan.pointReward = Math.Round(10 * flightPlan.ticketPrice, 2);
                 flightPlan.layoverCodeA = "N/A";
                 flightPlan.layoverCodeB = "N/A";
-
-                if (flightPlan.departTime.TimeOfDay> redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
-                {
-                    flightPlan.ticketPrice = Math.Round(0.8 * flightPlan.ticketPrice, 2);
-                    flightPlan.pointReward = Math.Round(0.8 * flightPlan.pointReward, 2);
-                }
-                else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
-                {
-                    flightPlan.ticketPrice = Math.Round(0.9 * flightPlan.ticketPrice, 2);
-                    flightPlan.pointReward = Math.Round(0.9 * flightPlan.ticketPrice, 2);
-                }
                 return flightPlan;
             } 
             //will go through every possible path and save the shortest one
@@ -170,7 +155,7 @@ namespace Software_Engineering_Project
                             {
                                 minMiles = miles;
                                 flightPlan.ticketPrice = Math.Round((0.12 * miles) + 58, 2);
-                                flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
+                                flightPlan.pointReward = Math.Round(10 * flightPlan.ticketPrice, 2);
                                 flightPlan.layoverCodeA = intToCode(i);
                                 flightPlan.layoverCodeB = "N/A";
                             }
@@ -189,7 +174,7 @@ namespace Software_Engineering_Project
                                         {
                                             minMiles = miles;
                                             flightPlan.ticketPrice = Math.Round((0.12 * miles) + 66, 2);
-                                            flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
+                                            flightPlan.pointReward = Math.Round(10 * flightPlan.ticketPrice, 2);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
                                         }
@@ -200,17 +185,28 @@ namespace Software_Engineering_Project
                     }
                 }
             }
-            if (flightPlan.departTime.TimeOfDay > redEyeStart && flightPlan.departTime.TimeOfDay < redEyeEnd)
-            {
-                flightPlan.ticketPrice = Math.Round(0.8 * flightPlan.ticketPrice, 2);
-                flightPlan.pointReward = Math.Round(0.8 * flightPlan.pointReward, 2);
-            }
-            else if (flightPlan.departTime.TimeOfDay < offPkStart || flightPlan.arrivalTime.TimeOfDay > offPkEnd)
-            {
-                flightPlan.ticketPrice = Math.Round(0.9 * flightPlan.ticketPrice, 2);
-                flightPlan.pointReward = Math.Round(0.9 * flightPlan.ticketPrice, 2);
-            }
             return flightPlan;
+        }
+
+        public static FlightManifestObj applyDiscounts(FlightManifestObj flight)
+        {
+            TimeSpan redEyeStart = new TimeSpan(0, 0, 0);
+            TimeSpan redEyeEnd = new TimeSpan(5, 0, 0);
+            TimeSpan offPkStart = new TimeSpan(8, 0, 0);
+            TimeSpan offPkEnd = new TimeSpan(19, 0, 0);
+
+            if (flight.departTime.TimeOfDay > redEyeStart && flight.departTime.TimeOfDay < redEyeEnd)
+            {
+                flight.ticketPrice = Math.Round(0.8 * flight.ticketPrice, 2);
+                flight.pointReward = Math.Round(0.8 * flight.pointReward, 2);
+            }
+            else if (flight.departTime.TimeOfDay < offPkStart || flight.arrivalTime.TimeOfDay > offPkEnd)
+            {
+                flight.ticketPrice = Math.Round(0.9 * flight.ticketPrice, 2);
+                flight.pointReward = Math.Round(0.9 * flight.pointReward, 2);
+            }
+
+            return flight;
         }
     }
 }

@@ -384,7 +384,8 @@ namespace Software_Engineering_Project
                 proposedFlightManifestObj.flightID = genNum;
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
-               
+                planWithLayovers = App.applyDiscounts(planWithLayovers);
+
                 App.MarketMangerQueue.Add(planWithLayovers);
                 
                 populateDataGrid();
