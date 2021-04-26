@@ -21,6 +21,7 @@ namespace Software_Engineering_Project
     public partial class UserFlightSearchWindow : Window
     {
         private UserLandingWindow m_parent;
+        private static Boolean roundTripFlag;
         public UserFlightSearchWindow(UserLandingWindow landingWindow)
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace Software_Engineering_Project
             this.Closed += new EventHandler(FlightSearch_Closed);
             FoundFlightsGrid.ItemsSource=LoadAllFlights(); //Loads all flights available to book, minus any the user has already booked.
             FoundFlightsGrid.Items.Refresh();
+            roundTripFlag = false;
+
         }
 
         private List<FlightManifestObj> LoadAllFlights()
@@ -102,7 +105,10 @@ namespace Software_Engineering_Project
                             newTransact.transactionAmt = selected.ticketPrice;
 
                             App.TransactionHist.Add(newTransact);
-                            
+                            if(roundTripFlag == false)
+                            {
+                                promptForRoundtrip();
+                            }
                         }
                         else
                         {
@@ -117,7 +123,10 @@ namespace Software_Engineering_Project
 
                             //Subtract ticket amount from points balance
                             App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - selected.ticketPrice;
-
+                            if (roundTripFlag == false)
+                            {
+                                promptForRoundtrip();
+                            }
                         }
                     }
                     else
@@ -130,6 +139,10 @@ namespace Software_Engineering_Project
                         newTransact.transactionAmt = selected.ticketPrice;
 
                         App.TransactionHist.Add(newTransact);
+                        if (roundTripFlag == false)
+                        {
+                            promptForRoundtrip();
+                        }
                     }
                     m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
                     FoundFlightsGrid.ItemsSource = LoadAllFlights();
@@ -139,9 +152,15 @@ namespace Software_Engineering_Project
         }
 
         private void SearchRefreshBtn_Click(object sender, RoutedEventArgs e)
-        {   //User clicked the search button, so augment the shown fields to have only flights that match criteria
+        {
+            SearchRefresh();
+        }
+
+        private void SearchRefresh()
+        {
+            //User clicked the search button, so augment the shown fields to have only flights that match criteria
             List<FlightManifestObj> searchList = new List<FlightManifestObj>();
-            if(DepartureSelectionBox.SelectedItem == null || ArrivalSelectionBox.SelectedItem == null)
+            if (DepartureSelectionBox.SelectedItem == null || ArrivalSelectionBox.SelectedItem == null)
             {   //If they don't have a start and end location, throw a popup
                 MessageBox.Show("Please input search criteria!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -156,22 +175,48 @@ namespace Software_Engineering_Project
 
             foreach (var flight in App.FlightPlanDict)
             {
-                if(flight.Value.originCode == departureLocation && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
+                if (flight.Value.originCode == departureLocation && flight.Value.bookedUsers.Count < flight.Value.planeAssigned.numOfSeats)
                 {   //Flight originates from where they want and has available seats
-                    if(arrivalLocation == flight.Value.layoverCodeA || arrivalLocation == flight.Value.layoverCodeB || arrivalLocation == flight.Value.destinationCode)
+                    if (arrivalLocation == flight.Value.layoverCodeA || arrivalLocation == flight.Value.layoverCodeB || arrivalLocation == flight.Value.destinationCode)
                     {   //Flight lands in the arrival city they wanted, either as a layover or the final destination
-                        if(ArriveTimePick.Value == null || DepartTimePick.Value == null)
+                        if (ArriveTimePick.Value == null || DepartTimePick.Value == null)
                         {   //user doesn't care about time, so add any old flight
                             searchList.Add(flight.Value);
-                        }else if(DepartTimePick.Value > flight.Value.departTime || ArriveTimePick.Value < flight.Value.arrivalTime){
+                        }
+                        else if (DepartTimePick.Value > flight.Value.departTime || ArriveTimePick.Value < flight.Value.arrivalTime)
+                        {
                             //User specified a time and date, so only add flights that fit in that space
                             searchList.Add(flight.Value);
                         }
                     }
                 }
+                if (DateTime.Now.AddMonths(6) < flight.Value.departTime)
+                {
+                    searchList.Remove(flight.Value);
+                }
             }
             FoundFlightsGrid.ItemsSource = searchList; //change DataGrid to point towards the new list of items that were found.
             FoundFlightsGrid.Items.Refresh();
+        }
+
+        private void promptForRoundtrip()
+        {   if(MessageBox.Show("Would you like to book a return trip?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                roundTripFlag = true;
+                ComboBoxItem storeArrive = (ComboBoxItem)ArrivalSelectionBox.SelectedItem;
+                ComboBoxItem storeDepart = (ComboBoxItem)DepartureSelectionBox.SelectedItem;
+
+                ArrivalSelectionBox.SelectedItem = storeDepart;
+                DepartureSelectionBox.SelectedItem = storeArrive;
+                ArriveTimePick.Value = null;
+                DepartTimePick.Value = null;
+                SearchRefresh();
+            }
+            else
+            {
+                roundTripFlag = false;
+            }
+            
         }
     }
 }

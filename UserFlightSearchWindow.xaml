@@ -40,6 +40,7 @@
             <ComboBoxItem Content="Sacramento, CA"/>
             <ComboBoxItem Content="Seattle, WA"/>
             <ComboBoxItem Content="Toledo, OH"/>
+            <ComboBoxItem Content="Nashville, TN"/>
         </ComboBox>
         <ComboBox x:Name="ArrivalSelectionBox" HorizontalAlignment="Left" Margin="392,10,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="Arlington, VA"/>
@@ -56,6 +57,7 @@
             <ComboBoxItem Content="Sacramento, CA"/>
             <ComboBoxItem Content="Seattle, WA"/>
             <ComboBoxItem Content="Toledo, OH"/>
+            <ComboBoxItem Content="Nashville, TN"/>
         </ComboBox>
         <Label x:Name="DepartureBoxLabel" Content="Departing From:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="95"/>
         <Label x:Name="ArrivalLabel" Content="Arrives At:" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="77"/>
