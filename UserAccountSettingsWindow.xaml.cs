@@ -52,7 +52,14 @@ namespace Software_Engineering_Project
             List<FlightManifestObj> cancelList = new List<FlightManifestObj>();
             foreach (string str in App.LoggedInUser.canceledFlights)
             {
-                cancelList.Add(App.FlightPlanDict[str]);
+                try
+                {
+                    cancelList.Add(App.FlightPlanDict[str]);
+                }
+                catch
+                {
+                    cancelList.Add(App.FlightHistoryDictionary[str]);
+                }
             }
             return cancelList;
         }

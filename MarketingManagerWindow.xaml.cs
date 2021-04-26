@@ -89,6 +89,7 @@ namespace Software_Engineering_Project
                 if (user.Value.upcomingFlights.Contains(selected.flightID))
                 {
                     user.Value.balance += selected.pointReward;
+                    user.Value.canceledFlights.Add(selected.flightID);
                     user.Value.upcomingFlights.Remove(selected.flightID);
                 }
             }
