@@ -108,6 +108,7 @@ namespace Software_Engineering_Project
                             if(roundTripFlag == false)
                             {
                                 promptForRoundtrip();
+                                return;
                             }
                         }
                         else
@@ -126,6 +127,7 @@ namespace Software_Engineering_Project
                             if (roundTripFlag == false)
                             {
                                 promptForRoundtrip();
+                                return;
                             }
                         }
                     }
@@ -142,10 +144,12 @@ namespace Software_Engineering_Project
                         if (roundTripFlag == false)
                         {
                             promptForRoundtrip();
+                            return;
                         }
                     }
                     m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
                     FoundFlightsGrid.ItemsSource = LoadAllFlights();
+                    this.Close();
                     //Put logic here for round trip -------- for each to find a flight with criteria
                 }
             }
