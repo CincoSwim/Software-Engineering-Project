@@ -82,13 +82,15 @@ namespace Software_Engineering_Project
         {   //Checks to see what fields are changed in the Editable fields, and makes changes if changes are found.
             //If fields are found to be empty, the user is prompted to enter "something" into the fields, and no changes are made
 
+            int parseTry;
+            long parseLongTry;
             //Input Checks done HERE *******
             if (firstNameTextBox.Text.Trim() == "" || lastNameTextBox.Text.Trim() == "")//First or last name are empty, pop prompt
             {
                 MessageBox.Show("Please enter your name!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (ageTextBox.Text.Trim() == "") //Age empty, pop prompt
+            else if (ageTextBox.Text.Trim() == "" || !int.TryParse(ageTextBox.Text, out parseTry)) //Age empty, pop prompt
             {
                 MessageBox.Show("Please enter your age.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -98,12 +100,12 @@ namespace Software_Engineering_Project
                 MessageBox.Show("Please ensure all fields of your address are filled.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (phoneTextBox.Text.Trim() == "")//phone empty, pop prompt
+            else if (phoneTextBox.Text.Trim() == "" || phoneTextBox.Text.Trim().Length != 10 || !long.TryParse(phoneTextBox.Text, out parseLongTry))//phone empty, pop prompt
             {
                 MessageBox.Show("Please enter a phone number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else if (CCTextBox.Text.Trim() == "")//Credit Card empty, pop prompt
+            else if (CCTextBox.Text.Trim() == "" || CCTextBox.Text.Trim().Length != 16 || !long.TryParse(CCTextBox.Text, out parseLongTry))//Credit Card empty, pop prompt
             {
                 MessageBox.Show("Please enter a credit card number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
