@@ -22,6 +22,7 @@ namespace Software_Engineering_Project
     {
         private UserLandingWindow m_parent;
         private static Boolean roundTripFlag;
+        private static Boolean endPage;
         public UserFlightSearchWindow(UserLandingWindow landingWindow)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Software_Engineering_Project
             FoundFlightsGrid.ItemsSource=LoadAllFlights(); //Loads all flights available to book, minus any the user has already booked.
             FoundFlightsGrid.Items.Refresh();
             roundTripFlag = false;
+            endPage = false;
 
         }
 
@@ -145,8 +147,9 @@ namespace Software_Engineering_Project
                         }
                     }
                     m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
-                    FoundFlightsGrid.ItemsSource = LoadAllFlights();
-                    //this.Close();
+                    //FoundFlightsGrid.ItemsSource = LoadAllFlights();
+                    if (endPage == true) this.Close();
+                    if (roundTripFlag == true) endPage = true;
                     //Put logic here for round trip -------- for each to find a flight with criteria
                 }
             }
@@ -212,7 +215,6 @@ namespace Software_Engineering_Project
                 ArriveTimePick.Value = null;
                 DepartTimePick.Value = null;
                 SearchRefresh();
-                FoundFlightsGrid.Items.Refresh();
             }
             else
             {

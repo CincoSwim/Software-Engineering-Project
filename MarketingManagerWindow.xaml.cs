@@ -65,10 +65,9 @@ namespace Software_Engineering_Project
             selected.planeAssigned.numOfSeats = selected.planeAssigned.getNumOfSeats();
             App.FlightPlanDict.Add(selected.flightID, selected);
             App.MarketMangerQueue.Remove(selected);
-
+            ApprovalQueueGrid.Items.Refresh();
             populateLoadEngineerProposaedFlights();
             populateFinalizedFlights();
-            ApprovalQueueGrid.Items.Refresh();
         }
         private void populateFinalizedFlights()
         {
