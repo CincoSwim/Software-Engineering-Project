@@ -32,13 +32,15 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="ApprovalQueueLabel" Content="Approval Queue" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>
-        <DataGrid x:Name="PostedFlightsGrid" Height="250" Margin="400,60,30,0" VerticalAlignment="Top" CanUserAddRows="False">
+        <DataGrid x:Name="PostedFlightsGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" Height="250" Margin="400,60,30,0" VerticalAlignment="Top" IsReadOnly="True" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flight ID" Binding="{Binding flightID}" />
                 <DataGridTextColumn Header="Takeoff Location" Binding="{Binding originCode}" />
                 <DataGridTextColumn Header="Arrival Location" Binding="{Binding destinationCode}" />
                 <DataGridTextColumn Header="Takeoff Time" Binding="{Binding departTime}" />
                 <DataGridTextColumn Header="Arrival Time" Binding="{Binding arrivalTime}" />
+                <DataGridTextColumn Header="Ticket Price" Binding="{Binding ticketPrice}" />
+                <DataGridTextColumn Header="Point Reward" Binding="{Binding pointReward}" />
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="ApprovalQueueLabel_Copy" Content="Posted Flights" HorizontalAlignment="Left" Margin="400,34,0,0" VerticalAlignment="Top" Width="260" Height="26"/>

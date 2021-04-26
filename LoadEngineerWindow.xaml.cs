@@ -302,6 +302,7 @@ namespace Software_Engineering_Project
             {
                 DepartureCitiesBorderCB.BorderBrush = Brushes.Red;
                 departureLocation = null;
+                return;
             }
             else 
             { 
@@ -311,6 +312,7 @@ namespace Software_Engineering_Project
             { 
                 ArrivalCitiesBorderCB.BorderBrush = Brushes.Red;
                 arrivalLocation = null;
+                return;
             }
             else
             {
@@ -324,6 +326,7 @@ namespace Software_Engineering_Project
             {
                 DepartureDateTimePicker.BorderBrush = Brushes.Red;
                 parsedDepartDate = DateTime.Today;
+                return;
             }
             else 
             { 
@@ -341,7 +344,7 @@ namespace Software_Engineering_Project
             //Setting ArrivalTime based on Departure Time
             parsedArrivalDate = setArrivalTimeBasedOnDepartureTime(parsedDepartDate, departureLocation, arrivalLocation, planWithLayovers.layoverCodeA, planWithLayovers.layoverCodeB);
 
-
+            //Set Arrival Date to 1/1/ThisYear if the previous method failed somehow
             if (parsedArrivalDate == null)
             {
                 
@@ -349,31 +352,30 @@ namespace Software_Engineering_Project
             }
 
             if (!parsedArrivalDate.Equals(DateTime.MinValue)) {  
-            Random generator = new Random();
-            string genNum;
-            genNum = generator.Next(0, 1000000).ToString("000000");
-            for(int i = 0; i < App.MarketMangerQueue.Count; i++)
-            {
-                if (genNum.Equals(App.MarketMangerQueue.ElementAt(i).flightID))
+                Random generator = new Random();
+                string genNum;
+                genNum = generator.Next(0, 1000000).ToString("000000");
+                for(int i = 0; i < App.MarketMangerQueue.Count; i++)
                 {
-                   genNum = generator.Next(0, 1000000).ToString("000000");
-                   i = 0;
+                    if (genNum.Equals(App.MarketMangerQueue.ElementAt(i).flightID))
+                    {
+                      genNum = generator.Next(0, 1000000).ToString("000000");
+                       i = 0;
+                    }
                 }
-            }
-            proposedFlightManifestObj.flightID = genNum;
-            proposedFlightManifestObj.departTime = parsedDepartDate;
-            proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
+                proposedFlightManifestObj.flightID = genNum;
+                proposedFlightManifestObj.departTime = parsedDepartDate;
+                proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
                
-            App.MarketMangerQueue.Add(planWithLayovers);
+                App.MarketMangerQueue.Add(planWithLayovers);
                 
-            populateDataGrid();
-            Console.WriteLine(App.MarketMangerQueue.Count);
+                populateDataGrid();
+                Console.WriteLine(App.MarketMangerQueue.Count);
             }
             else
             {
                 MessageBox.Show("arrivalTimescrewedup");
             }
-            
         }
         private DateTime setArrivalTimeBasedOnDepartureTime(DateTime departureTime, string departureLocation, string arrivalLocation, string layoverA, string layoverB)
         {
@@ -429,13 +431,7 @@ namespace Software_Engineering_Project
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
         {
             FlightManifestObj selectedFlightManifestObj = (FlightManifestObj) ApprovalQueueGrid.SelectedItem;
-            /*for(int i = 0; i < App.MarketMangerQueue.Count; i++) { 
-                if (selectedFlightManifestObj.flightID.Equals(App.MarketMangerQueue.ElementAt(i).flightID)){
-                    App.MarketMangerQueue.RemoveAt(i);
-                }
-            }*/
             App.MarketMangerQueue.Remove(selectedFlightManifestObj);
-            
             populateDataGrid();
         }
 
