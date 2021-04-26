@@ -139,7 +139,7 @@ namespace Software_Engineering_Project
             {
                 miles = flightGraph[begin, end];
                 flightPlan.ticketPrice = Math.Round(50 + (0.12 * miles), 2);
-                flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
+                flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
                 flightPlan.layoverCodeA = "N/A";
                 flightPlan.layoverCodeB = "N/A";
 
@@ -170,7 +170,7 @@ namespace Software_Engineering_Project
                             {
                                 minMiles = miles;
                                 flightPlan.ticketPrice = Math.Round((0.12 * miles) + 58, 2);
-                                flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
+                                flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
                                 flightPlan.layoverCodeA = intToCode(i);
                                 flightPlan.layoverCodeB = "N/A";
                             }
@@ -189,7 +189,7 @@ namespace Software_Engineering_Project
                                         {
                                             minMiles = miles;
                                             flightPlan.ticketPrice = Math.Round((0.12 * miles) + 66, 2);
-                                            flightPlan.pointReward = Math.Round(Convert.ToDouble(0.1 * flightPlan.ticketPrice), 2);
+                                            flightPlan.pointReward = Math.Round(Convert.ToDouble(10 * flightPlan.ticketPrice), 2);
                                             flightPlan.layoverCodeA = intToCode(i);
                                             flightPlan.layoverCodeB = intToCode(j);
                                         }

@@ -104,11 +104,11 @@ namespace Software_Engineering_Project
             }
             
             FlightManifestObj selected = (FlightManifestObj)UpcomingFlightsGrid.SelectedItem; //Cast selected item to a FlightManifestObj
-            //if(DateTime.Now.AddHours(1) >= selected.departTime)
-            //{   //Flight is within 1 hour of departure and cannot be cancelled. 
-            //    MessageBox.Show("You cannot cancel a flight within 1 hour of departure!", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
-            //    return;
-            //}
+            if(DateTime.Now.AddHours(1) >= selected.departTime)
+            {   //Flight is within 1 hour of departure and cannot be cancelled. 
+                MessageBox.Show("You cannot cancel a flight within 1 hour of departure!", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
+            }
             //otherwise, add the flight to canceled list and remove from upcoming.
             App.LoggedInUser.canceledFlights.Add(selected.flightID);
             App.LoggedInUser.upcomingFlights.Remove(selected.flightID);

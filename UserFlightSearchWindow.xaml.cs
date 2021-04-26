@@ -90,7 +90,7 @@ namespace Software_Engineering_Project
                     //User selected yes, so book the flight
                     App.UserAccountDict[App.LoggedInUser.uniqueID].upcomingFlights.Add(selected.flightID.ToString()); //Add the flightID to the logged in user
                     App.FlightPlanDict[selected.flightID].bookedUsers.Add(App.UserAccountDict[App.LoggedInUser.uniqueID]); //Add the user to the selected flight
-                    if(App.LoggedInUser.balance > selected.ticketPrice)
+                    if((App.LoggedInUser.balance * 100) > selected.ticketPrice)
                     {   //User has enough points that they can pay via points, so ask if they want to pay this way.
                         if((MessageBox.Show("Would you like to use your Points? \n Flight Price: " + selected.ticketPrice +
                                             "\n Account Balance: " + App.LoggedInUser.balance,"Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
@@ -123,7 +123,7 @@ namespace Software_Engineering_Project
                             App.TransactionHist.Add(newTransact);
 
                             //Subtract ticket amount from points balance
-                            App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - selected.ticketPrice;
+                            App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - (selected.ticketPrice * 100);
                             if (roundTripFlag == false)
                             {
                                 promptForRoundtrip();
