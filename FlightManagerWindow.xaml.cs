@@ -58,15 +58,16 @@ namespace Software_Engineering_Project
         }
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
         {
-
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(FlightManagerObjDataGrid.SelectedItem, Formatting.Indented));
+            //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(FlightManagerObjDataGrid.SelectedItem, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, App.printFlightManagerSingleRecords((FlightManifestObj)FlightManagerObjDataGrid.SelectedItem));
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary, Formatting.Indented));
+            //File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary, Formatting.Indented));
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, App.printFlightManagerAllRecord());
         }
     }
 }

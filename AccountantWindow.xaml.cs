@@ -40,28 +40,32 @@ namespace Software_Engineering_Project
 
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
         {   
-            double transactionForPlane = 0;
+            //double transactionForPlane = 0;
             TransactionObj selected = (TransactionObj)AccountingObjDataGrid.SelectedItem;
             if (selected == null)
             {
                 MessageBox.Show("Please select a flight", "Alert!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
+            //transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + (transactionForPlane.ToString()));
+            //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + "\nTotal Income: " + (transactionForPlane.ToString()));
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, App.printAccountantSingleRecords(selected));
+            selected = null;
             AccountingObjDataGrid.SelectedItem = null;
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
-            double totalBalance = 0;
-            foreach (var value in App.TransactionHist)
-            {
-                totalBalance += value.FlightUID.ticketPrice * value.FlightUID.bookedUsers.Count;
-            }
+            //double totalBalance = 0;
+            //foreach (var value in App.TransactionHist)
+            //{
+            //    //totalBalance += value.FlightUID.ticketPrice * value.FlightUID.bookedUsers.Count;
+            //    totalBalance += value.transactionAmt;
+            //}
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + (totalBalance.ToString()));
+            //File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + "\nTotal Income: " + (totalBalance.ToString()));
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, App.printAccountantAllRecords());
         }
 
         void Accountant_Closed(object sender, EventArgs e)
