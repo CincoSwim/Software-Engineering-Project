@@ -42,10 +42,15 @@ namespace Software_Engineering_Project
         {   
             double transactionForPlane = 0;
             TransactionObj selected = (TransactionObj)AccountingObjDataGrid.SelectedItem;
+            if (selected == null)
+            {
+                MessageBox.Show("Please select a flight", "Alert!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
             File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + (transactionForPlane.ToString()));
-            
+            AccountingObjDataGrid.SelectedItem = null;
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)

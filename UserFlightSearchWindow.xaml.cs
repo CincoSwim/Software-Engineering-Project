@@ -148,7 +148,7 @@ namespace Software_Engineering_Project
                     }
                     m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
                     //FoundFlightsGrid.ItemsSource = LoadAllFlights();
-                    if (endPage == true) this.Close();
+                    if (endPage == true || roundTripFlag == false) this.Close();
                     if (roundTripFlag == true) endPage = true;
                     //Put logic here for round trip -------- for each to find a flight with criteria
                 }
