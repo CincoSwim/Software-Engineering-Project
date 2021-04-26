@@ -293,33 +293,10 @@ namespace Software_Engineering_Project
         { 
             FlightManifestObj proposedFlightManifestObj = new FlightManifestObj();
             DateTime parsedDepartDate, parsedArrivalDate;
-            string departureDateTime, arrivalDateTime;
-
-            //Getting Date Time Data
-            departureDateTime = DepartureDateTimePicker.Text;
-            arrivalDateTime = ArrivalDateTimePicker.Text;
-
-            if (departureDateTime == null)
-            {
-                DepartureDateTimePicker.BorderBrush = Brushes.Red;
-                parsedDepartDate = DateTime.Today;
-            }
-            else 
-            { 
-                parsedDepartDate = DateTime.Parse(departureDateTime);
-            }
-
-            if (arrivalDateTime == null)
-            {
-                ArrivalDateTimePicker.BorderBrush = Brushes.Red;
-                parsedArrivalDate = DateTime.Today;
-            }else 
-            { 
-            parsedArrivalDate = DateTime.Parse(arrivalDateTime);
-            }
-
-            //Getting Location Data
+            string departureDateTime;
             string departureLocation, arrivalLocation;
+
+            //Set Locations
             ComboBoxItem comboBoxItem = (ComboBoxItem)DepartureCitiesComboBox.SelectedItem;
             if(comboBoxItem == null)
             {
@@ -332,7 +309,6 @@ namespace Software_Engineering_Project
             }
             if(ArrivalCitiesComboBox.SelectedItem == null)
             { 
-                
                 ArrivalCitiesBorderCB.BorderBrush = Brushes.Red;
                 arrivalLocation = null;
             }
@@ -341,37 +317,113 @@ namespace Software_Engineering_Project
                 arrivalLocation = ArrivalCitiesComboBox.SelectedItem.ToString();
             }
 
-            
-            if (parsedDepartDate.CompareTo( parsedArrivalDate) < 0)
+            //Getting Date Time Data
+            departureDateTime = DepartureDateTimePicker.Text;
+
+            if (departureDateTime == null)
+            {
+                DepartureDateTimePicker.BorderBrush = Brushes.Red;
+                parsedDepartDate = DateTime.Today;
+            }
+            else 
+            { 
+                parsedDepartDate = DateTime.Parse(departureDateTime);
+            }
+
+            proposedFlightManifestObj.originCode = departureLocation;
+            proposedFlightManifestObj.destinationCode = arrivalLocation;
+
+            int begin = convertLocationsToInt(proposedFlightManifestObj.originCode);
+            int end = convertLocationsToInt(proposedFlightManifestObj.destinationCode);
+            FlightManifestObj planWithLayovers = App.findShortestPath(proposedFlightManifestObj, begin, end);
+
+
+            //Setting ArrivalTime based on Departure Time
+            parsedArrivalDate = setArrivalTimeBasedOnDepartureTime(parsedDepartDate, departureLocation, arrivalLocation, planWithLayovers.layoverCodeA, planWithLayovers.layoverCodeB);
+
+
+            if (parsedArrivalDate == null)
             {
                 
-                Random generator = new Random();
-                string genNum;
-                genNum = generator.Next(0, 1000000).ToString("000000");
-                for(int i = 0; i < App.MarketMangerQueue.Count; i++)
-                {
-                    if (genNum.Equals(App.MarketMangerQueue.ElementAt(i).flightID))
-                    {
-                        genNum = generator.Next(0, 1000000).ToString("000000");
-                        i = 0;
-                    }
-                }
-                proposedFlightManifestObj.flightID = genNum;
-                proposedFlightManifestObj.departTime = parsedDepartDate;
-                proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
-                proposedFlightManifestObj.originCode = departureLocation;
-                proposedFlightManifestObj.destinationCode = arrivalLocation;
-
-                int begin = convertLocationsToInt(proposedFlightManifestObj.originCode);
-                int end = convertLocationsToInt(proposedFlightManifestObj.destinationCode);
-
-                FlightManifestObj planWithLayovers = App.findShortestPath(proposedFlightManifestObj, begin, end);
-
-                App.MarketMangerQueue.Add(planWithLayovers);
-                
-                populateDataGrid();
-                Console.WriteLine(App.MarketMangerQueue.Count);
+                parsedArrivalDate = DateTime.MinValue;
             }
+
+            if (!parsedArrivalDate.Equals(DateTime.MinValue)) {  
+            Random generator = new Random();
+            string genNum;
+            genNum = generator.Next(0, 1000000).ToString("000000");
+            for(int i = 0; i < App.MarketMangerQueue.Count; i++)
+            {
+                if (genNum.Equals(App.MarketMangerQueue.ElementAt(i).flightID))
+                {
+                   genNum = generator.Next(0, 1000000).ToString("000000");
+                   i = 0;
+                }
+            }
+            proposedFlightManifestObj.flightID = genNum;
+            proposedFlightManifestObj.departTime = parsedDepartDate;
+            proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
+               
+            App.MarketMangerQueue.Add(planWithLayovers);
+                
+            populateDataGrid();
+            Console.WriteLine(App.MarketMangerQueue.Count);
+            }
+            else
+            {
+                MessageBox.Show("arrivalTimescrewedup");
+            }
+            
+        }
+        private DateTime setArrivalTimeBasedOnDepartureTime(DateTime departureTime, string departureLocation, string arrivalLocation, string layoverA, string layoverB)
+        {
+            DateTime arrivalTime = DateTime.MinValue;
+            DateTime makeTimeNotPossible = DateTime.Now;
+            double miles = 0;
+            double milesTimeInHours = 0;
+            int begin = convertLocationsToInt(departureLocation);
+            int end = convertLocationsToInt(arrivalLocation);
+            int layover1 = convertLocationsToInt(layoverA);
+            int layover2 = convertLocationsToInt(layoverB);
+
+            //check if its a direct flight
+            if(App.flightGraph[begin, end] != 0)
+            {
+                miles = App.flightGraph[begin, end];
+                milesTimeInHours = miles/500;
+                //Adding half an hour for beginning and end of flight
+                milesTimeInHours = milesTimeInHours + .5;
+                arrivalTime = departureTime.AddHours(milesTimeInHours);
+                return arrivalTime;
+                
+            } // Check if its 1 layover
+            else if(App.flightGraph[begin, layover1] != 0 && App.flightGraph[layover1, end] != 0)
+            {
+                miles = App.flightGraph[begin, layover1] + App.flightGraph[layover1, end];
+                milesTimeInHours = miles/500;
+                //Adding half an hour for beginning and end of flight
+                milesTimeInHours = milesTimeInHours + .5;
+                //Adding 1 hour for 1 layover flight
+                milesTimeInHours = milesTimeInHours + 1;
+                arrivalTime = departureTime.AddHours(milesTimeInHours);
+                return arrivalTime;
+            } // Check if its 2 layovers
+            else if (App.flightGraph[begin, layover1] != 0 && App.flightGraph[layover1, layover2] != 0 && App.flightGraph[layover2, end] != 0)
+            {
+                miles = App.flightGraph[begin, layover1] + App.flightGraph[layover1, layover2] + App.flightGraph[layover2, end];
+                milesTimeInHours = miles/500;
+                //Adding half an hour for beginning and end of flight
+                milesTimeInHours = milesTimeInHours + .5;
+                //Adding 2 hours for 2 layover flights
+                milesTimeInHours = milesTimeInHours + 2;
+                arrivalTime = departureTime.AddHours(milesTimeInHours);
+                return arrivalTime;
+            } //How did you get here?????
+            else
+            {
+                return arrivalTime;
+            }
+            
         }
 
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
