@@ -107,8 +107,7 @@ namespace Software_Engineering_Project
                             App.TransactionHist.Add(newTransact);
                             if(roundTripFlag == false)
                             {
-                                promptForRoundtrip();
-                                return;
+                                promptForRoundtrip(selected);
                             }
                         }
                         else
@@ -126,8 +125,7 @@ namespace Software_Engineering_Project
                             App.UserAccountDict[App.LoggedInUser.uniqueID].balance = App.UserAccountDict[App.LoggedInUser.uniqueID].balance - (selected.ticketPrice * 100);
                             if (roundTripFlag == false)
                             {
-                                promptForRoundtrip();
-                                return;
+                                promptForRoundtrip(selected);
                             }
                         }
                     }
@@ -143,13 +141,12 @@ namespace Software_Engineering_Project
                         App.TransactionHist.Add(newTransact);
                         if (roundTripFlag == false)
                         {
-                            promptForRoundtrip();
-                            return;
+                            promptForRoundtrip(selected);
                         }
                     }
                     m_parent.UpcomingFlightsGrid.ItemsSource = m_parent.LoadUpcomingFlights();
                     FoundFlightsGrid.ItemsSource = LoadAllFlights();
-                    this.Close();
+                    //this.Close();
                     //Put logic here for round trip -------- for each to find a flight with criteria
                 }
             }
@@ -203,18 +200,19 @@ namespace Software_Engineering_Project
             FoundFlightsGrid.Items.Refresh();
         }
 
-        private void promptForRoundtrip()
+        private void promptForRoundtrip(FlightManifestObj flight)
         {   if(MessageBox.Show("Would you like to book a return trip?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 roundTripFlag = true;
                 ComboBoxItem storeArrive = (ComboBoxItem)ArrivalSelectionBox.SelectedItem;
                 ComboBoxItem storeDepart = (ComboBoxItem)DepartureSelectionBox.SelectedItem;
 
-                ArrivalSelectionBox.SelectedItem = storeDepart;
-                DepartureSelectionBox.SelectedItem = storeArrive;
+                ArrivalSelectionBox.Text = flight.originCode;
+                DepartureSelectionBox.Text = flight.destinationCode;
                 ArriveTimePick.Value = null;
                 DepartTimePick.Value = null;
                 SearchRefresh();
+                FoundFlightsGrid.Items.Refresh();
             }
             else
             {

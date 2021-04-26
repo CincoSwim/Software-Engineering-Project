@@ -30,6 +30,7 @@
         <ComboBoxItem Content="Denver, CO"></ComboBoxItem>
         <ComboBoxItem Content="Los Angeles, CA"></ComboBoxItem>
         <ComboBoxItem Content="Minneapolis, MN"></ComboBoxItem>
+        <ComboBoxItem Content="Nashville, TN"></ComboBoxItem>
         <ComboBoxItem Content="New York City, NY"></ComboBoxItem>
         <ComboBoxItem Content="Orlando, FL"></ComboBoxItem>
         <ComboBoxItem Content="Rapid City, SD"></ComboBoxItem>

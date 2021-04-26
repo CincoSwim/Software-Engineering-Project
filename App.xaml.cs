@@ -125,7 +125,7 @@ namespace Software_Engineering_Project
         public static FlightManifestObj findShortestPath(FlightManifestObj flightPlan, int begin, int end)
         {
             if (begin > 14 || begin < 0) return flightPlan;
-            if (end > 14 || end < 1) return flightPlan;
+            if (end > 14 || end < 0) return flightPlan;
 
             double miles = 0;
             double minMiles = 0;

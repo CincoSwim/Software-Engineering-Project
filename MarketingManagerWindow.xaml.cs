@@ -68,8 +68,7 @@ namespace Software_Engineering_Project
 
             populateLoadEngineerProposaedFlights();
             populateFinalizedFlights();
-
-
+            ApprovalQueueGrid.Items.Refresh();
         }
         private void populateFinalizedFlights()
         {

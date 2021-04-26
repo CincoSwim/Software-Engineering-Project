@@ -198,7 +198,25 @@ namespace Software_Engineering_Project
                 ArrivalCitiesComboBox.Items.Add("Seattle, WA"); 
                 ArrivalCitiesComboBox.Items.Add("Toledo, OH");
 
-            }else if (s == "New York City, NY")
+            }
+            else if (s == "Nashville, TN")
+            {
+                ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
+                ArrivalCitiesComboBox.Items.Add("Arlington, VA");
+                ArrivalCitiesComboBox.Items.Add("Austin, TX");
+                ArrivalCitiesComboBox.Items.Add("Chicago, IL");
+                ArrivalCitiesComboBox.Items.Add("Cleveland, OH");
+                ArrivalCitiesComboBox.Items.Add("Denver, CO");
+                ArrivalCitiesComboBox.Items.Add("Los Angeles, CA");
+                ArrivalCitiesComboBox.Items.Add("Minneapolis, MN");
+                ArrivalCitiesComboBox.Items.Add("New York City, NY");
+                ArrivalCitiesComboBox.Items.Add("Orlando, FL");
+                ArrivalCitiesComboBox.Items.Add("Rapid City, SD");
+                ArrivalCitiesComboBox.Items.Add("Sacramento, CA");
+                ArrivalCitiesComboBox.Items.Add("Toledo, OH");
+                ArrivalCitiesComboBox.Items.Add("Seattle, WA");
+            }
+            else if (s == "New York City, NY")
             {
                 ArrivalCitiesComboBox.Items.Add("Atlanta, GA");
                 ArrivalCitiesComboBox.Items.Add("Arlington, VA");
