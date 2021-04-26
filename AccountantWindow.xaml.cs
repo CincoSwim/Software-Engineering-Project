@@ -50,7 +50,7 @@ namespace Software_Engineering_Project
             //transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
             //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + "\nTotal Income: " + (transactionForPlane.ToString()));
-            File.WriteAllText(FileIOLoading.AccountantSinglePath, App.printAccountantSingleRecords(selected));
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, printAccountantSingleRecords(selected));
             selected = null;
             AccountingObjDataGrid.SelectedItem = null;
         }
@@ -65,7 +65,61 @@ namespace Software_Engineering_Project
             //}
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
             //File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + "\nTotal Income: " + (totalBalance.ToString()));
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, App.printAccountantAllRecords());
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, printAccountantAllRecords());
+        }
+
+        public static string printAccountantAllRecords()
+        {
+            string record = "";
+            double percentOfSeats = 0;
+            double totalBalance = 0;
+            double incomeOfFlight = 0;
+
+            foreach (var value in App.TransactionHist)
+            {
+                totalBalance += value.transactionAmt;
+            }
+            totalBalance = Math.Round(totalBalance, 2);
+            record += $"Total income from all flights: {totalBalance}\n\n";
+            foreach (var value in App.TransactionHist)
+            {
+                percentOfSeats = ((double)value.FlightUID.bookedUsers.Count / (double)value.FlightUID.planeAssigned.numOfSeats) * 100;
+                percentOfSeats = Math.Round(percentOfSeats, 2);
+
+                incomeOfFlight = value.transactionAmt;
+                incomeOfFlight = Math.Round(incomeOfFlight, 2);
+
+                record += $"Flight ID: {value.FlightUID.flightID}\n\t";
+                record += $"Percentage of Seats Taken: %{percentOfSeats}\n\t";
+                record += $"Total Income of Flight: {incomeOfFlight}\n\n";
+            }
+
+            List<FlightManifestObj> flightList = new List<FlightManifestObj>();
+            flightList.AddRange(App.FlightHistoryDictionary.Values);
+
+            return record;
+        }
+
+        internal static string printAccountantSingleRecords(TransactionObj flight)
+        {
+            string record = "";
+            double percentOfSeats = 0;
+            double totalBalance = 0;
+
+            percentOfSeats = (flight.FlightUID.bookedUsers.Count / flight.FlightUID.planeAssigned.numOfSeats) * 100;
+            percentOfSeats = Math.Round(percentOfSeats, 2);
+
+            totalBalance += flight.transactionAmt;
+            totalBalance = Math.Round(totalBalance, 2);
+
+            List<FlightManifestObj> flightList = new List<FlightManifestObj>();
+            flightList.AddRange(App.FlightHistoryDictionary.Values);
+
+            record += $"Flight ID: {flight.FlightUID.flightID}\n\t";
+            record += $"Percentage of Seats Taken: {percentOfSeats}\n\t";
+            record += $"Total Income of Flight: {totalBalance}\n\n";
+
+            return record;
         }
 
         void Accountant_Closed(object sender, EventArgs e)

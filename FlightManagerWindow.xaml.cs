@@ -60,14 +60,41 @@ namespace Software_Engineering_Project
         {
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
             //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(FlightManagerObjDataGrid.SelectedItem, Formatting.Indented));
-            File.WriteAllText(FileIOLoading.AccountantSinglePath, App.printFlightManagerSingleRecords((FlightManifestObj)FlightManagerObjDataGrid.SelectedItem));
+            File.WriteAllText(FileIOLoading.AccountantSinglePath, printFlightManagerSingleRecords((FlightManifestObj)FlightManagerObjDataGrid.SelectedItem));
         }
 
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
             //File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.FlightHistoryDictionary, Formatting.Indented));
-            File.WriteAllText(FileIOLoading.AccountantMultiPath, App.printFlightManagerAllRecord());
+            File.WriteAllText(FileIOLoading.AccountantMultiPath, printFlightManagerAllRecord());
+        }
+
+        public static string printFlightManagerAllRecord()
+        {
+            string record = "";
+            List<FlightManifestObj> flightList = new List<FlightManifestObj>();
+            flightList.AddRange(App.FlightHistoryDictionary.Values);
+            foreach (FlightManifestObj flight in flightList)
+            {
+                record += $"Flight ID: {flight.flightID}";
+                foreach (UserAccountObj user in flight.bookedUsers)
+                {
+                    record += $"\n\t{user.firstName} {user.lastName}";
+                }
+                record += "\n\n";
+            }
+            return record;
+        }
+        public static string printFlightManagerSingleRecords(FlightManifestObj flight)
+        {
+            string record = "";
+            record += $"Flight ID: {flight.flightID}\n\t";
+            foreach (UserAccountObj user in flight.bookedUsers)
+            {
+                record += $"{user.firstName} {user.lastName}\n\t";
+            }
+            return record;
         }
     }
 }

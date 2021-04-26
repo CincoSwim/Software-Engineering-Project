@@ -136,11 +136,25 @@ namespace Software_Engineering_Project
             {   //Write the boarding pass to the proper location, and prompt the user with the location of the printed pass.
                 FileInfo path = new FileInfo(FileIOLoading.printoutDir); //make path if doesn't exist
                 path.Directory.Create();
-                File.WriteAllText(FileIOLoading.BoardingPassPath, JsonConvert.SerializeObject(selected, Formatting.Indented)); //write to path
+                //File.WriteAllText(FileIOLoading.BoardingPassPath, JsonConvert.SerializeObject(selected, Formatting.Indented)); //write to path
+                File.WriteAllText(FileIOLoading.BoardingPassPath, printBoardingPass(selected));
                 MessageBox.Show("Boarding Pass Printed To: C:\\temp\\Printouts\\BoardingPass.txt", "Success!", MessageBoxButton.OK, MessageBoxImage.Information); //let user know
                 return;
             }
-            
+        }
+
+        internal static string printBoardingPass(FlightManifestObj flight)
+        {
+            string boardingPass = "";
+            boardingPass += $"Flight ID: {flight.flightID}\n\t";
+            boardingPass += $"Departure City: \t{flight.originCode}\n\t";
+            boardingPass += $"Layover City 1: \t{flight.layoverCodeA}\n\t";
+            boardingPass += $"Layover City 2: \t{flight.layoverCodeB}\n\t";
+            boardingPass += $"Destination Code: \t{flight.destinationCode}\n\t";
+            boardingPass += $"Departure Time: \t{flight.departTime}\n\t";
+            boardingPass += $"Arrival Time: \t\t{flight.arrivalTime}\n\t";
+            boardingPass += $"Point Reward: \t\t{flight.pointReward}\n\t";
+            return boardingPass;
         }
     }
 }
