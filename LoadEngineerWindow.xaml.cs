@@ -24,6 +24,8 @@ namespace Software_Engineering_Project
     {
         private MainWindow m_parent;
         
+        //Launches our Load Engineer Window
+        //Will add items to the dataGrid
         public LoadEngineerWindow(MainWindow main)
         {
             InitializeComponent();
@@ -33,12 +35,15 @@ namespace Software_Engineering_Project
             populateDataGrid();
         }
 
+        //Allows usage of X close button while saving and showing main window
         void LoadEng_Closed(object sender, EventArgs e)
         {
             m_parent.Show();
             App.LoggedInUser = null;
         }
 
+        //Creates a reactive arrival comboBox based on our results of the departure comboBox
+        //Could have been done with switch statements but this works too. 
         private void DepartureComboBox_Changed(object sender, SelectionChangedEventArgs e)
         {
             ArrivalCitiesComboBox.Items.Clear();
@@ -318,6 +323,7 @@ namespace Software_Engineering_Project
             ComboBoxItem comboBoxItem = (ComboBoxItem)DepartureCitiesComboBox.SelectedItem;
             if(comboBoxItem == null)
             {
+                //If we have not selected a departed value, highlight the departed box red
                 DepartureCitiesBorderCB.BorderBrush = Brushes.Red;
                 departureLocation = null;
                 return;
@@ -328,6 +334,7 @@ namespace Software_Engineering_Project
             }
             if(ArrivalCitiesComboBox.SelectedItem == null)
             { 
+                //If we have not selected an arrival value, set the arrival box to red.
                 ArrivalCitiesBorderCB.BorderBrush = Brushes.Red;
                 arrivalLocation = null;
                 return;
@@ -337,11 +344,12 @@ namespace Software_Engineering_Project
                 arrivalLocation = ArrivalCitiesComboBox.SelectedItem.ToString();
             }
 
-            //Getting Date Time Data
+            //Getting departure date time
             departureDateTime = DepartureDateTimePicker.Text;
 
             if (departureDateTime == null)
             {
+                //If we have not selected a departure time, highlight the departure timeBox red.
                 DepartureDateTimePicker.BorderBrush = Brushes.Red;
                 parsedDepartDate = DateTime.Today;
                 return;
@@ -351,6 +359,7 @@ namespace Software_Engineering_Project
                 parsedDepartDate = DateTime.Parse(departureDateTime);
             }
 
+            //filling in our proposed flight fields and then using our graph to set Layovers
             proposedFlightManifestObj.originCode = departureLocation;
             proposedFlightManifestObj.destinationCode = arrivalLocation;
 
@@ -369,6 +378,7 @@ namespace Software_Engineering_Project
                 parsedArrivalDate = DateTime.MinValue;
             }
 
+            //If we have a real arrival date, then generate a random 6 digit flight ID.
             if (!parsedArrivalDate.Equals(DateTime.MinValue)) {  
                 Random generator = new Random();
                 string genNum;
@@ -381,21 +391,26 @@ namespace Software_Engineering_Project
                        i = 0;
                     }
                 }
+                // Set more fields for the proposed flight
                 proposedFlightManifestObj.flightID = genNum;
                 proposedFlightManifestObj.departTime = parsedDepartDate;
                 proposedFlightManifestObj.arrivalTime = parsedArrivalDate;
+                // Apply red eye and off peak discounts if needed
                 planWithLayovers = App.applyDiscounts(planWithLayovers);
-
+                // Add our flight to the list of proposed flights
                 App.MarketMangerQueue.Add(planWithLayovers);
-                
+                // Refresh the datagrid which should have our new flight visible now. 
                 populateDataGrid();
                 Console.WriteLine(App.MarketMangerQueue.Count);
             }
             else
             {
-                MessageBox.Show("arrivalTimescrewedup");
+                //If we fail to set a correct arrival time, then send the message box. 
+                //We should never reach this point, but if somehow the user manages to get here, this is the failsafe. 
+                MessageBox.Show("arrivalTime Did not set correctly.");
             }
         }
+        // Set Arrival Date and Time based on our Departure Date and Time and Locations / Layovers
         private DateTime setArrivalTimeBasedOnDepartureTime(DateTime departureTime, string departureLocation, string arrivalLocation, string layoverA, string layoverB)
         {
             DateTime arrivalTime = DateTime.MinValue;
@@ -439,7 +454,7 @@ namespace Software_Engineering_Project
                 milesTimeInHours = milesTimeInHours + 2;
                 arrivalTime = departureTime.AddHours(milesTimeInHours);
                 return arrivalTime;
-            } //How did you get here?????
+            } //Should never get to this point, but if we do then we return the default dateTime and this will cause the Propose Button to fail. 
             else
             {
                 return arrivalTime;
@@ -447,6 +462,8 @@ namespace Software_Engineering_Project
             
         }
 
+        // Ability to cancel a selected flight from the datagrid and remove from our Market Manager Queue List
+        // Will auto refresh when we cancel
         private void CancelProposalBtn_isClicked(object sender, RoutedEventArgs e)
         {
             FlightManifestObj selectedFlightManifestObj = (FlightManifestObj) ApprovalQueueGrid.SelectedItem;
@@ -454,12 +471,14 @@ namespace Software_Engineering_Project
             populateDataGrid();
         }
 
+        // Setting the dataGrid to our Market Manager Queue List and refreshing said grid
         private void populateDataGrid()
         {
             ApprovalQueueGrid.ItemsSource = App.MarketMangerQueue;
             ApprovalQueueGrid.Items.Refresh();
         }
 
+        // Converting our locations to ints so they can be used in the graph or other methods easier
         private int convertLocationsToInt(string location)
         {
             int locationNum = -1;
@@ -479,9 +498,6 @@ namespace Software_Engineering_Project
             else if (location == "Sacramento, CA") { locationNum = 13; }
             else if (location == "Rapid City, SD") { locationNum = 14; }
             else locationNum = 15;
-
-            
-            //flightManifestObj = App.findShortestPath();
             return locationNum;
         }
 
