@@ -22,6 +22,8 @@ namespace Software_Engineering_Project
     {
         private MainWindow m_parent;
 
+        //Launches the Market Manager Window
+        //Gives both DataGrids thier Lists to read from and refreshes the grids to ensure it is up to date.
         public MarketingManagerWindow(MainWindow main)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace Software_Engineering_Project
             populateFinalizedFlights();
             
         }
+        //Allows user to close Market Manager with the X button without losing data
         void MarketManager_Closed(object sender, EventArgs e)
         {
             m_parent.Show();
@@ -43,6 +46,7 @@ namespace Software_Engineering_Project
             m_parent.Show();
             this.Close();
         }  
+        // Updates and sets dataGrid from the Load Engineer list of proposed flights
         private void populateLoadEngineerProposaedFlights()
         {
             ApprovalQueueGrid.ItemsSource = App.MarketMangerQueue;
@@ -69,6 +73,7 @@ namespace Software_Engineering_Project
             populateLoadEngineerProposaedFlights();
             populateFinalizedFlights();
         }
+        // Updates and sets dataGrid for flights that are visible to the customer
         private void populateFinalizedFlights()
         {
             List<FlightManifestObj> flightList = new List<FlightManifestObj>();
@@ -76,12 +81,15 @@ namespace Software_Engineering_Project
             PostedFlightsGrid.ItemsSource = flightList;
             PostedFlightsGrid.Items.Refresh();
         }
-
+        // Allows the Market Manager to remove flights from the customer and refund them if necessary
+        // Will update the Posted Flights list and datagrid to see in real time
         private void CancelFlightBtn_Click(object sender, RoutedEventArgs e)
         { 
             
             FlightManifestObj selected = (FlightManifestObj)PostedFlightsGrid.SelectedItem;
+            //Handles no selection null pointer error
             if (selected == null) return;
+            //Checks each user to see if they had that flight and refunds them their money and updates thier upcoming flight list
             foreach (var user in App.UserAccountDict)
             {
                 if (user.Value.upcomingFlights.Contains(selected.flightID))
@@ -90,12 +98,15 @@ namespace Software_Engineering_Project
                     user.Value.upcomingFlights.Remove(selected.flightID);
                 }
             }
+            //Refreshes both datagrids and moves the canceled flight back to the Load Engineer's Proposed Flights List
             App.MarketMangerQueue.Add(selected);
             App.FlightPlanDict.Remove(selected.flightID);
             populateFinalizedFlights();
             populateLoadEngineerProposaedFlights();
         }
 
+        //If the market manager doesn't like the flight that a load engineer proposed
+        //Remove the flight from the Market Manager Queue and refresh the dataGrid
         private void RejectFlightBtn_Click(object sender, RoutedEventArgs e)
         {
             FlightManifestObj selectedFlightManifestObj = (FlightManifestObj)ApprovalQueueGrid.SelectedItem;
