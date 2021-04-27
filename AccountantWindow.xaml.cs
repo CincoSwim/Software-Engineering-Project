@@ -22,6 +22,7 @@ namespace Software_Engineering_Project
     public partial class AccountantWindow : Window
     {
         private MainWindow m_parent;
+        //Opens the accountant window and loads the accountant's datagrid
         public AccountantWindow(MainWindow main)
         {  
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Software_Engineering_Project
             AccountingObjDataGrid.ItemsSource = App.TransactionHist;
 
         }
-
+        //Logs out the user and returns to main window. 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
            
@@ -38,33 +39,29 @@ namespace Software_Engineering_Project
             this.Close();
         }
 
+        //Print a selected flight's income, flightID, users on said flight to a text file
         private void PrintSelectedBtn_Click(object sender, RoutedEventArgs e)
         {   
-            //double transactionForPlane = 0;
+            
             TransactionObj selected = (TransactionObj)AccountingObjDataGrid.SelectedItem;
+            //Handles a no selection null pointer error
             if (selected == null)
             {
                 MessageBox.Show("Please select a flight", "Alert!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            //transactionForPlane = selected.FlightUID.bookedUsers.Count * selected.FlightUID.ticketPrice;
+            //Prints the information needed for a single flight for the accountant
             MessageBox.Show("Printed: One object to C:\\temp\\Printouts\\SingleSelection.txt");
-            //File.WriteAllText(FileIOLoading.AccountantSinglePath, JsonConvert.SerializeObject(AccountingObjDataGrid.SelectedItem, Formatting.Indented) + "\nTotal Income: " + (transactionForPlane.ToString()));
             File.WriteAllText(FileIOLoading.AccountantSinglePath, printAccountantSingleRecords(selected));
             selected = null;
+            //will unselect in the datagrid
             AccountingObjDataGrid.SelectedItem = null;
         }
 
+        //Prints every flight's income records, people on each plane, and the plane's ID
         private void PrintAllRecords_Click(object sender, RoutedEventArgs e)
         {
-            //double totalBalance = 0;
-            //foreach (var value in App.TransactionHist)
-            //{
-            //    //totalBalance += value.FlightUID.ticketPrice * value.FlightUID.bookedUsers.Count;
-            //    totalBalance += value.transactionAmt;
-            //}
             MessageBox.Show("Printed: All objects to C:\\temp\\Printouts\\AllSelection.txt");
-            //File.WriteAllText(FileIOLoading.AccountantMultiPath, JsonConvert.SerializeObject(App.TransactionHist, Formatting.Indented) + "\nTotal Income: " + (totalBalance.ToString()));
             File.WriteAllText(FileIOLoading.AccountantMultiPath, printAccountantAllRecords());
         }
 
@@ -75,12 +72,15 @@ namespace Software_Engineering_Project
             double totalBalance = 0;
             double incomeOfFlight = 0;
 
+            //Adding up our total income 
             foreach (var value in App.TransactionHist)
             {
                 totalBalance += value.transactionAmt;
             }
             totalBalance = Math.Round(totalBalance, 2);
             record += $"Total income from all flights: {totalBalance}\n\n";
+
+            //Finding out how full each plane was and showing the income of each plane individually
             foreach (var value in App.TransactionHist)
             {
                 percentOfSeats = ((double)value.FlightUID.bookedUsers.Count / (double)value.FlightUID.planeAssigned.numOfSeats) * 100;
@@ -100,6 +100,7 @@ namespace Software_Engineering_Project
             return record;
         }
 
+        //Prints out a single flight's income, percentage of plane filled up, and the flight ID
         internal static string printAccountantSingleRecords(TransactionObj flight)
         {
             string record = "";
@@ -122,6 +123,7 @@ namespace Software_Engineering_Project
             return record;
         }
 
+        //Allows usage of the X button to close out the accountant
         void Accountant_Closed(object sender, EventArgs e)
         {
             m_parent.Show();
