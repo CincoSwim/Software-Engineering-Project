@@ -20,11 +20,8 @@ namespace Software_Engineering_Project
         public Planes planeAssigned { get; set; } = new Planes();
         public double ticketPrice { get; set; }
         public double pointReward { get; set; }
-        public List<UserAccountObj> bookedUsers { get; set; } = new List<UserAccountObj>(); //I think this may have to be ints with the unique ID of the users. 
+        public List<UserAccountObj> bookedUsers { get; set; } = new List<UserAccountObj>(); 
         
-
-        //Recieve Departure Time for Each Plane. 
-        //Uses departTime from Flight ManifestObj
         DateTime getDeparture() {
             return departTime;
         }
@@ -37,9 +34,7 @@ namespace Software_Engineering_Project
             originCode = originCode;
         }
 
-        //Pays for flight and updates flight list
-        //Uses bookedUsers and ticketPrice to accomplish this
-        //Need userID. 
+         
         void addBookingAndPay() {
 
         }
