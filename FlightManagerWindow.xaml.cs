@@ -53,6 +53,7 @@ namespace Software_Engineering_Project
         {
             List<FlightManifestObj> gridList = new List<FlightManifestObj>();
             gridList.AddRange(App.FlightHistoryDictionary.Values);
+            gridList.AddRange(App.FlightPlanDict.Values);
             return gridList;
         }
         //Allows Flight Manager to print out a selected flight and store in the single selection text file
@@ -74,6 +75,7 @@ namespace Software_Engineering_Project
             //Obtains the Past Flights List
             List<FlightManifestObj> flightList = new List<FlightManifestObj>();
             flightList.AddRange(App.FlightHistoryDictionary.Values);
+            flightList.AddRange(App.FlightPlanDict.Values);
             //Prints flight IDs and Users of said flight
             foreach (FlightManifestObj flight in flightList)
             {
