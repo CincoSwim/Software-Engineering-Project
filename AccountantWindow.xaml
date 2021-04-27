@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="Accounting Workstation" Height="450" Width="800">
+        Title="Air 3550 - Accounting Workstation" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="AccountingObjDataGrid" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" Width="552" AlternatingRowBackground="LightBlue">
             <DataGrid.Columns>

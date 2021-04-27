@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Software_Engineering_Project"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Software_Engineering_Project.UserFlightSearchWindow"
         mc:Ignorable="d"
-        Title="Flight Search" Height="354" Width="800">
+        Title="Air 3550 - Flight Search" Height="354" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

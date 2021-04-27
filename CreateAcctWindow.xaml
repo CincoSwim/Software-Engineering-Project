@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="Create Account" Height="560.315" Width="531.275" WindowStartupLocation="CenterScreen">
+        Title="Air 3550 - Create Account" Height="560.315" Width="531.275" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Software_Engineering_Project"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Software_Engineering_Project.LoadEngineerWindow"
         mc:Ignorable="d"
-        Title="Load Engineer Workbench" Height="450" Width="752.695">
+        Title="Air 3550 - Load Engineer Workbench" Height="450" Width="752.695">
     <Grid>
       <DataGrid x:Name="ApprovalQueueGrid" CanUserAddRows="false" IsReadOnly ="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="364" Margin="10,33,0,0" VerticalAlignment="Top" Width="392"  AlternatingRowBackground="LightBlue">
         <DataGrid.Columns>

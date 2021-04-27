@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Engineering_Project"
         mc:Ignorable="d"
-        Title="Flight Manager - Workbench" Height="450" Width="800">
+        Title="Air 3550 - Flight Manager Workbench" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="FlightManagerObjDataGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="552" AlternatingRowBackground="LightBlue">
             <DataGrid.Columns>
