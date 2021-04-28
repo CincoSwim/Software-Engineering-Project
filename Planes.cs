@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//EECS 3550 - Software Engineering
+//Written By: Group 18 - Christopher Pucko, Cole Beddies, Bradley Austin
+//Submitted: 4/28/2021
 
-//going off this list
-// https://blog.thetravelinsider.info/airplane-types#Boeing
 namespace Software_Engineering_Project
 {
     public class Planes

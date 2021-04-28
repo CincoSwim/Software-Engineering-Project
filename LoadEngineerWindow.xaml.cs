@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Collections.ObjectModel;
 
+//EECS 3550 - Software Engineering
+//Written By: Group 18 - Christopher Pucko, Cole Beddies, Bradley Austin
+//Submitted: 4/28/2021
 
 namespace Software_Engineering_Project
 {

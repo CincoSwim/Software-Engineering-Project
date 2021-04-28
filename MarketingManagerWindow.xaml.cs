@@ -13,11 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 
+//EECS 3550 - Software Engineering
+//Written By: Group 18 - Christopher Pucko, Cole Beddies, Bradley Austin
+//Submitted: 4/28/2021
+
 namespace Software_Engineering_Project
 {
-    /// <summary>
-    /// Interaction logic for MarketingManagerWindow.xaml
-    /// </summary>
+   
     public partial class MarketingManagerWindow : Window
     {
         private MainWindow m_parent;

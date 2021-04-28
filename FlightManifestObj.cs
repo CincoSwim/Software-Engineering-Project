@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//import UserAcounnt Obj;
+//EECS 3550 - Software Engineering
+//Written By: Group 18 - Christopher Pucko, Cole Beddies, Bradley Austin
+//Submitted: 4/28/2021
 
 namespace Software_Engineering_Project
 {   [Serializable]
