@@ -18,6 +18,9 @@ using System.Threading;
 //EECS 3550 - Software Engineering
 //Written By: Group 18 - Christopher Pucko, Cole Beddies, Bradley Austin
 //Submitted: 4/28/2021
+//Project Description - This program is a platform to manage the creation and booking of Airplane itineraries for both Users and Employees
+//                      The application allows employees to create Flights with auto-generated layover cities based on the distance between the origin and destination cities.
+//                      Users may create accounts, with which they can buy and cancel tickets for the created flights.
 
 namespace Software_Engineering_Project
 {
